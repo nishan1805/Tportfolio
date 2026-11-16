@@ -110,7 +110,16 @@ export type CurrentRole = {
 /* ---------- Case study pages ---------- */
 
 /** `width` = width of the text column in Figma (px). Used to keep the same column ratio. */
-export type ItemBlock = { type: "item"; title: string; text: string; width?: number };
+export type ItemBlock = {
+  type: "item";
+  title: string;
+  text: string;
+  width?: number;
+  /** Green header/body card. Other items keep the default white card. */
+  variant?: "panel";
+  /** Second paragraph inside a panel body. Rendered after a bold "Object:" label. */
+  note?: string;
+};
 
 /** `width` and `height` = size of the image slot in Figma (px). Gives the slot the exact same shape. */
 export type ImageItem = {
@@ -134,6 +143,8 @@ export type CaseStudySection = {
   /** Used for the #anchor link and the side menu. */
   id: string;
   title: string;
+  /** Shorter label for the page-content menu. The section heading stays `title`. */
+  navTitle?: string;
   blocks: CaseStudyBlock[];
 };
 

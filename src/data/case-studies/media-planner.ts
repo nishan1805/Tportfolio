@@ -19,62 +19,6 @@ export const mediaPlanner: CaseStudy = {
     }
   ],
   accent: "bg-gradient-to-br from-purple-500 to-purple-300",
-  summary: [
-    {
-      width: 400,
-      images: [
-        {
-          alt: "Summary - image 1",
-          src: "/images/case-studies/media-planner/frame-2085663031-media-final-ui-gif-1280x692-0cdb17a428.webp",
-          webm: "/images/case-studies/media-planner/frame-2085663031-media-final-ui-gif-1280x692-0cdb17a428.webm",
-          mp4: "/images/case-studies/media-planner/frame-2085663031-media-final-ui-gif-1280x692-0cdb17a428.mp4",
-          poster: "/images/case-studies/media-planner/frame-2085663031-media-final-ui-gif-1280x692-0cdb17a428.webp",
-          width: 400,
-          height: 352
-        },
-        {
-          alt: "Summary - image 2",
-          src: "/images/case-studies/media-planner/frame-2085663029-image-14-900x900-9f3920f2d2.png",
-          width: 400,
-          height: 164
-        }
-      ]
-    },
-    {
-      width: 400,
-      images: [
-        {
-          alt: "Summary - Wireframing",
-          src: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-1-1280x721-54884dd9f7.webp",
-          webm: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-1-1280x721-54884dd9f7.webm",
-          mp4: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-1-1280x721-54884dd9f7.mp4",
-          poster: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-1-1280x721-54884dd9f7.webp",
-          width: 400,
-          height: 540
-        }
-      ],
-      text: {
-        label: "3-4 Iterations",
-        title: "Wireframing",
-        text: "We frequently leveraged AI tools to rapidly ideate and align with stakeholders, ensuring our design direction was validated early on."
-      },
-      textPosition: "overlay"
-    },
-    {
-      width: 400,
-      images: [
-        {
-          alt: "Summary - image 3",
-          src: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-2-1280x600-569fe15c38.webp",
-          webm: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-2-1280x600-569fe15c38.webm",
-          mp4: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-2-1280x600-569fe15c38.mp4",
-          poster: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-2-1280x600-569fe15c38.webp",
-          width: 400,
-          height: 540
-        }
-      ]
-    }
-  ],
   sections: [
     {
       id: "introduction",
@@ -125,6 +69,7 @@ export const mediaPlanner: CaseStudy = {
     {
       id: "getting-direct-inspiration",
       title: "Getting Direct Inspiration",
+      navTitle: "Inspiration",
       blocks: [
         {
           type: "text",
@@ -166,11 +111,41 @@ export const mediaPlanner: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Wireframing - image 1",
+          alt: "Wireframing - Welcome to Mediaplanner",
+          src: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-1-1280x721-54884dd9f7.webp",
+          webm: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-1-1280x721-54884dd9f7.webm",
+          mp4: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-1-1280x721-54884dd9f7.mp4",
+          poster: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-1-1280x721-54884dd9f7.webp",
+          width: 1018,
+          height: 436
+        },
+        {
+          type: "image",
+          alt: "Wireframing - Define your expected journey",
           src: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-2-1280x600-569fe15c38.webp",
           webm: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-2-1280x600-569fe15c38.webm",
           mp4: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-2-1280x600-569fe15c38.mp4",
           poster: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-2-1280x600-569fe15c38.webp",
+          width: 1018,
+          height: 436
+        },
+        {
+          type: "image",
+          alt: "Wireframing - Generate report",
+          src: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-4-800x375-e947d0a3ca.webp",
+          webm: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-4-800x375-e947d0a3ca.webm",
+          mp4: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-4-800x375-e947d0a3ca.mp4",
+          poster: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-4-800x375-e947d0a3ca.webp",
+          width: 1018,
+          height: 436
+        },
+        {
+          type: "image",
+          alt: "Wireframing - Media planner report",
+          src: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-3-1280x600-f53e4f5bb7.webp",
+          webm: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-3-1280x600-f53e4f5bb7.webm",
+          mp4: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-3-1280x600-f53e4f5bb7.mp4",
+          poster: "/images/case-studies/media-planner/frame-2085663030-media-wireframe-gif-3-1280x600-f53e4f5bb7.webp",
           width: 1018,
           height: 436
         }
@@ -186,21 +161,23 @@ export const mediaPlanner: CaseStudy = {
         },
         {
           type: "item",
+          variant: "panel",
           title: "Landing Page",
-          text: "First user has to give the appstore link of app. System will automatically pick the country.",
-          width: 299
+          text: "First user has to give the appstore link of app. System will automatically pick the country. ",
+          note: "Also to educate user about the platform."
         },
         {
           type: "item",
-          title: "Object: Also to educate user about the platform. · Landing Page",
+          variant: "panel",
+          title: "Landing Page",
           text: "Second section will be about splitting the budget strategy the budget in different placements.",
-          width: 299
+          note: "Let users strategies the spendings."
         },
         {
           type: "item",
-          title: "Object: Let users strategies the spendings. · Planner Report",
-          text: "Planner page all about showing all possible outcome. It gives lot of clarity to campaign managers and advertisers about the outcome.",
-          width: 299
+          variant: "panel",
+          title: "Planner Report",
+          text: "Planner page all about showing all possible outcome. It gives lot of clarity to campaign managers and advertisers about the outcome."
         },
         {
           type: "image",

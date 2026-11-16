@@ -79,7 +79,27 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
       );
     }
 
-    case "cards":
+    case "cards": {
+      if (unit.items.length > 0 && unit.items.every((item) => item.variant === "panel")) {
+        return (
+          <ul key={index} className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
+            {unit.items.map((item, itemIndex) => (
+              <li key={`${item.title}-${itemIndex}`} className="flex h-full min-w-0 flex-col overflow-hidden rounded-[8px]">
+                <h3 className="bg-[#deecdd] px-3 py-3 text-[1rem] font-bold leading-[16.66px] text-[#254d4f]">{item.title}</h3>
+                <div className="flex flex-1 flex-col gap-4 bg-[#eef5ee] p-3 text-[1rem] font-normal leading-6 text-[#254d4f]">
+                  <p>{item.text}</p>
+                  {item.note ? (
+                    <p>
+                      <span className="font-semibold">Object:</span> {item.note}
+                    </p>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ul>
+        );
+      }
+
       return (
         <ul key={index} className="grid min-w-0 gap-4 sm:grid-cols-2">
           {unit.items.map(({ title, text }, itemIndex) => {
@@ -103,6 +123,7 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
           })}
         </ul>
       );
+    }
   }
 }
 

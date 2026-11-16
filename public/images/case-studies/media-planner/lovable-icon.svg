@@ -1,0 +1,17 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="lovable-ai-icon 1" clip-path="url(#clip0_0_4)">
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M10.623 0C16.488 0 21.2445 4.76852 21.2445 10.65V14.7H24.78C30.645 14.7 35.403 19.467 35.403 25.35C35.403 31.2345 30.648 36 24.78 36H0V10.65C0 4.77 4.75502 0 10.623 0Z" fill="url(#paint0_radial_0_4)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(21.0001 4.50006) rotate(92.545) scale(33.7833 45.726)">
+<stop offset="0.25" stop-color="#FE7B02"/>
+<stop offset="0.433" stop-color="#FE4230"/>
+<stop offset="0.548" stop-color="#FE529A"/>
+<stop offset="0.654" stop-color="#DD67EE"/>
+<stop offset="0.95" stop-color="#4B73FF"/>
+</radialGradient>
+<clipPath id="clip0_0_4">
+<rect width="36" height="36" fill="white"/>
+</clipPath>
+</defs>
+</svg>
