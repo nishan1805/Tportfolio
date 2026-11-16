@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/*
+ * Font family is centralised here. Outfit stands in for the licensed Nekst
+ * face. Swap --font-family (or the next/font variable in layout.tsx) to
+ * change the site in one place. The accessibility panel overrides
+ * --font-family at runtime.
+ */
+:root {
+  --font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --a11y-scale: 1;
+  --color-ink: #000000;
+  --color-teal-800: #254d4f;
+  --color-teal-900: #193334;
+  --color-teal-600: #3e8083;
+  --color-teal-500: #65999c;
+  --color-teal-400: #8bb3b5;
+  --color-teal-300: #b2cccd;
+  --color-teal-200: #d8e6e6;
+  --color-teal-100: #ecf2f3;
+  --color-blue-600: #3058d8;
+  --color-yellow-600: #fdae44;
+  --color-orange-600: #f2870e;
+  --color-lavender-0: #fbfbff;
+  --color-lavender-1: #efeeff;
+}
+
+@theme {
+  --color-prime-yellow-600: #fdae44;
+  --color-prime-teal-100: #ecf2f3;
+  --color-prime-teal-200: #d8e6e6;
+  --color-prime-teal-400: #8bb3b5;
+  --color-prime-teal-500: #65999c;
+  --color-prime-teal-600: #3e8083;
+  --color-prime-teal-800: #254d4f;
+  --color-prime-teal-900: #193334;
+  --color-prime-blue-100: #eaeefb;
+  --color-prime-blue-300: #acbcef;
+  --color-prime-blue-400: #839be8;
+  --color-prime-blue-600: #3058d8;
+  --color-prime-orange-600: #f2870e;
+
+  --font-sans: var(--font-family), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: calc(16px * var(--a11y-scale, 1));
+  overflow-x: clip;
+  scroll-padding-top: 116px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 74px;
+  }
+}
+
+body {
+  overflow-x: clip;
+  font-family: var(--font-family), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0;
+  color: var(--color-ink);
+  background: #fff;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Accessibility modes. Default (light, full colour) matches the Figma frames. */
+html[data-theme="dark"] {
+  background: #0e0e0e;
+}
+
+html[data-theme="dark"] body {
+  filter: invert(1) hue-rotate(180deg);
+  background: #fff;
+}
+
+html[data-grayscale="on"] body {
+  filter: grayscale(1);
+}
+
+html[data-theme="dark"][data-grayscale="on"] body {
+  filter: invert(1) hue-rotate(180deg) grayscale(1);
+}
+
+html[data-theme="dark"] img,
+html[data-theme="dark"] video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html[data-theme="dark"][data-grayscale="on"] img,
+html[data-theme="dark"][data-grayscale="on"] video {
+  filter: invert(1) hue-rotate(180deg);
+}
