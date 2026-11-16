@@ -99,7 +99,7 @@ const STORY_LAYOUT: Record<
     title: { x: 15.34, y: 10.19, w: 394.12, h: 72.93 },
     layers: [
       { src: "/images/career/childhood-desk.webp", x: 47.77, y: 115.1, w: 143.5, h: 119 },
-      { src: "/images/career/childhood-supplies.webp", x: 372.3, y: 150.47, w: 194, h: 83.5 },
+      { src: "/images/career/childhood-supplies.webp", x: 178.69, y: 150.47, w: 193.61, h: 83.5 },
     ],
     titleColor: "text-black",
     subtitleColor: "text-[#3e8083]",
@@ -108,7 +108,7 @@ const STORY_LAYOUT: Record<
     title: { x: 13.88, y: 11.71, w: 394.12, h: 55.93 },
     layers: [
       { src: "/images/summary/institute.webp", x: -45.08, y: 129.92, w: 516.7, h: 187.69, fit: "cover" },
-      { src: "/images/career/engineering-back.webp", x: 161.79, y: 81.09, w: 101.5, h: 153, fit: "contain" },
+      { src: "/images/career/engineering-back.webp", x: 161.79, y: 81.09, w: 101.132, h: 152.59, fit: "fill" },
     ],
     titleColor: "text-[#193334]",
     subtitleColor: "text-[#254d4f]",
@@ -150,41 +150,78 @@ const STORY_LAYOUT: Record<
   },
 };
 
-const SKILLS: { title: string; text: string; icon?: Layer }[] = [
+type SkillTile = {
+  title: string;
+  text: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  icon?: { src: string; x: number; y: number; w: number; h: number };
+  research?: { x: number; y: number; w: number; h: number };
+};
+
+/** Coordinates are design pixels inside the 1280 × 233.68 band. Icon boxes are inside each card. */
+const SAAS_SKILLS: SkillTile[] = [
   {
     title: "Design System",
     text: "Built and maintaining it to scale",
-    icon: { src: "/images/career/skill-design-system.webp", x: 0, y: 0, w: 97.66, h: 34.88, fit: "contain" },
+    x: 25.207,
+    y: 95.153,
+    w: 357.5,
+    h: 53.189,
+    icon: { src: "/images/career/skill-design-system.webp", x: 245.89, y: 9.16, w: 97.66, h: 34.88 },
   },
   {
     title: "Quick Prototyping",
     text: "Interactive prototype to test it out",
-    icon: { src: "/images/summary/logo-e.png", x: 0, y: 0, w: 26.16, h: 39.24, fit: "contain" },
-  },
-  {
-    title: "Interviews. Testing",
-    text: "Clarity gives us basics to innovate",
-    icon: { src: "/images/career/skill-interviews.webp", x: 0, y: 0, w: 86.63, h: 74.09, fit: "contain" },
-  },
-  {
-    title: "Research and Conceptualisation",
-    text: "Research and concept making before design",
+    x: 394.042,
+    y: 95.153,
+    w: 357.5,
+    h: 53.189,
+    icon: { src: "/images/summary/logo-e.png", x: 317.39, y: 6.98, w: 26.16, h: 39.24 },
   },
   {
     title: "Audit, analysis Benchmarking",
     text: "Just to make sure we are always up there",
-    icon: { src: "/images/career/skill-audit.webp", x: 0, y: 0, w: 67.14, h: 48.83, fit: "contain" },
+    x: 768.11,
+    y: 96.897,
+    w: 357.5,
+    h: 57.113,
+    icon: { src: "/images/career/skill-audit.webp", x: 276.41, y: 4.14, w: 67.14, h: 48.83 },
+  },
+  {
+    title: "Interviews. Testing",
+    text: "Clarity gives us basics to innovate",
+    x: 25.207,
+    y: 154.446,
+    w: 357.678,
+    h: 61.037,
+    icon: { src: "/images/career/skill-interviews.webp", x: 257.09, y: 13.95, w: 86.63, h: 74.09 },
+  },
+  {
+    title: "Research and Conceptualisation",
+    text: "Research and concept making before design",
+    x: 394.22,
+    y: 154.446,
+    w: 357.322,
+    h: 61.037,
+    research: { x: 296.29, y: 6.98, w: 47.09, h: 47.09 },
   },
   {
     title: "Leading the conversations",
     text: "From sanity to overlooking deliveries",
+    x: 768.11,
+    y: 160.113,
+    w: 358.372,
+    h: 57.113,
   },
 ];
 
 function StoryCard({ story }: { story: CareerStory }) {
   const layout = STORY_LAYOUT[story.id];
   return (
-    <article className={`relative overflow-hidden rounded-[16px] ${story.background}`} style={{ aspectRatio: `${CARD_W} / ${CARD_H}` }}>
+    <article className={`relative w-full self-start overflow-hidden rounded-[16px] ${story.background}`} style={{ aspectRatio: `${CARD_W} / ${CARD_H}` }}>
       {layout.layers.map((layer) => (
         <LayerImg key={layer.src} {...layer} boxW={CARD_W} boxH={CARD_H} />
       ))}
@@ -230,38 +267,92 @@ function StoryCard({ story }: { story: CareerStory }) {
 
 function ResearchIcon() {
   return (
-    <div className="grid size-[47px] shrink-0 grid-cols-2 grid-rows-2 gap-[3.5px]">
+    <div className="grid size-full grid-cols-2 grid-rows-2 gap-[7%]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/summary/logo-f.png" alt="" className="size-[22px] object-contain" />
+      <img src="/images/summary/logo-f.png" alt="" className="size-full max-w-none object-contain" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/summary/logo-g.webp" alt="" className="size-[22px] object-contain" />
+      <img src="/images/summary/logo-g.webp" alt="" className="size-full max-w-none object-contain" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/summary/logo-i.png" alt="" className="size-[22px] object-contain" />
+      <img src="/images/summary/logo-i.png" alt="" className="size-full max-w-none object-contain" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/summary/logo-h.webp" alt="" className="size-[22px] object-contain" />
+      <img src="/images/summary/logo-h.webp" alt="" className="size-full max-w-none object-contain" />
     </div>
   );
 }
 
-function SkillCard({ title, text, icon, tall }: { title: string; text: string; icon?: Layer; tall?: boolean }) {
+function CurrentRoleBand() {
   return (
-    <li className="relative flex min-h-0 items-center justify-between gap-2 overflow-visible rounded-[8px] bg-white px-3.5 py-2">
-      <div className="min-w-0">
-        <h4 className="text-[0.7625rem] font-bold leading-[0.95rem] text-black">{title}</h4>
-        <p className="mt-0.5 text-[0.65625rem] font-medium leading-[1.05rem] text-[#3e8083]">{text}</p>
-      </div>
-      {title.startsWith("Research") ? (
-        <ResearchIcon />
-      ) : icon ? (
-        // eslint-disable-next-line @next/next/no-img-element
+    <div className="relative mt-[8px] overflow-hidden rounded-[16px] bg-[#eaeefb]" style={{ aspectRatio: `${BAND_W} / ${BAND_H}` }}>
+      <Box x={13} y={7.707} w={1254} h={31.951} boxW={BAND_W} boxH={BAND_H}>
+        <h3 className="absolute top-1/2 -translate-y-1/2 text-[14px] font-bold leading-[17px] text-[#193334]" style={{ left: `${(13.951 / 1254) * 100}%` }}>
+          {currentRole.company}
+        </h3>
+        <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[12px] font-medium leading-[18px] text-[#193334]">
+          {currentRole.period}
+        </p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={icon.src}
-          alt=""
-          className={`shrink-0 object-contain object-right ${tall ? "self-end" : ""}`}
-          style={{ width: icon.w, height: icon.h }}
+          src="/images/summary/logo-d.png"
+          alt="affle"
+          className="absolute top-1/2 max-w-none -translate-y-1/2 object-contain"
+          style={{ left: `${(1201.974 / 1254) * 100}%`, width: `${(38.075 / 1254) * 100}%`, height: `${(17.573 / 31.951) * 100}%` }}
         />
-      ) : null}
-    </li>
+      </Box>
+
+      <Box x={13} y={50.683} w={1254} h={183} boxW={BAND_W} boxH={BAND_H} className="overflow-hidden rounded-[16px] bg-gradient-to-b from-[#e4e0fb] to-white">
+        <p className="absolute text-[12.2px] font-semibold leading-[15px] text-[#193334]" style={{ left: `${(9.592 / 1254) * 100}%`, top: `${(8.721 / 183) * 100}%` }}>
+          {currentRole.summary}
+        </p>
+        <p className="absolute text-[12.2px] font-semibold leading-[15px] text-[#193334]" style={{ left: `${(1074.244 / 1254) * 100}%`, top: `${(8.721 / 183) * 100}%` }}>
+          {currentRole.jobTitle}
+        </p>
+      </Box>
+
+      {SAAS_SKILLS.map((skill) => (
+        <Box key={skill.title} x={skill.x} y={skill.y} w={skill.w} h={skill.h} boxW={BAND_W} boxH={BAND_H} className="overflow-visible rounded-[8px] bg-white">
+          <div
+            className="absolute"
+            style={{
+              left: `${(13.95 / skill.w) * 100}%`,
+              top: `${(8.2 / skill.h) * 100}%`,
+              width: `${(((skill.icon?.x ?? skill.research?.x ?? skill.w) - 22) / skill.w) * 100}%`,
+            }}
+          >
+            <h4 className="text-[12.2px] font-bold leading-[15px] text-black">{skill.title}</h4>
+            <p className="text-[10.5px] font-medium leading-[17px] text-[#3e8083]">{skill.text}</p>
+          </div>
+          {skill.icon && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={skill.icon.src}
+              alt=""
+              className="absolute max-w-none object-contain"
+              style={{
+                left: `${(skill.icon.x / skill.w) * 100}%`,
+                top: `${(skill.icon.y / skill.h) * 100}%`,
+                width: `${(skill.icon.w / skill.w) * 100}%`,
+                height: `${(skill.icon.h / skill.h) * 100}%`,
+              }}
+            />
+          )}
+          {skill.research && (
+            <div
+              className="absolute"
+              style={{
+                left: `${(skill.research.x / skill.w) * 100}%`,
+                top: `${(skill.research.y / skill.h) * 100}%`,
+                width: `${(skill.research.w / skill.w) * 100}%`,
+                height: `${(skill.research.h / skill.h) * 100}%`,
+              }}
+            >
+              <ResearchIcon />
+            </div>
+          )}
+        </Box>
+      ))}
+
+      <LayerImg src="/images/career/saas-avatar.webp" alt="" x={1124.817} y={88.065} w={117.919} h={145.618} boxW={BAND_W} boxH={BAND_H} fit="fill" className="z-10" />
+    </div>
   );
 }
 
@@ -277,7 +368,7 @@ export function CareerSummary() {
           Career Summary
         </h2>
 
-        <div className="mt-[35px] grid grid-cols-3 gap-x-0 gap-y-[6px]">
+        <div className="mt-[35px] grid grid-cols-3 items-start gap-x-0 gap-y-[6px]">
           {topRow.map((story) => (
             <StoryCard key={story.id} story={story} />
           ))}
@@ -286,39 +377,7 @@ export function CareerSummary() {
           ))}
         </div>
 
-        <div className="relative mt-[8px] overflow-hidden rounded-[16px] bg-[#eaeefb]" style={{ aspectRatio: `${BAND_W} / ${BAND_H}` }}>
-          <Box x={13} y={7.71} w={1254} h={31.95} boxW={BAND_W} boxH={BAND_H} className="flex items-center justify-between">
-            <h3 className="text-[0.875rem] font-bold text-[#193334]">{currentRole.company}</h3>
-            <p className="absolute left-1/2 -translate-x-1/2 text-[0.7625rem] font-medium text-[#193334]">{currentRole.period}</p>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/summary/logo-d.png" alt="affle" className="h-[17.5px] w-[38px] object-contain" />
-          </Box>
-
-          <Box x={13} y={50.68} w={1254} h={183} boxW={BAND_W} boxH={BAND_H} className="overflow-hidden rounded-[16px] bg-gradient-to-b from-[#e4e0fb] to-white">
-            <div className="flex items-start justify-between px-[10px] pt-[9px] text-[0.7625rem] font-semibold text-[#193334]">
-              <p>{currentRole.summary}</p>
-              <p>{currentRole.jobTitle}</p>
-            </div>
-
-            <ul className="mt-2 grid grid-cols-[1fr_1fr_0.49fr] gap-x-[11px] gap-y-[6px] px-3">
-              {SKILLS.map((skill) => (
-                <SkillCard key={skill.title} {...skill} tall={skill.title.startsWith("Interviews")} />
-              ))}
-            </ul>
-          </Box>
-
-          <LayerImg
-            src="/images/career/saas-avatar.webp"
-            alt=""
-            x={1124.82}
-            y={88.07}
-            w={118}
-            h={146}
-            boxW={BAND_W}
-            boxH={BAND_H}
-            fit="contain"
-          />
-        </div>
+        <CurrentRoleBand />
       </Container>
     </section>
   );
