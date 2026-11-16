@@ -43,14 +43,6 @@ const HEROES: Record<string, HeroSpec> = {
     box: "left-[20%] top-[-8%] h-[190%] w-[57%]",
     motion: false,
   },
-  "intelligence-and-recommendation": {
-    gradient: "linear-gradient(#666d93, #b9c2f5)",
-    wordmark: "INTELLIGENCE",
-    markClass: "text-[8rem] font-bold tracking-tight text-white/10",
-    fit: "fill",
-    box: "left-[16%] top-[8%] h-[84%] w-[68%]",
-    motion: true,
-  },
   "emotion-driven-design": {
     gradient: "linear-gradient(#a4c8ff, #fff8ed)",
     wordmark: "EMOTIONAL",
@@ -68,7 +60,57 @@ const HEROES: Record<string, HeroSpec> = {
   },
 };
 
+const INTEL_BANNER = "/images/case-studies/banner-intelligence-and-recommendation";
+
+/** Desktop 1440×493 and mobile 402×422 hero from Figma TV-13 / iPhone 17. */
+function IntelligenceBanner({ study }: { study: CaseStudy }) {
+  return (
+    <div
+      className="relative h-[422px] overflow-hidden lg:h-[493px]"
+      style={{ background: "linear-gradient(#666d93, #b9c2f5)" }}
+    >
+      <div className="relative mx-auto h-full w-full max-w-[1440px]">
+        {/* Figma wordmarks sit on the top edge of the band and bleed past the frame. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/case-studies/intelligence-and-recommendation/wordmark-mobile.svg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute top-[-4px] left-[-7px] lg:hidden"
+          style={{ width: 710, height: 70, maxWidth: "none" }}
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/case-studies/intelligence-and-recommendation/wordmark-desktop.svg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute top-[-4px] left-[-7px] hidden lg:block"
+          style={{ width: 1447, height: 143, maxWidth: "none" }}
+        />
+        <div className="absolute top-1/2 left-[calc(50%+67px)] h-[232px] w-[478px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[8px] border-4 border-[#99e0ed] lg:top-[45px] lg:left-1/2 lg:h-[462px] lg:w-[952px] lg:translate-y-0">
+          <video
+            className="absolute inset-0 size-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={`${INTEL_BANNER}.webp`}
+            aria-label={`${study.title} banner`}
+          >
+            <source src={`${INTEL_BANNER}.webm`} type="video/webm" />
+            <source src={`${INTEL_BANNER}.mp4`} type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function CaseStudyBanner({ study }: { study: CaseStudy }) {
+  if (study.slug === "intelligence-and-recommendation") {
+    return <IntelligenceBanner study={study} />;
+  }
+
   const spec = HEROES[study.slug] ?? HEROES["telescope-overview"];
   const poster = `/images/case-studies/banner-${study.slug}.webp`;
   const fitClass = spec.fit === "contain" ? "object-contain object-top" : "object-contain object-center";

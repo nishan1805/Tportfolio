@@ -110,7 +110,14 @@ export type CurrentRole = {
 /* ---------- Case study pages ---------- */
 
 /** `width` = width of the text column in Figma (px). Used to keep the same column ratio. */
-export type ItemBlock = { type: "item"; title: string; text: string; width?: number };
+export type ItemBlock = {
+  type: "item";
+  title: string;
+  text: string;
+  width?: number;
+  /** Still or video rendered inside the item (media-card sections). */
+  media?: ImageItem;
+};
 
 /** `width` and `height` = size of the image slot in Figma (px). Gives the slot the exact same shape. */
 export type ImageItem = {
@@ -122,6 +129,17 @@ export type ImageItem = {
   poster?: string;
   width: number;
   height: number;
+  /**
+   * Horizontal offset of a media element wider than its frame, in px.
+   * Negative values reveal the right-hand portion (used by the NIKO well).
+   */
+  shiftX?: number;
+  /** Same crop at the mobile frame size. */
+  mobile?: {
+    width: number;
+    height: number;
+    shiftX: number;
+  };
 };
 export type ImageBlock = { type: "image" } & ImageItem;
 /** Images placed side by side in one row. */
@@ -135,6 +153,12 @@ export type CaseStudySection = {
   id: string;
   title: string;
   blocks: CaseStudyBlock[];
+  /**
+   * Optional layout. Unset sections keep the shared card / feature rendering.
+   * `copy` — body paragraphs at 16/24. `plain` — text columns, no cards.
+   * `media-cards` — pastel cards with text above an image or video.
+   */
+  layout?: "copy" | "plain" | "media-cards";
 };
 
 /** One tall card in the "Summary" strip under the banner (image + text). */
@@ -162,6 +186,8 @@ export type CaseStudy = {
   titleSuffix?: string;
   description: string;
   meta: LabelValue[];
+  /** Meta shown below the `lg` breakpoint when the labels differ from desktop. */
+  mobileMeta?: LabelValue[];
   /** Tailwind gradient classes for the banner. */
   accent: string;
   bannerImage?: string;
