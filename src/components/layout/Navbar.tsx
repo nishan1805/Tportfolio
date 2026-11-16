@@ -16,7 +16,7 @@ export function Navbar() {
   const caseStudy = usePathname().startsWith("/work/");
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#d8e6e6] bg-transparent shadow-[0_1px_4px_rgba(12,12,13,0.08)] lg:bg-white lg:shadow-none">
+    <header className="sticky top-0 z-50 w-full border-b border-[#d8e6e6] bg-white shadow-[0_1px_2px_rgba(12,12,13,0.05)] lg:shadow-none">
       <div
         className={
           caseStudy
