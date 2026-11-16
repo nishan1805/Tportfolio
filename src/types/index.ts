@@ -115,6 +115,10 @@ export type ItemBlock = {
   title: string;
   text: string;
   width?: number;
+  /** Green header/body card. Other items keep the default white card. */
+  variant?: "panel";
+  /** Second paragraph inside a panel body. Rendered after a bold "Object:" label. */
+  note?: string;
   /** Still or video rendered inside the item (media-card sections). */
   media?: ImageItem;
 };
@@ -152,6 +156,8 @@ export type CaseStudySection = {
   /** Used for the #anchor link and the side menu. */
   id: string;
   title: string;
+  /** Shorter label for the page-content menu. The section heading stays `title`. */
+  navTitle?: string;
   blocks: CaseStudyBlock[];
   /**
    * Optional layout. Unset sections keep the shared card / feature rendering.

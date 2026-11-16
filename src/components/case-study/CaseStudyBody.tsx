@@ -21,7 +21,7 @@ export function CaseStudyBody({
       )}
     >
       <aside className="min-w-0">
-        <SectionNav sections={sections.map(({ id, title }) => ({ id, title }))} />
+        <SectionNav sections={sections.map(({ id, title, navTitle }) => ({ id, title: navTitle ?? title }))} />
       </aside>
       <div className="hidden lg:block" aria-hidden />
       <div

@@ -14,9 +14,8 @@ export const siteConfig = {
 
 export const navLinks: NavLink[] = [
   { label: "Work", href: "/#work" },
-  // Desktop lands on Career Summary. On small screens that section is omitted,
-  // so the link points at the hero introduction instead.
-  { label: "About me", href: "/#career" },
+  // Hero `#about` is on every viewport. Career Summary is desktop-only (`hidden` below lg).
+  { label: "About me", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
 

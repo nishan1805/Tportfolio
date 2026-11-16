@@ -125,8 +125,70 @@ const NO_SUMMARY = new Set([
   "design-system-and-iconography",
 ]);
 
+const fadeDown = "bg-gradient-to-b from-[#fbfbff] to-[#efeeff]";
+const fadeUp = "bg-gradient-to-b from-[#efeeff] to-[#fbfbff]";
+
+function MediaPlannerSummary() {
+  return (
+    <section aria-labelledby="summary-title" className="bg-[#e6f7fb]">
+      <div className="mx-auto w-full max-w-[1440px] px-5 py-12 lg:px-20">
+        <h2 id="summary-title" className="text-center text-[1.5rem] font-bold leading-7 text-[#254d4f] lg:text-left">
+          Summary
+        </h2>
+        <div className="mt-6 grid grid-cols-1 gap-6 rounded-[16px] bg-white p-4 lg:h-[572px] lg:grid-cols-3">
+          <div className="flex flex-col gap-6 lg:h-full lg:min-h-0">
+            <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:min-h-0 lg:flex-1 ${fadeDown}`}>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-[1.25rem] font-semibold leading-normal">Defining Problem</h3>
+                <p className="text-[0.875rem] font-normal leading-5">
+                  At Affle, creating media reports was a slow, manual process. Teams had to pull data from multiple sources (like SensorTower), calculate metrics by hand, and build reports from scratch in Google Sheets.
+                </p>
+              </div>
+            </article>
+            <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:shrink-0 ${fadeUp}`}>
+              <div className="flex flex-col gap-4">
+                <h3 className="text-[1.25rem] font-semibold leading-normal">Inspiration Collection</h3>
+                <p className="text-[0.875rem] font-normal leading-5">
+                  Our existing report templates from different business units served as the primary inspiration for the design.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <article className="flex flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:h-full">
+            <p className="text-[2rem] font-bold leading-[2.3125rem]">3-4 Iterations</p>
+            <div className="flex flex-col gap-4">
+              <h3 className="text-[1.25rem] font-semibold leading-normal">Wireframing</h3>
+              <p className="text-[0.875rem] font-normal leading-5">
+                We frequently leveraged AI tools to rapidly ideate and align with stakeholders, ensuring our design direction was validated early on.
+              </p>
+              <div className="flex items-start gap-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/case-studies/media-planner/lovable-icon.svg" alt="Lovable" width={36} height={36} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/case-studies/media-planner/figma-icon.svg" alt="Figma" width={25} height={36} />
+              </div>
+            </div>
+          </article>
+
+          <article className={`flex flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full ${fadeUp}`}>
+            <p className="text-[2rem] font-bold leading-[2.3125rem]">UI Design and Prototype</p>
+            <div className="flex flex-col gap-6">
+              <h3 className="text-[1.25rem] font-semibold leading-normal">UI Finalization</h3>
+              <p className="text-[0.875rem] font-normal leading-5">
+                With the user flows and conceptual structure confirmed, we transitioned from our AI-generated concepts to high-fidelity design. Using our established design system, we rebuilt the interface in Figma and developed an interactive prototype.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /** Mixed-height summary bento. Omitted on pages whose Figma frame has no Summary. */
 export function SummaryCards({ study }: { study: CaseStudy }) {
+  if (study.slug === "media-planner") return <MediaPlannerSummary />;
   if (NO_SUMMARY.has(study.slug) || !study.summary?.length) return null;
   const columns = study.slug === "telescope-overview" || !study.summary?.length ? TELESCOPE : fromCards(study.summary);
 

@@ -31,7 +31,7 @@ export function Navbar() {
               {navLinks.map(({ label, href }) => (
                 <Link
                   key={label}
-                  href={label === "About me" ? "/#career" : href}
+                  href={href}
                   className="text-[17px] font-semibold leading-normal text-black hover:text-[#3058d8]"
                 >
                   {label}
@@ -48,7 +48,7 @@ export function Navbar() {
                 {navLinks.map(({ label, href }) => (
                   <span key={label} className="flex h-full items-center">
                     <Link
-                      href={label === "About me" ? "/#career" : href}
+                      href={href}
                       className="px-6 text-[1rem] font-normal leading-normal text-black hover:text-[#3058d8]"
                     >
                       {label}
@@ -72,7 +72,7 @@ export function Navbar() {
         {navLinks.map(({ label, href }) => (
           <span key={label} className="flex min-w-0 flex-1 items-center">
             <Link
-              href={label === "About me" ? "/#about" : href}
+              href={href}
               className="flex flex-1 items-center justify-center px-2 text-[0.875rem] font-normal leading-normal text-black"
             >
               {label}
