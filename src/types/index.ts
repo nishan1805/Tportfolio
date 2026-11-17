@@ -116,7 +116,9 @@ export type ItemBlock = {
   text: string;
   width?: number;
   /** Green header/body card. Other items keep the default white card. */
-  variant?: "panel";
+  variant?: "panel" | "note" | "heading";
+  /** Small label above the title, e.g. "Phase 1". */
+  eyebrow?: string;
   /** Second paragraph inside a panel body. Rendered after a bold "Object:" label. */
   note?: string;
   /** Still or video rendered inside the item (media-card sections). */
@@ -143,6 +145,18 @@ export type ImageItem = {
     width: number;
     height: number;
     shiftX: number;
+  };
+  /**
+   * Media placed inside a coloured slot. Coordinates are the desktop slot
+   * (`width`/`height`). Omitted images fill the slot.
+   */
+  inset?: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    background: string;
+    border?: string;
   };
 };
 export type ImageBlock = { type: "image" } & ImageItem;
