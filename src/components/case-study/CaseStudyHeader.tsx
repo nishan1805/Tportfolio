@@ -42,8 +42,9 @@ function MetaList({
 
 /** Title 48/37 teal-800, description 16/26, meta 16 + 20/26 teal-900. */
 export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
-  const { title, description, meta, mobileMeta } = study;
+  const { title, description, meta, mobileMeta, titleSuffix } = study;
   const intel = study.slug === "intelligence-and-recommendation";
+  const opticks = study.slug === "opticks-ai-editor";
 
   return (
     <header className="bg-white">
@@ -64,12 +65,22 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
           >
             <h1
               className={
-                intel
-                  ? "text-[2.25rem] font-bold leading-[37px] lg:text-[3rem] lg:leading-[58px]"
-                  : "text-[2.25rem] font-bold leading-[2.5rem] lg:text-[3rem] lg:leading-[2.3125rem]"
+                opticks
+                  ? "text-[36px] font-bold leading-[37px] lg:text-[48px]"
+                  : intel
+                    ? "text-[2.25rem] font-bold leading-[37px] lg:text-[3rem] lg:leading-[58px]"
+                    : "text-[2.25rem] font-bold leading-[2.5rem] lg:text-[3rem] lg:leading-[2.3125rem]"
               }
             >
-              {title}
+              {opticks && titleSuffix ? (
+                <span className="flex h-12 items-start gap-6">
+                  <span>{title}</span>
+                  <span aria-hidden className="h-12 w-px shrink-0 bg-[#b2cccd]" />
+                  <span>{titleSuffix}</span>
+                </span>
+              ) : (
+                title
+              )}
             </h1>
             <p className="text-[1rem] font-medium leading-[1.625rem]">{description}</p>
           </div>
@@ -89,6 +100,15 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
               <MetaList items={mobileMeta ?? meta} compact />
             </dl>
             <dl className="hidden w-[587px] shrink-0 flex-col items-start justify-center gap-8 px-20 py-10 text-[#193334] lg:flex">
+              <MetaList items={meta} />
+            </dl>
+          </>
+        ) : opticks ? (
+          <>
+            <dl className="flex gap-6 border-t border-[#b2cccd] px-8 py-6 text-[#193334] lg:hidden">
+              <MetaList items={meta} compact />
+            </dl>
+            <dl className="hidden w-[587px] shrink-0 flex-col justify-center gap-6 px-20 py-10 text-[#193334] lg:flex">
               <MetaList items={meta} />
             </dl>
           </>

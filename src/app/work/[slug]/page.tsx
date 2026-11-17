@@ -38,7 +38,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <CaseStudyHeader study={study} />
       <CaseStudyBanner study={study} />
       <SummaryCards study={study} />
-      <CaseStudyBody sections={study.sections} lead={study.slug === "intelligence-and-recommendation"} />
+      <CaseStudyBody
+        sections={study.sections}
+        lead={study.slug === "intelligence-and-recommendation"}
+        variant={study.slug === "opticks-ai-editor" ? "opticks" : undefined}
+      />
     </>
   );
 }

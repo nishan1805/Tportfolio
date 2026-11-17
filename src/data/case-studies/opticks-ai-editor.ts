@@ -95,11 +95,8 @@ export const opticksAiEditor: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Introduction - image 1",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webp",
-          webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webm",
-          mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.mp4",
-          poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webp",
+          alt: "Phase 1 generation tool, with 565+ CPPs gone live this month and Got 67% of Growth",
+          src: "/images/case-studies/opticks-ai-editor/intro-phase-1-717x418.webp",
           width: 717,
           height: 418
         },
@@ -111,16 +108,14 @@ export const opticksAiEditor: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Introduction - image 2",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webp",
-          webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webm",
-          mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.mp4",
-          poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webp",
+          alt: "Phase 2 Swiggy template editor",
+          src: "/images/case-studies/opticks-ai-editor/intro-phase-2-717x390.webp",
           width: 717,
           height: 390
         },
         {
           type: "item",
+          variant: "note",
           title: "Summary",
           text: "Phase 1 established the core UX/UI for the image generation engine to simplify asset creation, while Phase 2 introduced a comprehensive editor based on user feedback to provide the precise controls needed for production-ready designs.",
           width: 976
@@ -185,6 +180,7 @@ export const opticksAiEditor: CaseStudy = {
       blocks: [
         {
           type: "item",
+          variant: "heading",
           title: "Competitive Research",
           text: "Moving into the research phase, we conducted a competitive analysis of existing creative and image generation platforms to understand industry standards and analyze user generation patterns.",
           width: 1000
@@ -197,13 +193,14 @@ export const opticksAiEditor: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Research (Phase 1) - image 1",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-gif-maker-1920x911-46b04a4ccd.webp",
-          webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-gif-maker-1920x911-46b04a4ccd.webm",
-          mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-gif-maker-1920x911-46b04a4ccd.mp4",
-          poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-gif-maker-1920x911-46b04a4ccd.webp",
+          alt: "AdCreative.ai screen recording",
+          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webp",
+          webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webm",
+          mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.mp4",
+          poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webp",
           width: 717,
-          height: 340
+          height: 340,
+          inset: { x: 82, y: 20, width: 553, height: 299, background: "#fce9e9", border: "#f5a6a6" }
         },
         {
           type: "item",
@@ -213,13 +210,31 @@ export const opticksAiEditor: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Research (Phase 1) - image 2",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webp",
-          webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webm",
-          mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.mp4",
-          poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webp",
+          alt: "Kittl screen recording",
+          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webp",
+          webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webm",
+          mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.mp4",
+          poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webp",
           width: 717,
-          height: 384
+          height: 384,
+          inset: { x: 79, y: 34, width: 560, height: 316, background: "#ecf2f3", border: "#b2cccd" }
+        },
+        {
+          type: "item",
+          title: "Canva",
+          text: "When evaluating Kittl, we noted that while the platform is not explicitly tailored for app store screenshot design, it delivers high-quality outputs. Additionally, its generation process is significantly faster, showcasing a much lower task completion time compared to AdCreative.",
+          width: 227
+        },
+        {
+          type: "image",
+          alt: "Canva screen recording",
+          src: "/images/case-studies/opticks-ai-editor/canva-800x452.webp",
+          webm: "/images/case-studies/opticks-ai-editor/canva-800x452.webm",
+          mp4: "/images/case-studies/opticks-ai-editor/canva-800x452.mp4",
+          poster: "/images/case-studies/opticks-ai-editor/canva-800x452.webp",
+          width: 717,
+          height: 384,
+          inset: { x: 84, y: 22, width: 550, height: 311, background: "#eaeefb", border: "#acbcef" }
         },
         {
           type: "item",
@@ -229,8 +244,8 @@ export const opticksAiEditor: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Research (Phase 1) - image 3",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-image-41756-1920x1200-3b233ca998.webp",
+          alt: "Mood board and UI references",
+          src: "/images/case-studies/opticks-ai-editor/mood-board-717x340.webp",
           width: 717,
           height: 340
         },
@@ -242,8 +257,8 @@ export const opticksAiEditor: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Research (Phase 1) - image 4",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-image-41757-1920x1200-46c9bbd989.webp",
+          alt: "Opticks AI user flow",
+          src: "/images/case-studies/opticks-ai-editor/user-flow-717x340.webp",
           width: 717,
           height: 340
         }
@@ -259,53 +274,57 @@ export const opticksAiEditor: CaseStudy = {
         },
         {
           type: "item",
+          eyebrow: "Phase 1",
           title: "Iteration 1",
           text: "Our first attempt to arrange all key elements within a single frame for structural approval was rejected due to its rough design. However, gaining preliminary approval on the overall structure allowed us to proceed with refinements.",
           width: 243
         },
         {
           type: "image",
-          alt: "Wireframing - image 1",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-image-41758-1920x1200-9f5a8ba278.webp",
+          alt: "Phase 1, Iteration 1 wireframe",
+          src: "/images/case-studies/opticks-ai-editor/wireframe-p1-i1-717x340.webp",
           width: 717,
           height: 340
         },
         {
           type: "item",
+          eyebrow: "Phase 1",
           title: "Iteration 2",
           text: "We initially proposed a sidebar design with a mascot and intro, but it proved redundant for daily users and created unnecessary friction. So, we moved to a more seamless and efficient design iteration.",
           width: 243
         },
         {
           type: "image",
-          alt: "Wireframing - image 2",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-image-41759-1920x1200-2fa8ec1f9b.webp",
+          alt: "Phase 1, Iteration 2 wireframe",
+          src: "/images/case-studies/opticks-ai-editor/wireframe-p1-i2-717x340.webp",
           width: 717,
           height: 340
         },
         {
           type: "item",
+          eyebrow: "Phase 2",
           title: "Iteration 1",
           text: "The initial design was quite raw, as we were still exploring the best approach, specifically whether the editor should function as a separate, dedicated section.",
           width: 243
         },
         {
           type: "image",
-          alt: "Wireframing - image 3",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-rectangle-8433x2655-d206003775.webp",
+          alt: "Phase 2, Iteration 1 wireframe",
+          src: "/images/case-studies/opticks-ai-editor/wireframe-p2-i1-717x287.webp",
           width: 717,
           height: 287
         },
         {
           type: "item",
+          eyebrow: "Phase 2",
           title: "Iteration 2",
           text: "In subsequent iterations, we realized a separate editor flow would be more effective. While we enhanced the visuals, they still felt rough, prompting further refinement to achieve a polished design.",
           width: 243
         },
         {
           type: "image",
-          alt: "Wireframing - image 4",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-blinkit-1-1-1290x2796-07236c505b.webp",
+          alt: "Phase 2, Iteration 2 wireframe",
+          src: "/images/case-studies/opticks-ai-editor/wireframe-p2-i2-717x287.webp",
           width: 717,
           height: 287
         }
@@ -321,53 +340,67 @@ export const opticksAiEditor: CaseStudy = {
         },
         {
           type: "item",
+          eyebrow: "Phase 1",
           title: "Generation Feature",
           text: "Our first attempt to arrange all key elements within a single frame for structural approval was rejected due to its rough design. However, gaining preliminary approval on the overall structure allowed us to proceed with refinements.",
           width: 1000
         },
         {
           type: "item",
+          variant: "panel",
           title: "Onboarding",
           text: "Introduce capabilities early to set clear user expectations and demonstrate product impact.",
-          width: 248
+          width: 272
         },
         {
           type: "item",
+          variant: "panel",
           title: "Generation",
           text: "Guide users through the creation workflow to build their initial assets.",
-          width: 195
+          width: 219
         },
         {
           type: "item",
+          variant: "panel",
           title: "Selection",
           text: "Empower users to choose the layout that best fits their app's style.",
-          width: 195
+          width: 219
         },
         {
           type: "item",
+          variant: "panel",
           title: "Customization",
           text: "Allow users to modify elements to fix AI inaccuracies and meet precise requirements.",
-          width: 195
+          width: 219
         },
         {
           type: "image",
-          alt: "Final UI - image 1",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-blinkit-1-1-1290x2796-2fe914dca1.webp",
+          alt: "Generation feature recording",
+          src: "/images/case-studies/opticks-ai-editor/final-generation-1920x911.webp",
+          webm: "/images/case-studies/opticks-ai-editor/final-generation-1920x911.webm",
+          mp4: "/images/case-studies/opticks-ai-editor/final-generation-1920x911.mp4",
+          poster: "/images/case-studies/opticks-ai-editor/final-generation-1920x911.webp",
           width: 1000,
-          height: 482
+          height: 482,
+          inset: { x: 54, y: 30, width: 892, height: 423, background: "#eef5ee" }
         },
         {
           type: "item",
+          eyebrow: "Phase 2",
           title: "Editor",
           text: "In this iteration, we focused on enhancing the overall user experience by introducing advanced tools such as drag-and-drop, background removal, AI text suggestions, and options to add logos or images. These features empower users with greater visual control and creative flexibility.",
           width: 1000
         },
         {
           type: "image",
-          alt: "Final UI - image 2",
-          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-blinkit-1-1-1290x2796-3071462cc6.webp",
+          alt: "Opticks template editor",
+          src: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webp",
+          webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webm",
+          mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.mp4",
+          poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webp",
           width: 1000,
-          height: 482
+          height: 482,
+          inset: { x: 70, y: 35.5, width: 879, height: 411, background: "#eaeefb", border: "#acbcef" }
         }
       ]
     }
