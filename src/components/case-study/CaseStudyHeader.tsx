@@ -46,6 +46,7 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
   const intel = study.slug === "intelligence-and-recommendation";
   const opticks = study.slug === "opticks-ai-editor";
   const designSystem = study.slug === "design-system-and-iconography";
+  const mediaPlanner = study.slug === "media-planner";
 
   return (
     <header className="bg-white">
@@ -68,7 +69,9 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
               className={
                 opticks
                   ? "text-[36px] font-bold leading-[37px] lg:text-[48px]"
-                  : "text-[2.25rem] font-bold leading-[37px] lg:text-[3rem] lg:leading-[58px]"
+                  : mediaPlanner
+                    ? "text-[2.25rem] font-bold leading-[37px] lg:text-[3rem] lg:leading-[37px]"
+                    : "text-[2.25rem] font-bold leading-[37px] lg:text-[3rem] lg:leading-[58px]"
               }
             >
               {opticks && titleSuffix ? (
@@ -81,7 +84,15 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
                 title
               )}
             </h1>
-            <p className="text-[1rem] font-medium leading-[1.625rem]">{description}</p>
+            <p
+              className={
+                mediaPlanner
+                  ? "text-[14px] font-medium leading-[26px] text-[#254d4f] lg:text-[1rem] lg:leading-[26px]"
+                  : "text-[1rem] font-medium leading-[1.625rem]"
+              }
+            >
+              {description}
+            </p>
           </div>
         </div>
 
@@ -117,6 +128,15 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
               <MetaList items={mobileMeta ?? meta} compact />
             </dl>
             <dl className="hidden w-[587px] shrink-0 flex-col justify-center gap-6 px-20 py-10 text-[#193334] lg:flex">
+              <MetaList items={meta} />
+            </dl>
+          </>
+        ) : mediaPlanner ? (
+          <>
+            <dl className="flex flex-nowrap items-end gap-x-6 border-t border-[#d8e6e6] px-8 py-6 text-[#193334] lg:hidden">
+              <MetaList items={meta} compact />
+            </dl>
+            <dl className="hidden w-[587px] shrink-0 flex-col flex-nowrap justify-center gap-6 px-20 py-10 text-[#193334] lg:flex">
               <MetaList items={meta} />
             </dl>
           </>

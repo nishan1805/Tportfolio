@@ -144,7 +144,16 @@ export type ImageItem = {
   mobile?: {
     width: number;
     height: number;
-    shiftX: number;
+    shiftX?: number;
+    /** Slot size the mobile inset is measured against. */
+    slotWidth?: number;
+    slotHeight?: number;
+    inset?: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    };
   };
   /**
    * Media placed inside a coloured slot. Coordinates are the desktop slot
@@ -162,9 +171,21 @@ export type ImageItem = {
 export type ImageBlock = { type: "image" } & ImageItem;
 /** Images placed side by side in one row. */
 export type ImagesBlock = { type: "images"; items: ImageItem[] };
-export type TextBlock = { type: "text"; text: string };
+export type TextBlock = {
+  type: "text";
+  text: string;
+  /** Phrase inside `text` drawn at semibold. */
+  emphasis?: string;
+};
 
-export type CaseStudyBlock = TextBlock | ItemBlock | ImageBlock | ImagesBlock;
+export type ListBlock = {
+  type: "list";
+  /** Left margin of each item, in px. */
+  indent: 24 | 48;
+  items: { lead?: string; text: string }[];
+};
+
+export type CaseStudyBlock = TextBlock | ItemBlock | ImageBlock | ImagesBlock | ListBlock;
 
 export type CaseStudySection = {
   /** Used for the #anchor link and the side menu. */

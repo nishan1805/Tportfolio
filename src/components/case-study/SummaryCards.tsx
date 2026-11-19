@@ -139,18 +139,18 @@ function MediaPlannerSummary() {
           Summary
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-6 rounded-[16px] bg-white p-4 lg:h-[572px] lg:grid-cols-3">
-          <div className="flex flex-col gap-6 lg:h-full lg:min-h-0">
-            <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:min-h-0 lg:flex-1 ${fadeDown}`}>
+          <div className="flex min-h-[399.33px] flex-col gap-6 lg:h-full lg:min-h-0">
+            <article className={`flex flex-1 flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-[352px] lg:flex-none ${fadeDown}`}>
               <div className="flex flex-col gap-4">
-                <h3 className="text-[1.25rem] font-semibold leading-normal">Defining Problem</h3>
+                <h3 className="text-[1.25rem] font-semibold leading-6">Defining Problem</h3>
                 <p className="text-[0.875rem] font-normal leading-5">
                   At Affle, creating media reports was a slow, manual process. Teams had to pull data from multiple sources (like SensorTower), calculate metrics by hand, and build reports from scratch in Google Sheets.
                 </p>
               </div>
             </article>
-            <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:shrink-0 ${fadeUp}`}>
+            <article className={`flex h-[164px] shrink-0 flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] ${fadeUp}`}>
               <div className="flex flex-col gap-4">
-                <h3 className="text-[1.25rem] font-semibold leading-normal">Inspiration Collection</h3>
+                <h3 className="text-[1.25rem] font-semibold leading-6">Inspiration Collection</h3>
                 <p className="text-[0.875rem] font-normal leading-5">
                   Our existing report templates from different business units served as the primary inspiration for the design.
                 </p>
@@ -158,10 +158,12 @@ function MediaPlannerSummary() {
             </article>
           </div>
 
-          <article className="flex flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:h-full">
-            <p className="text-[2rem] font-bold leading-[2.3125rem]">3-4 Iterations</p>
+          <article className="flex min-h-[399.33px] flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:h-full lg:min-h-0">
+            <p className="text-[24px] font-bold leading-[37px] lg:text-[2rem]">
+              3<span className="font-[Inter,sans-serif] font-bold">-4</span> Iterations
+            </p>
             <div className="flex flex-col gap-4">
-              <h3 className="text-[1.25rem] font-semibold leading-normal">Wireframing</h3>
+              <h3 className="text-[1.25rem] font-semibold leading-6">Wireframing</h3>
               <p className="text-[0.875rem] font-normal leading-5">
                 We frequently leveraged AI tools to rapidly ideate and align with stakeholders, ensuring our design direction was validated early on.
               </p>
@@ -174,10 +176,10 @@ function MediaPlannerSummary() {
             </div>
           </article>
 
-          <article className={`flex flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full ${fadeUp}`}>
-            <p className="text-[2rem] font-bold leading-[2.3125rem]">UI Design and Prototype</p>
+          <article className={`flex min-h-[399.33px] flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full lg:min-h-0 ${fadeUp}`}>
+            <p className="text-[24px] font-bold leading-[37px] lg:text-[2rem]">UI Design and Prototype</p>
             <div className="flex flex-col gap-6">
-              <h3 className="text-[1.25rem] font-semibold leading-normal">UI Finalization</h3>
+              <h3 className="text-[1.25rem] font-semibold leading-6">UI Finalization</h3>
               <p className="text-[0.875rem] font-normal leading-5">
                 With the user flows and conceptual structure confirmed, we transitioned from our AI-generated concepts to high-fidelity design. Using our established design system, we rebuilt the interface in Figma and developed an interactive prototype.
               </p>
