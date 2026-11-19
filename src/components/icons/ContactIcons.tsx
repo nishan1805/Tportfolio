@@ -1,28 +1,39 @@
 type IconProps = { className?: string };
 
-const base = {
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.8,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  "aria-hidden": true,
-};
-
+/** Figma `send-email--mail-send-email-paper-airplane` (node 1:22093). */
 export function MailIcon({ className = "size-6" }: IconProps) {
   return (
-    <svg {...base} className={className}>
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="m3 7 9 6 9-6" />
-    </svg>
+    <span className={`relative inline-block shrink-0 overflow-hidden ${className}`} aria-hidden>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/icons/footer-email.svg"
+        alt=""
+        className="absolute top-0 h-full"
+        style={{ left: "0.03%", width: "99.94%", maxWidth: "none" }}
+      />
+    </span>
   );
 }
 
+/** Figma `phone--android-phone-mobile-device-smartphone-iphone` (node 1:22097). */
 export function PhoneIcon({ className = "size-6" }: IconProps) {
   return (
-    <svg {...base} className={className}>
-      <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2Z" />
-    </svg>
+    <span className={`relative inline-block shrink-0 ${className}`} aria-hidden>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/icons/footer-phone.svg"
+        alt=""
+        className="absolute"
+        style={{
+          top: "1.72%",
+          right: "1.64%",
+          bottom: "1.64%",
+          left: "1.58%",
+          width: "96.78%",
+          height: "96.64%",
+          maxWidth: "none",
+        }}
+      />
+    </span>
   );
 }

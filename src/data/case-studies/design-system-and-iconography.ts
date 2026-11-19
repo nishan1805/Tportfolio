@@ -14,6 +14,16 @@ export const designSystemAndIconography: CaseStudy = {
       value: "Free"
     }
   ],
+  mobileMeta: [
+    {
+      label: "Tools",
+      value: "Figma"
+    },
+    {
+      label: "Source Type",
+      value: "Free"
+    }
+  ],
   accent: "bg-gradient-to-br from-green-500 to-green-300",
   sections: [
     {
@@ -189,9 +199,9 @@ export const designSystemAndIconography: CaseStudy = {
         {
           type: "image",
           alt: "Iconography - image 1",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663064-icons-1-1395x648-8f56d5b533.png",
-          width: 573,
-          height: 266
+          src: "/images/case-studies/design-system-and-iconography/icons-1.png",
+          width: 1012,
+          height: 353
         }
       ]
     },

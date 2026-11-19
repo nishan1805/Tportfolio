@@ -12,7 +12,7 @@ export function ContactItem({ type, value, compact }: ContactItemProps) {
   const Icon = type === "email" ? MailIcon : PhoneIcon;
 
   return (
-    <a href={href} className={cn("flex items-center gap-3 text-black", compact ? "gap-2" : "")}>
+    <a href={href} className="flex items-center gap-3 text-black">
       <Icon className={compact ? "size-4" : "size-6"} />
       <span
         className={cn(

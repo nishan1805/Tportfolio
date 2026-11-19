@@ -180,9 +180,26 @@ export function CaseStudyBanner({ study }: { study: CaseStudy }) {
   const mediaClass = "hero-media object-cover object-center";
 
   const canvas = "absolute top-0 left-1/2 h-full w-[402px] -translate-x-1/2 lg:w-[1440px]";
+  const designSystem = study.slug === "design-system-and-iconography";
 
   return (
-    <div className={`${study.slug}-hero relative h-[422px] lg:h-[493px]`} style={{ background: spec.gradient }}>
+    <>
+      {designSystem && (
+        // Mobile frame 301159:19025, 402×422, exported from Figma. Desktop uses the shared hero below.
+        <div className="relative w-full overflow-hidden lg:hidden" style={{ aspectRatio: "402 / 422" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/case-studies/design-system-and-iconography/cover-mobile.png"
+            alt=""
+            className="absolute inset-0 size-full object-cover"
+            style={{ maxWidth: "none" }}
+          />
+        </div>
+      )}
+    <div
+      className={`${study.slug}-hero relative h-[422px] lg:h-[493px] ${designSystem ? "hidden lg:block" : ""}`}
+      style={{ background: spec.gradient }}
+    >
       <style>{bannerCss(study.slug, spec)}</style>
       {/* The wordmark and media are clipped to the band. The Figma canvas is 402px (mobile) or 1440px (desktop) wide, centred. */}
       <div className="absolute inset-0 overflow-hidden">
@@ -215,5 +232,6 @@ export function CaseStudyBanner({ study }: { study: CaseStudy }) {
         </div>
       )}
     </div>
+    </>
   );
 }
