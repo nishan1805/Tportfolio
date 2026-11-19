@@ -178,6 +178,8 @@ export type ImageItem = {
    * Desktop keeps `inset` / the full-slot image.
    */
   mobileCard?: MobileCard;
+  /** Layered Raipur Homes card shown below `lg`. Desktop keeps `src` / `width` / `height`. */
+  raipurCard?: RaipurCard;
   /** Cropped card used below the lg breakpoint. The desktop slot stays `src`. */
   mobileSrc?: string;
   mobileWidth?: number;
@@ -207,6 +209,28 @@ export type MobileCard = {
   /** Flattened card image that already includes background and clipping. */
   flat?: string;
   layers?: MobileCardLayer[];
+};
+
+type RaipurCardBox = { x: number; y: number; w: number; h: number };
+
+/** One layer inside a 360×height Raipur card. Positions are Figma px. */
+export type RaipurCardLayer =
+  | (RaipurCardBox & { kind: "img"; src: string; fit: "contain" | "cover" })
+  | (RaipurCardBox & { kind: "bordered"; src?: string; video?: string })
+  | (RaipurCardBox & {
+      kind: "crop";
+      src: string;
+      /** Inner image box, each value a percentage of the crop wrapper. */
+      image: { left: number; top: number; width: number; height: number };
+    })
+  | (RaipurCardBox & { kind: "video"; video: string })
+  | { kind: "line"; y: number };
+
+export type RaipurCard = {
+  /** Card height in the 360-wide mobile frame. */
+  height: number;
+  background: string;
+  layers: RaipurCardLayer[];
 };
 export type ImageBlock = { type: "image" } & ImageItem;
 /** Images placed side by side in one row. */
