@@ -108,11 +108,14 @@ function CellCard({ cell }: { cell: Cell }) {
         <p className="text-[0.875rem] font-normal leading-5">{cell.text}</p>
       </div>
       {cell.logos && (
-        <div className="flex items-center gap-4">
-          {["/images/summary/logo-a.png", "/images/summary/logo-b.png", "/images/summary/logo-c.png"].map((src) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={src} src={src} alt="" className="h-9 w-9 rounded-[8px] object-cover" />
-          ))}
+        <div className="flex items-start gap-4">
+          {/* Logo crops exported from the Figma image fills. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/case-studies/telescope-overview/competition-1.webp" alt="" width={36} height={36} className="size-9" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/case-studies/telescope-overview/competition-2.webp" alt="" width={36} height={36} className="size-9 rounded-[8px] object-cover" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/case-studies/telescope-overview/competition-3.webp" alt="" width={28} height={36} className="h-9 w-7" />
         </div>
       )}
     </article>
@@ -136,18 +139,18 @@ function MediaPlannerSummary() {
           Summary
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-6 rounded-[16px] bg-white p-4 lg:h-[572px] lg:grid-cols-3">
-          <div className="flex flex-col gap-6 lg:h-full lg:min-h-0">
-            <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:min-h-0 lg:flex-1 ${fadeDown}`}>
+          <div className="flex min-h-[399.33px] flex-col gap-6 lg:h-full lg:min-h-0">
+            <article className={`flex flex-1 flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-[352px] lg:flex-none ${fadeDown}`}>
               <div className="flex flex-col gap-4">
-                <h3 className="text-[1.25rem] font-semibold leading-normal">Defining Problem</h3>
+                <h3 className="text-[1.25rem] font-semibold leading-6">Defining Problem</h3>
                 <p className="text-[0.875rem] font-normal leading-5">
                   At Affle, creating media reports was a slow, manual process. Teams had to pull data from multiple sources (like SensorTower), calculate metrics by hand, and build reports from scratch in Google Sheets.
                 </p>
               </div>
             </article>
-            <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:shrink-0 ${fadeUp}`}>
+            <article className={`flex h-[164px] shrink-0 flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] ${fadeUp}`}>
               <div className="flex flex-col gap-4">
-                <h3 className="text-[1.25rem] font-semibold leading-normal">Inspiration Collection</h3>
+                <h3 className="text-[1.25rem] font-semibold leading-6">Inspiration Collection</h3>
                 <p className="text-[0.875rem] font-normal leading-5">
                   Our existing report templates from different business units served as the primary inspiration for the design.
                 </p>
@@ -155,10 +158,12 @@ function MediaPlannerSummary() {
             </article>
           </div>
 
-          <article className="flex flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:h-full">
-            <p className="text-[2rem] font-bold leading-[2.3125rem]">3-4 Iterations</p>
+          <article className="flex min-h-[399.33px] flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:h-full lg:min-h-0">
+            <p className="text-[24px] font-bold leading-[37px] lg:text-[2rem]">
+              3<span className="font-[Inter,sans-serif] font-bold">-4</span> Iterations
+            </p>
             <div className="flex flex-col gap-4">
-              <h3 className="text-[1.25rem] font-semibold leading-normal">Wireframing</h3>
+              <h3 className="text-[1.25rem] font-semibold leading-6">Wireframing</h3>
               <p className="text-[0.875rem] font-normal leading-5">
                 We frequently leveraged AI tools to rapidly ideate and align with stakeholders, ensuring our design direction was validated early on.
               </p>
@@ -171,15 +176,87 @@ function MediaPlannerSummary() {
             </div>
           </article>
 
-          <article className={`flex flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full ${fadeUp}`}>
-            <p className="text-[2rem] font-bold leading-[2.3125rem]">UI Design and Prototype</p>
+          <article className={`flex min-h-[399.33px] flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full lg:min-h-0 ${fadeUp}`}>
+            <p className="text-[24px] font-bold leading-[37px] lg:text-[2rem]">UI Design and Prototype</p>
             <div className="flex flex-col gap-6">
-              <h3 className="text-[1.25rem] font-semibold leading-normal">UI Finalization</h3>
+              <h3 className="text-[1.25rem] font-semibold leading-6">UI Finalization</h3>
               <p className="text-[0.875rem] font-normal leading-5">
                 With the user flows and conceptual structure confirmed, we transitioned from our AI-generated concepts to high-fidelity design. Using our established design system, we rebuilt the interface in Figma and developed an interactive prototype.
               </p>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RaipurSummary() {
+  const title = "text-[1.25rem] font-semibold leading-normal";
+  const body = "text-[0.875rem] font-normal leading-5";
+  const big = "text-[2rem] font-bold leading-[2.3125rem]";
+  return (
+    <section aria-labelledby="summary-title" className="bg-[#e6f7fb]">
+      <div className="mx-auto w-full max-w-[1440px] px-5 py-12 lg:px-20">
+        <h2 id="summary-title" className="text-center text-[1.5rem] font-bold leading-7 text-[#254d4f] lg:text-left">
+          Summary
+        </h2>
+        <div className="mt-6 grid grid-cols-1 gap-6 rounded-[16px] bg-white p-4 lg:h-[572px] lg:grid-cols-4">
+          <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-full ${fadeDown}`}>
+            <div className="flex flex-col gap-4">
+              <h3 className={title}>Problem Statement</h3>
+              <p className={body}>
+                To enable future monetization, Raipur Homes revamped its platform by streamlining property processes and resolving key user pain points in Phase 1.
+              </p>
+            </div>
+          </article>
+
+          <article className={`flex flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full ${fadeUp}`}>
+            <p className={big}>Platform for Real Estate</p>
+            <div className="flex flex-col gap-6">
+              <h3 className={title}>Solution</h3>
+              <p className={body}>
+                Raipur Homes revamped its platform to streamline property processes and resolve user pain points, setting the foundation for future monetization.
+              </p>
+            </div>
+          </article>
+
+          <div className="flex flex-col gap-4 lg:h-full lg:min-h-0">
+            <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-[263px] lg:shrink-0 ${fadeDown}`}>
+              <div className="flex flex-col gap-4">
+                <h3 className={title}>Research</h3>
+                <p className={body}>
+                  Stakeholder and User’s Interviews, review analysis, competitive benchmarking to get ourselves educated.
+                </p>
+              </div>
+            </article>
+            <article className="flex flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:min-h-0 lg:flex-1">
+              <p className={big}>3 step process</p>
+              <div className="flex flex-col gap-3">
+                <h3 className={title}>Ideation</h3>
+                <p className={body}>
+                  We combined user and operations feedback with competitor analysis via{" "}
+                  <span className="font-bold">user journey, userflow, moodboard.</span>
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div className="flex flex-col gap-4 text-[#254d4f] lg:h-full lg:min-h-0">
+            <article className={`flex flex-col justify-between gap-6 rounded-[16px] px-6 py-8 lg:min-h-0 lg:flex-1 ${fadeUp}`}>
+              <p className={big}>Designing</p>
+              <div className="flex flex-col gap-4">
+                <h3 className={title}>Design Finalisation</h3>
+                <p className={body}>
+                  Foundational brand guideline, design system then finalising design with those components.
+                </p>
+              </div>
+            </article>
+            <article className="flex flex-col gap-4 rounded-[16px] border border-[#d8e6e6] bg-white p-6 lg:shrink-0">
+              <h3 className={title}>Prototype Delivery</h3>
+              <p className={body}>It was really easy to communicated with the engineering team with prototype</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -257,11 +334,12 @@ function OpticksSummary() {
 export function SummaryCards({ study }: { study: CaseStudy }) {
   if (study.slug === "opticks-ai-editor") return <OpticksSummary />;
   if (study.slug === "media-planner") return <MediaPlannerSummary />;
+  if (study.slug === "raipur-homes") return <RaipurSummary />;
   if (NO_SUMMARY.has(study.slug) || !study.summary?.length) return null;
   const columns = study.slug === "telescope-overview" || !study.summary?.length ? TELESCOPE : fromCards(study.summary);
 
   return (
-    <section aria-labelledby="summary-title" className="bg-white">
+    <section aria-labelledby="summary-title" className="bg-[#e6f7fb]">
       <div className="mx-auto w-full max-w-[1440px] px-5 py-12 lg:px-20 lg:pb-12 lg:pt-12">
         <h2 id="summary-title" className="text-center text-[1.5rem] font-bold leading-7 text-[#254d4f] lg:text-left">
           Summary

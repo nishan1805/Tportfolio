@@ -70,6 +70,48 @@ export function BlockImage({ image, className, radius = "sm", priority = false }
     );
   }
 
+  const mobileInset = image.mobile?.inset;
+  const slotClass = image.alt.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+  if (inset && mobileInset && image.mobile?.slotHeight && image.mobile.slotWidth) {
+    const slotWidth = image.mobile.slotWidth;
+    const slotHeight = image.mobile.slotHeight;
+    const border = inset.border ? `4px solid ${inset.border}` : undefined;
+    return (
+      <div
+        className={cn("mp-slot relative w-full overflow-hidden rounded-[8px]", slotClass, className)}
+        style={{ maxWidth: width, background: inset.background }}
+      >
+        <style>{`
+          .mp-slot.${slotClass} { height: ${slotHeight}px; }
+          .mp-slot.${slotClass} .mp-frame {
+            position: absolute;
+            box-sizing: border-box;
+            overflow: hidden;
+            border-radius: 8px;
+            border: ${border ?? "none"};
+            left: ${(mobileInset.x / slotWidth) * 100}%;
+            top: ${(mobileInset.y / slotHeight) * 100}%;
+            width: ${(mobileInset.width / slotWidth) * 100}%;
+            height: ${(mobileInset.height / slotHeight) * 100}%;
+          }
+          @media (min-width: 1024px) {
+            .mp-slot.${slotClass} { height: ${height}px; }
+            .mp-slot.${slotClass} .mp-frame {
+              left: ${(inset.x / width) * 100}%;
+              top: ${(inset.y / height) * 100}%;
+              width: ${(inset.width / width) * 100}%;
+              height: ${(inset.height / height) * 100}%;
+            }
+          }
+        `}</style>
+        <div className="mp-frame">
+          <Media image={image} className="absolute inset-0 size-full object-cover" />
+        </div>
+      </div>
+    );
+  }
+
   if (inset) {
     return (
       <div

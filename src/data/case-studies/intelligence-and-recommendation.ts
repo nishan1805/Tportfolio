@@ -45,6 +45,7 @@ export const intelligenceAndRecommendation: CaseStudy = {
     },
     {
       id: "what-why-and-when-to-use-intelligence",
+      navTitle: "What, Why, When",
       title: "What, Why, and When to Use Intelligence",
       layout: "plain",
       blocks: [
@@ -70,6 +71,7 @@ export const intelligenceAndRecommendation: CaseStudy = {
     },
     {
       id: "how-to-design-it-how-i-designed-it",
+      navTitle: "How to Design It",
       title: "How to Design It & How I Designed It",
       layout: "media-cards",
       blocks: [

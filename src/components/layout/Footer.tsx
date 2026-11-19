@@ -23,15 +23,19 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="flex h-[98px] flex-col lg:hidden">
-        <div className="flex h-[49px] items-center justify-center gap-3 border-b border-[#d8e6e6] px-3">
+      <div className="flex h-[98px] flex-col border-b border-[#d8e6e6] lg:hidden">
+        <div className="flex h-[49px] items-center justify-between">
+          <span className={rule} aria-hidden />
           <ContactItem type="email" value={siteConfig.email} compact />
-          <span className="h-full w-px bg-[#d8e6e6]" aria-hidden />
+          <span className={rule} aria-hidden />
           <ContactItem type="phone" value={siteConfig.phone} compact />
+          <span className={rule} aria-hidden />
         </div>
-        <p className="flex h-[49px] items-center justify-center px-4 text-center text-[0.75rem] font-normal leading-normal">
-          {siteConfig.copyright}
-        </p>
+        <div className="flex h-[49px] items-center gap-4 border-t border-[#d8e6e6]">
+          <span className={rule} aria-hidden />
+          <p className="flex-1 text-center text-[0.75rem] font-normal leading-normal">{siteConfig.copyright}</p>
+          <span className={rule} aria-hidden />
+        </div>
       </div>
     </footer>
   );

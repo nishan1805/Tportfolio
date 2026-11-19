@@ -148,7 +148,16 @@ export type ImageItem = {
   mobile?: {
     width: number;
     height: number;
-    shiftX: number;
+    shiftX?: number;
+    /** Slot size the mobile inset is measured against. */
+    slotWidth?: number;
+    slotHeight?: number;
+    inset?: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    };
   };
   /**
    * Media placed inside a coloured slot. Coordinates are the desktop slot
@@ -172,7 +181,12 @@ export type ImageItem = {
 export type ImageBlock = { type: "image" } & ImageItem;
 /** Images placed side by side in one row. */
 export type ImagesBlock = { type: "images"; items: ImageItem[] };
-export type TextBlock = { type: "text"; text: string };
+export type TextBlock = {
+  type: "text";
+  text: string;
+  /** Phrase inside `text` drawn at semibold. */
+  emphasis?: string;
+};
 
 /** One photo or recording placed inside a tinted, clipped card. */
 export type FrameMedia = {
@@ -200,7 +214,14 @@ export type FrameSpec = {
 
 export type FrameBlock = { type: "frame"; pairAt?: "lg"; mobile?: FrameSpec } & FrameSpec;
 
-export type CaseStudyBlock = TextBlock | ItemBlock | ImageBlock | ImagesBlock | FrameBlock;
+export type ListBlock = {
+  type: "list";
+  /** Left margin of each item, in px. */
+  indent: 24 | 48;
+  items: { lead?: string; text: string }[];
+};
+
+export type CaseStudyBlock = TextBlock | ItemBlock | ImageBlock | ImagesBlock | FrameBlock | ListBlock;
 
 export type CaseStudySection = {
   /** Used for the #anchor link and the side menu. */
@@ -213,8 +234,14 @@ export type CaseStudySection = {
    * Optional layout. Unset sections keep the shared card / feature rendering.
    * `copy` — body paragraphs at 16/24. `plain` — text columns, no cards.
    * `media-cards` — pastel cards with text above an image or video.
+   * `components` — three text columns, a lead-in, then a 2-column grid of labelled image tiles.
+   * `story` — Emotion Driven Design: text + phone panel row, then a 2x2 grid of pastel image cards.
+   * `plain-grid` — lead copy, then 3-column text items with 20px titles, no cards.
+   * `stacked` — each item sits above its image; items whose widths fit one row share it.
+   * `photo-pair` — 28px copy followed by two bordered photos.
+   * `icon-tile` — 24px heading, copy, and one image on a pale green tile.
    */
-  layout?: "copy" | "plain" | "media-cards";
+  layout?: "copy" | "plain" | "media-cards" | "components" | "icon-tile" | "story" | "photo-pair" | "stacked" | "plain-grid";
   /** Space between blocks, in px. Defaults to 32. */
   blockGap?: number;
 };

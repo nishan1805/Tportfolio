@@ -1,4 +1,4 @@
-import type { CaseStudyBlock, FrameBlock, ImageBlock, ImageItem, ItemBlock } from "@/types";
+import type { CaseStudyBlock, FrameBlock, ImageBlock, ImageItem, ItemBlock, ListBlock } from "@/types";
 
 /** What the page actually renders. Built from the raw blocks in the data files. */
 export type BlockUnit =
@@ -7,7 +7,8 @@ export type BlockUnit =
   | { kind: "images"; items: ImageItem[] }
   | { kind: "frame"; frame: FrameBlock }
   | { kind: "feature"; item: ItemBlock; image?: ImageBlock; frame?: FrameBlock; imageFirst: boolean }
-  | { kind: "cards"; items: ItemBlock[] };
+  | { kind: "cards"; items: ItemBlock[] }
+  | { kind: "list"; list: ListBlock };
 
 /** Images wider than this take the full row, so they are not placed next to text. */
 const MAX_SIDE_IMAGE_WIDTH = 800;
@@ -31,6 +32,8 @@ export function groupBlocks(blocks: CaseStudyBlock[]): BlockUnit[] {
 
     if (block.type === "text") {
       units.push({ kind: "text", text: block.text });
+    } else if (block.type === "list") {
+      units.push({ kind: "list", list: block });
     } else if (block.type === "images") {
       units.push({ kind: "images", items: block.items });
     } else if (block.type === "frame") {
