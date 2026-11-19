@@ -1,11 +1,12 @@
-import type { CaseStudyBlock, ImageBlock, ImageItem, ItemBlock, ListBlock } from "@/types";
+import type { CaseStudyBlock, FrameBlock, ImageBlock, ImageItem, ItemBlock, ListBlock } from "@/types";
 
 /** What the page actually renders. Built from the raw blocks in the data files. */
 export type BlockUnit =
   | { kind: "text"; text: string }
   | { kind: "image"; image: ImageBlock }
   | { kind: "images"; items: ImageItem[] }
-  | { kind: "feature"; item: ItemBlock; image: ImageBlock; imageFirst: boolean }
+  | { kind: "frame"; frame: FrameBlock }
+  | { kind: "feature"; item: ItemBlock; image?: ImageBlock; frame?: FrameBlock; imageFirst: boolean }
   | { kind: "cards"; items: ItemBlock[] }
   | { kind: "list"; list: ListBlock };
 
@@ -14,6 +15,9 @@ const MAX_SIDE_IMAGE_WIDTH = 800;
 
 const isSideImage = (block?: CaseStudyBlock): block is ImageBlock =>
   block?.type === "image" && block.width <= MAX_SIDE_IMAGE_WIDTH;
+
+const isSideFrame = (block?: CaseStudyBlock): block is FrameBlock =>
+  block?.type === "frame" && block.width <= MAX_SIDE_IMAGE_WIDTH;
 
 /**
  * Groups raw blocks into layout units:
@@ -32,11 +36,19 @@ export function groupBlocks(blocks: CaseStudyBlock[]): BlockUnit[] {
       units.push({ kind: "list", list: block });
     } else if (block.type === "images") {
       units.push({ kind: "images", items: block.items });
+    } else if (block.type === "frame") {
+      const next = blocks[i + 1];
+      if (isSideFrame(block) && next?.type === "item" && next.variant !== "heading" && !isSideImage(blocks[i + 2]) && !isSideFrame(blocks[i + 2])) {
+        units.push({ kind: "feature", item: next, frame: block, imageFirst: true });
+        i++;
+      } else {
+        units.push({ kind: "frame", frame: block });
+      }
     } else if (block.type === "image") {
       const next = blocks[i + 1];
       const afterNext = blocks[i + 2];
       // narrow image followed by an item that has no image of its own -> image on the left
-      if (isSideImage(block) && next?.type === "item" && !isSideImage(afterNext)) {
+      if (isSideImage(block) && next?.type === "item" && next.variant !== "heading" && !isSideImage(afterNext) && !isSideFrame(afterNext)) {
         units.push({ kind: "feature", item: next, image: block, imageFirst: true });
         i++;
       } else {
@@ -47,6 +59,11 @@ export function groupBlocks(blocks: CaseStudyBlock[]): BlockUnit[] {
       if (isSideImage(next)) {
         units.push({ kind: "feature", item: block, image: next, imageFirst: false });
         i++; // the image is already used
+        continue;
+      }
+      if (isSideFrame(next)) {
+        units.push({ kind: "feature", item: block, frame: next, imageFirst: false });
+        i++;
         continue;
       }
 
