@@ -117,6 +117,8 @@ function bannerCss(slug: string, spec: HeroSpec) {
   return [
     spec.wordmark && wordmarkCss(slug, spec.wordmark),
     spec.media && rule(".hero-media", spec.media.mobile, spec.media.desktop),
+    slug === "media-planner" &&
+      ".media-planner-hero .hero-media{box-sizing:border-box;border:4px solid #193334;border-radius:8px;overflow:hidden;}",
     spec.phone && rule(".hero-phone", place(spec.phone.mobile), place(spec.phone.desktop)),
   ]
     .filter(Boolean)

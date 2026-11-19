@@ -157,6 +157,23 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
     case "text":
       return <BodyText key={index} text={unit.text} />;
 
+    case "list":
+      return (
+        <ul key={index} className="list-disc text-[1rem] leading-6 text-[#254d4f]">
+          {unit.list.items.map((item, itemIndex) => (
+            <li
+              key={`${item.lead ?? ""}-${item.text}`}
+              className={itemIndex < unit.list.items.length - 1 ? "mb-4" : undefined}
+              style={{ marginLeft: unit.list.indent }}
+            >
+              {item.lead ? <span className="font-semibold">{item.lead}</span> : null}
+              {item.lead ? ": " : null}
+              {item.text}
+            </li>
+          ))}
+        </ul>
+      );
+
     case "image":
       return <BlockImage key={index} image={unit.image} radius={finalUi ? "lg" : "sm"} />;
 
