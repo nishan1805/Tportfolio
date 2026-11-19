@@ -14,6 +14,16 @@ export const designSystemAndIconography: CaseStudy = {
       value: "Free"
     }
   ],
+  mobileMeta: [
+    {
+      label: "Tools",
+      value: "Figma"
+    },
+    {
+      label: "Source Type",
+      value: "Free"
+    }
+  ],
   accent: "bg-gradient-to-br from-green-500 to-green-300",
   sections: [
     {
@@ -227,7 +237,7 @@ export const designSystemAndIconography: CaseStudy = {
         {
           type: "image",
           alt: "Iconography - image 1",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-button-1-328x106-91b0870bfa.png",
+          src: "/images/case-studies/design-system-and-iconography/icons-1.png",
           width: 1012,
           height: 353
         }

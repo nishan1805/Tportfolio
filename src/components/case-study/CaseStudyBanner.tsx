@@ -115,6 +115,27 @@ export function CaseStudyBanner({ study }: { study: CaseStudy }) {
   const poster = `/images/case-studies/banner-${study.slug}.webp`;
   const fitClass = spec.fit === "contain" ? "object-contain object-top" : "object-contain object-center";
 
+  if (study.slug === "design-system-and-iconography") {
+    return (
+      <>
+        {/* Mobile frame 301159:19025, 402×422, exported from Figma. */}
+        <div className="relative w-full overflow-hidden lg:hidden" style={{ aspectRatio: "402 / 422" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/case-studies/design-system-and-iconography/cover-mobile.png"
+            alt=""
+            className="absolute inset-0 size-full object-cover"
+            style={{ maxWidth: "none" }}
+          />
+        </div>
+        <div className="relative hidden h-[493px] overflow-visible lg:block" style={{ background: spec.gradient }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={poster} alt="" className={`absolute ${spec.box} ${fitClass}`} />
+        </div>
+      </>
+    );
+  }
+
   return (
     <div
       className={`relative h-[280px] sm:h-[380px] lg:h-[493px] ${spec.fit === "contain" ? "overflow-visible" : "overflow-hidden"}`}

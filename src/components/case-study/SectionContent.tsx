@@ -243,7 +243,67 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
   }
 }
 
+/**
+ * Icon sheet from Figma node 1:22083, placed in the green panels
+ * 1:22082 (desktop, 1012×353) and 301159:19808 (mobile, 360×353).
+ */
+function IconographySheet({ image }: { image: ImageItem }) {
+  return (
+    <div className="iconography-sheet relative w-full overflow-hidden rounded-[8px] bg-[#eef5ee]">
+      <style>{`
+        .iconography-sheet { aspect-ratio: 360 / 353; }
+        .iconography-sheet img {
+          position: absolute;
+          left: ${(49 / 360) * 100}%;
+          top: ${(44 / 353) * 100}%;
+          width: ${(570.846 / 360) * 100}%;
+          height: ${(265.167 / 353) * 100}%;
+          max-width: none;
+          object-fit: cover;
+        }
+        @media (min-width: 1024px) {
+          .iconography-sheet {
+            aspect-ratio: 1012 / 353;
+            max-width: 1012px;
+          }
+          .iconography-sheet img {
+            left: ${(219 / 1012) * 100}%;
+            top: ${(44 / 353) * 100}%;
+            width: ${(573 / 1012) * 100}%;
+            height: ${(266 / 353) * 100}%;
+          }
+        }
+      `}</style>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={image.src} alt={image.alt} />
+    </div>
+  );
+}
+
+function IconographySection({ section }: { section: CaseStudySection }) {
+  const copy = section.blocks.find((block) => block.type === "text");
+  const image = section.blocks.find((block) => block.type === "image");
+
+  return (
+    <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
+      <div className="flex min-w-0 flex-col gap-8">
+        <h2
+          id={`${section.id}-title`}
+          className="scroll-mt-[116px] text-[1.5rem] font-bold leading-[29px] text-[#254d4f] lg:scroll-mt-[74px]"
+        >
+          {section.title}
+        </h2>
+        {copy?.type === "text" ? (
+          <p className="text-[1rem] font-normal leading-7 text-[#254d4f]">{copy.text}</p>
+        ) : null}
+        {image?.type === "image" ? <IconographySheet image={image} /> : null}
+      </div>
+    </section>
+  );
+}
+
 export function SectionContent({ section }: { section: CaseStudySection }) {
+  if (section.id === "iconography") return <IconographySection section={section} />;
   if (section.layout === "copy") return <CopySection section={section} />;
   if (section.layout === "plain") return <PlainColumns section={section} />;
   if (section.layout === "media-cards") return <MediaCards section={section} />;

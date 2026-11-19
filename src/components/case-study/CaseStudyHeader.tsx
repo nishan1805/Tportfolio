@@ -45,6 +45,7 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
   const { title, description, meta, mobileMeta, titleSuffix } = study;
   const intel = study.slug === "intelligence-and-recommendation";
   const opticks = study.slug === "opticks-ai-editor";
+  const designSystem = study.slug === "design-system-and-iconography";
 
   return (
     <header className="bg-white">
@@ -107,6 +108,15 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
           <>
             <dl className="flex gap-6 border-t border-[#b2cccd] px-8 py-6 text-[#193334] lg:hidden">
               <MetaList items={meta} compact />
+            </dl>
+            <dl className="hidden w-[587px] shrink-0 flex-col justify-center gap-6 px-20 py-10 text-[#193334] lg:flex">
+              <MetaList items={meta} />
+            </dl>
+          </>
+        ) : designSystem ? (
+          <>
+            <dl className="flex gap-6 border-t border-[#d8e6e6] px-8 py-6 text-[#193334] lg:hidden [&_dt]:leading-[14px]">
+              <MetaList items={mobileMeta ?? meta} compact />
             </dl>
             <dl className="hidden w-[587px] shrink-0 flex-col justify-center gap-6 px-20 py-10 text-[#193334] lg:flex">
               <MetaList items={meta} />
