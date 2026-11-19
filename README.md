@@ -77,6 +77,6 @@ Mobile first. Main breakpoints: `sm` 640px, `md` 768px, `lg` 1024px.
 
 - Export images and icons from Figma into `public/` and connect them (all image slots are empty now).
 - Replace social links (`#`) in `src/data/site.ts`.
-- Font: Figma uses "Nekst" (demo licence). `Outfit` is used for now (`src/app/layout.tsx`).
+- Font: the Figma "FONTSPRING DEMO - Nekst" cuts are self-hosted in `src/app/fonts` and loaded in `src/app/layout.tsx`. They are demo fonts (ASCII glyphs only), so characters outside ASCII fall back to the system font — same as the Figma file.
 - Check text and spelling from the design with the client ("experiece", "Interenal", "Dewanngan"...).
 - Animation card on Home has no case study page in the Figma file.

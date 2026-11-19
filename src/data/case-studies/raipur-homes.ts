@@ -18,6 +18,20 @@ export const raipurHomes: CaseStudy = {
       value: "Desktop, Mobile (Android)"
     }
   ],
+  mobileMeta: [
+    {
+      label: "Duration",
+      value: "16 Weeks"
+    },
+    {
+      label: "Tools",
+      value: "Figma"
+    },
+    {
+      label: "Device Adaptibility",
+      value: "Desktop and Mobile"
+    }
+  ],
   accent: "bg-gradient-to-br from-indigo-500 to-indigo-300",
   summary: [
     {
@@ -86,6 +100,7 @@ export const raipurHomes: CaseStudy = {
     {
       id: "introduction",
       title: "Introduction",
+      layout: "stacked",
       blocks: [
         {
           type: "text",
@@ -138,6 +153,7 @@ export const raipurHomes: CaseStudy = {
     },
     {
       id: "problem-statement",
+      layout: "plain-grid",
       title: "Problem Statement",
       blocks: [
         {
@@ -166,6 +182,7 @@ export const raipurHomes: CaseStudy = {
     },
     {
       id: "project-goals-and-requirements",
+      layout: "plain-grid",
       title: "Project Goals and Requirements",
       blocks: [
         {
@@ -212,6 +229,7 @@ export const raipurHomes: CaseStudy = {
     },
     {
       id: "user-research",
+      layout: "stacked",
       title: "User Research",
       blocks: [
         {
@@ -227,7 +245,7 @@ export const raipurHomes: CaseStudy = {
         {
           type: "image",
           alt: "User Research - image 1",
-          src: "/images/case-studies/raipur-homes/frame-2085663035-user-journey-1-2560x1482-f9aa4ed942.webp",
+          src: "/images/case-studies/raipur-homes/research-interviews.webp",
           width: 485,
           height: 442
         },
@@ -240,7 +258,7 @@ export const raipurHomes: CaseStudy = {
         {
           type: "image",
           alt: "User Research - image 2",
-          src: "/images/case-studies/raipur-homes/frame-2085663035-userflow-1-2560x1532-6d9c60ae6a.webp",
+          src: "/images/case-studies/raipur-homes/research-competitors.webp",
           width: 485,
           height: 442
         }
@@ -248,6 +266,7 @@ export const raipurHomes: CaseStudy = {
     },
     {
       id: "ideation",
+      layout: "stacked",
       title: "Ideation",
       blocks: [
         {
@@ -260,14 +279,14 @@ export const raipurHomes: CaseStudy = {
           type: "images",
           items: [
             {
-              alt: "Ideation - image 1",
-          src: "/images/case-studies/raipur-homes/frame-2085663027-raipur-problem-2-2560x1535-f3ad83034f.webp",
+              alt: "Ideation - user journey",
+              src: "/images/case-studies/raipur-homes/ideation-user-journey.webp",
               width: 666,
               height: 373
             },
             {
-              alt: "Ideation - image 2",
-          src: "/images/case-studies/raipur-homes/frame-2085663035-competitors-1-2560x1532-8df35013d9.webp",
+              alt: "Ideation - storyboard",
+              src: "/images/case-studies/raipur-homes/ideation-storyboard.webp",
               width: 328,
               height: 373
             }
@@ -281,11 +300,8 @@ export const raipurHomes: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Ideation - image 3",
-          src: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-1280x763-3d23ed0a56.webp",
-          webm: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-1280x763-3d23ed0a56.webm",
-          mp4: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-1280x763-3d23ed0a56.mp4",
-          poster: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-1280x763-3d23ed0a56.webp",
+          alt: "Ideation - user flow",
+          src: "/images/case-studies/raipur-homes/ideation-user-flow.webp",
           width: 1018,
           height: 354
         },
@@ -297,11 +313,8 @@ export const raipurHomes: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Ideation - image 4",
-          src: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745.webp",
-          webm: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745.webm",
-          mp4: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745.mp4",
-          poster: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745.webp",
+          alt: "Ideation - moodboard",
+          src: "/images/case-studies/raipur-homes/ideation-moodboard.webp",
           width: 1018,
           height: 354
         },
@@ -313,8 +326,8 @@ export const raipurHomes: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Ideation - image 5",
-          src: "/images/case-studies/raipur-homes/frame-2085663036-design-system-1-326x194-a179bc88a8.png",
+          alt: "Ideation - wireframing",
+          src: "/images/case-studies/raipur-homes/ideation-wireframing.webp",
           width: 1018,
           height: 354
         }
@@ -322,6 +335,7 @@ export const raipurHomes: CaseStudy = {
     },
     {
       id: "design",
+      layout: "stacked",
       title: "Design",
       blocks: [
         {
@@ -332,8 +346,8 @@ export const raipurHomes: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Design - image 1",
-          src: "/images/case-studies/raipur-homes/frame-2085663035-wireframing-1-2560x1529-f1217cfb57.webp",
+          alt: "Design - Design system",
+          src: "/images/case-studies/raipur-homes/design-system.webp",
           width: 754,
           height: 346
         },
@@ -345,11 +359,8 @@ export const raipurHomes: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Design - image 2",
-          src: "/images/case-studies/raipur-homes/frame-2085663036-raipur-proto-1-gif-666x1482-d059c95ff1.webp",
-          webm: "/images/case-studies/raipur-homes/frame-2085663036-raipur-proto-1-gif-666x1482-d059c95ff1.webm",
-          mp4: "/images/case-studies/raipur-homes/frame-2085663036-raipur-proto-1-gif-666x1482-d059c95ff1.mp4",
-          poster: "/images/case-studies/raipur-homes/frame-2085663036-raipur-proto-1-gif-666x1482-d059c95ff1.webp",
+          alt: "Design - Tenant section",
+          src: "/images/case-studies/raipur-homes/design-tenant.webp",
           width: 754,
           height: 446
         },
@@ -361,11 +372,8 @@ export const raipurHomes: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Design - image 3",
-          src: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745.webp",
-          webm: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745.webm",
-          mp4: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745.mp4",
-          poster: "/images/case-studies/raipur-homes/frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745.webp",
+          alt: "Design - Property owner section",
+          src: "/images/case-studies/raipur-homes/design-owner.webp",
           width: 1018,
           height: 446
         },
@@ -377,8 +385,8 @@ export const raipurHomes: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Design - image 4",
-          src: "/images/case-studies/raipur-homes/frame-2085663035-wireframing-1-2560x1529-f1217cfb57.webp",
+          alt: "Design - Admin panel",
+          src: "/images/case-studies/raipur-homes/design-admin.webp",
           width: 1018,
           height: 562
         }

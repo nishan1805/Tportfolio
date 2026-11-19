@@ -22,9 +22,9 @@ function CopySection({ section }: { section: CaseStudySection }) {
   return (
     <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
       <SectionHeading id={section.id} title={section.title} />
-      <div className="mt-9 flex min-w-0 flex-col gap-6">
+      <div className="mt-9 flex min-w-0 flex-col gap-7">
         {paragraphs.map((text) => (
-          <p key={text} className="text-[1rem] font-normal leading-6 text-[#254d4f]">
+          <p key={text} className="text-[1rem] font-normal leading-7 text-[#254d4f]">
             {text}
           </p>
         ))}
@@ -101,7 +101,7 @@ function MediaCards({ section }: { section: CaseStudySection }) {
     <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
       <div className="flex flex-col gap-3">
         <SectionHeading id={section.id} title={section.title} />
-        {intro?.type === "text" && <p className="text-[1rem] font-normal leading-6 text-[#254d4f]">{intro.text}</p>}
+        {intro?.type === "text" && <p className="text-[1rem] font-normal leading-7 text-[#254d4f]">{intro.text}</p>}
       </div>
       <div className="mt-9 grid min-w-0 grid-cols-1 items-stretch gap-6 lg:grid-cols-[465fr_527fr]">
         {items.map((item) => (
@@ -131,7 +131,7 @@ function BodyText({ text }: { text: string }) {
 
   if (bullets) {
     return (
-      <ul className="list-disc space-y-2 pl-5 text-[1rem] font-normal leading-[1.625rem] text-[#254d4f]">
+      <ul className="list-disc space-y-2 pl-5 text-[1rem] font-normal leading-7 text-[#254d4f]">
         {lines.map((line) => (
           <li key={line}>{line.replace(/^[-•]\s*/, "")}</li>
         ))}
@@ -141,7 +141,7 @@ function BodyText({ text }: { text: string }) {
 
   if (numbered) {
     return (
-      <ol className="list-decimal space-y-2 pl-5 text-[1rem] font-normal leading-[1.625rem] text-[#254d4f]">
+      <ol className="list-decimal space-y-2 pl-5 text-[1rem] font-normal leading-7 text-[#254d4f]">
         {lines.map((line) => (
           <li key={line}>{line.replace(/^\d+[.)]\s*/, "")}</li>
         ))}
@@ -149,7 +149,7 @@ function BodyText({ text }: { text: string }) {
     );
   }
 
-  return <p className="text-[1rem] font-normal leading-[1.625rem] text-[#254d4f]">{text}</p>;
+  return <p className="text-[1rem] font-normal leading-7 text-[#254d4f]">{text}</p>;
 }
 
 function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
@@ -179,7 +179,7 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
             {label && <p className="mb-3 text-[0.75rem] font-medium leading-normal text-[#8bb3b5]">{label}</p>}
             <h3 className="text-[1.5rem] font-bold leading-8 text-[#193334]">{title}</h3>
           </div>
-          <p className="text-[1rem] font-normal leading-[1.625rem]">{item.text}</p>
+          <p className="text-[1rem] font-normal leading-7">{item.text}</p>
         </div>
       );
 
@@ -198,16 +198,17 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
     case "cards": {
       if (unit.items.length > 0 && unit.items.every((item) => item.variant === "panel")) {
         return (
-          <ul key={index} className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
+          <ul key={index} className={`grid min-w-0 grid-cols-1 gap-6 lg:items-stretch ${unit.items.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}>
             {unit.items.map((item, itemIndex) => (
               <li key={`${item.title}-${itemIndex}`} className="flex h-full min-w-0 flex-col overflow-hidden rounded-[8px]">
                 <h3 className="bg-[#deecdd] px-3 py-3 text-[1rem] font-bold leading-[16.66px] text-[#254d4f]">{item.title}</h3>
-                <div className="flex flex-1 flex-col gap-4 bg-[#eef5ee] p-3 text-[1rem] font-normal leading-6 text-[#254d4f]">
+                <div className="flex flex-1 flex-col gap-4 bg-[#eef5ee] p-3 text-[1rem] font-normal leading-7 text-[#254d4f]">
                   <p>{item.text}</p>
                   {item.note ? (
-                    <p>
-                      <span className="font-semibold">Object:</span> {item.note}
-                    </p>
+                    <div className="flex flex-col gap-2">
+                      <p className="font-bold">Objective:</p>
+                      <p>{item.note}</p>
+                    </div>
                   ) : null}
                 </div>
               </li>
@@ -221,11 +222,9 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
           {unit.items.map(({ title, text }, itemIndex) => {
             if (title === "Summary") {
               return (
-                <li key={`${title}-${itemIndex}`} className="col-span-full overflow-hidden rounded-[8px] border border-[#d8e6e6]">
-                  <p className="border-b border-[#d8e6e6] bg-[#ecf2f3] px-3 py-3 text-[0.875rem] font-semibold leading-[1.0625rem] text-[#3e8083]">
-                    Summary
-                  </p>
-                  <p className="px-3 py-3 text-[1rem] font-normal leading-6 text-[#254d4f]">{text}</p>
+                <li key={`${title}-${itemIndex}`} className="col-span-full overflow-hidden rounded-[8px]">
+                  <p className="bg-[#cceff6] p-3 text-[1rem] font-bold leading-[16.66px] text-[#254d4f]">Summary</p>
+                  <p className="bg-[#e6f7fb] p-3 text-[1rem] font-normal leading-6 text-[#254d4f]">{text}</p>
                 </li>
               );
             }
@@ -241,6 +240,48 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
       );
     }
   }
+}
+
+function ComponentsGrid({ section }: { section: CaseStudySection }) {
+  const items = section.blocks.filter((block): block is ItemBlock => block.type === "item");
+  const columnItems = items.filter((item) => item.title !== "List of Components");
+  const lead = items.find((item) => item.title === "List of Components");
+  const tiles = section.blocks.flatMap((block) => (block.type === "image" ? [block] : []));
+  const footnote = section.blocks.flatMap((block) => (block.type === "text" ? [block.text] : []));
+
+  return (
+    <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
+      <SectionHeading id={section.id} title={section.title} />
+      <div className="mt-9 grid min-w-0 grid-cols-1 gap-9 lg:grid-cols-3 lg:gap-9">
+        {columnItems.map((item) => (
+          <div key={item.title} className="flex min-w-0 flex-col gap-2 text-[#254d4f]">
+            <h3 className="text-[1.5rem] font-bold leading-normal">{item.title}</h3>
+            <p className="text-[1rem] font-normal leading-7">{item.text}</p>
+          </div>
+        ))}
+      </div>
+      {lead && (
+        <div className="mt-9 flex flex-col gap-2 text-[#254d4f]">
+          <h3 className="text-[1.5rem] font-bold leading-normal">{lead.title}</h3>
+          <p className="text-[1rem] font-normal leading-7">{lead.text}</p>
+        </div>
+      )}
+      <div className="mt-9 grid min-w-0 grid-cols-1 gap-x-6 gap-y-9 lg:grid-cols-2">
+        {tiles.map((tile) => (
+          <figure key={tile.alt} className="flex min-w-0 flex-col gap-3 text-[#254d4f]">
+            <figcaption className="text-[1.25rem] font-semibold leading-6">{tile.alt}</figcaption>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={tile.src} alt={`${tile.alt} component`} width={tile.width} height={tile.height} className="h-auto w-full" />
+          </figure>
+        ))}
+      </div>
+      {footnote.map((text) => (
+        <p key={text} className="mt-9 text-[1rem] font-normal leading-7 text-[#254d4f]">
+          {text}
+        </p>
+      ))}
+    </section>
+  );
 }
 
 /**
@@ -280,8 +321,8 @@ function IconographySheet({ image }: { image: ImageItem }) {
   );
 }
 
-function IconographySection({ section }: { section: CaseStudySection }) {
-  const copy = section.blocks.find((block) => block.type === "text");
+function IconTile({ section }: { section: CaseStudySection }) {
+  const text = section.blocks.find((block) => block.type === "text");
   const image = section.blocks.find((block) => block.type === "image");
 
   return (
@@ -293,20 +334,273 @@ function IconographySection({ section }: { section: CaseStudySection }) {
         >
           {section.title}
         </h2>
-        {copy?.type === "text" ? (
-          <p className="text-[1rem] font-normal leading-7 text-[#254d4f]">{copy.text}</p>
-        ) : null}
+        {text?.type === "text" ? <p className="text-[1rem] font-normal leading-7 text-[#254d4f]">{text.text}</p> : null}
         {image?.type === "image" ? <IconographySheet image={image} /> : null}
       </div>
     </section>
   );
 }
 
+function StoryLayout({ section }: { section: CaseStudySection }) {
+  const texts = section.blocks.flatMap((block) => (block.type === "text" ? [block.text] : []));
+  const items = section.blocks.filter((block): block is ItemBlock => block.type === "item");
+  const images = section.blocks.flatMap((block) => (block.type === "image" ? [block] : []));
+  const [core, factorsIntro, factors = ""] = texts;
+  const [lead, loops, ...cards] = items;
+  const [panel, ...cardImages] = images;
+  const list = factors.split(/(?<=\.)\s+/).filter(Boolean);
+
+  return (
+    <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
+      <div className="flex flex-col gap-3">
+        <SectionHeading id={section.id} title={section.title} />
+        <p className="text-[1rem] font-normal leading-7 text-[#254d4f]">{core}</p>
+      </div>
+
+      <div className="mt-12 flex min-w-0 flex-col items-stretch gap-8 lg:min-h-[403px] lg:flex-row lg:items-center lg:gap-14">
+        <div className="flex min-w-0 flex-1 flex-col gap-4 text-[#254d4f]">
+          <div className="flex flex-col gap-6">
+            <h3 className="text-[1.5rem] font-bold leading-normal">{lead?.title}</h3>
+            <p className="text-[1rem] font-normal leading-7">{lead?.text}</p>
+          </div>
+          <p className="text-[1rem] font-normal leading-7">{factorsIntro}</p>
+          <ol className="list-decimal ps-[30px] text-[1.25rem] font-semibold leading-normal">
+            {list.map((entry) => (
+              <li key={entry} className="mb-3 last:mb-0">
+                {entry}
+              </li>
+            ))}
+          </ol>
+        </div>
+        {panel && (
+          <div className="w-full shrink-0 overflow-hidden rounded-[8px] bg-[#eaeefb] lg:w-[459px]" style={{ aspectRatio: `${panel.width} / ${panel.height}` }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={panel.src} alt={panel.alt} width={panel.width} height={panel.height} className="size-full object-cover" />
+          </div>
+        )}
+      </div>
+
+      <div className="mt-12 flex min-w-0 flex-col gap-8">
+        <div className="flex flex-col gap-6 text-[#254d4f]">
+          <h3 className="text-[1.5rem] font-bold leading-normal">{loops?.title}</h3>
+          <p className="text-[1rem] font-normal leading-7">{loops?.text}</p>
+        </div>
+        <div className="grid min-w-0 grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
+          {cards.map((card, index) => {
+            const image = cardImages[index];
+            return (
+              <article
+                key={card.title}
+                className="flex min-w-0 flex-col gap-8 rounded-[16px] bg-gradient-to-b from-[#fbfbff] to-[#efeeff] px-6 py-8 text-[#254d4f]"
+              >
+                <div className="flex flex-col gap-4">
+                  <h4 className="text-[1.25rem] font-semibold leading-normal">{card.title}</h4>
+                  <p className="text-[0.875rem] font-normal leading-6">{card.text}</p>
+                </div>
+                {image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-auto w-full rounded-[8px]" />
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PhotoPair({ section }: { section: CaseStudySection }) {
+  const paragraphs = section.blocks.flatMap((block) => (block.type === "text" ? [block.text] : []));
+  const photos = section.blocks.flatMap((block) => (block.type === "images" ? block.items : []));
+  const positions = ["50% 50%", "50% 41%"];
+
+  return (
+    <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
+      <SectionHeading id={section.id} title={section.title} />
+      <div className="mt-9 flex min-w-0 flex-col gap-9">
+        {paragraphs.map((text) => (
+          <p key={text} className="text-[1rem] font-normal leading-7 text-[#254d4f]">
+            {text}
+          </p>
+        ))}
+        <div className="grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2">
+          {photos.map((photo, index) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={photo.alt}
+              src={photo.src}
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              className="aspect-[496/377] w-full rounded-[8px] border-4 border-[#d6def7] object-cover"
+              style={{ objectPosition: positions[index] ?? "50% 50%" }}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SideText({ item }: { item: ItemBlock }) {
+  const [label, title] = item.title.includes(" · ") ? item.title.split(" · ") : [undefined, item.title];
+  const [noteHead, ...noteList] = (item.note ?? "").split(/\n+/).filter(Boolean);
+  const logos = item.title === "Competition Analysis";
+
+  return (
+    <div className="flex min-w-0 flex-col gap-6 text-[#254d4f]">
+      <div className="flex flex-col gap-2">
+        {label && <p className="text-[0.75rem] font-medium leading-4 text-[#8bb3b5]">{label}</p>}
+        <h3 className="text-[1.5rem] font-bold leading-normal">{title}</h3>
+      </div>
+      <p className="text-[1rem] font-normal leading-7">{item.text}</p>
+      {noteHead && <p className="text-[1rem] font-normal leading-7">{noteHead}</p>}
+      {noteList.length > 0 && (
+        <ol className="list-decimal ps-6 text-[1rem] font-normal leading-7">
+          {noteList.map((entry) => (
+            <li key={entry}>{entry}</li>
+          ))}
+        </ol>
+      )}
+      {logos && (
+        <div className="flex items-start gap-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/case-studies/telescope-overview/competition-1.webp" alt="" width={36} height={36} className="size-9" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/case-studies/telescope-overview/competition-2.webp" alt="" width={36} height={36} className="size-9 rounded-[8px] object-cover" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/case-studies/telescope-overview/competition-3.webp" alt="" width={28} height={36} className="h-9 w-7" />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function StackedLayout({ section }: { section: CaseStudySection }) {
+  type Cell = { item: ItemBlock; images: ImageItem[] };
+  const cells: Cell[] = [];
+  const lead: string[] = [];
+  const blocks = section.blocks;
+
+  for (let i = 0; i < blocks.length; i++) {
+    const block = blocks[i];
+    if (block.type === "text" && cells.length === 0) lead.push(block.text);
+    else if (block.type === "item") {
+      const next = blocks[i + 1];
+      if (next?.type === "image") {
+        cells.push({ item: block, images: [next] });
+        i++;
+      } else if (next?.type === "images") {
+        cells.push({ item: block, images: next.items });
+        i++;
+      } else cells.push({ item: block, images: [] });
+    }
+  }
+
+  // Cells share a row while their Figma widths (text or media, whichever is wider) still fit 1016px.
+  const cellWidth = (cell: Cell) =>
+    Math.max(cell.item.width ?? 1016, cell.images.reduce((sum, image) => sum + image.width, 0) + Math.max(cell.images.length - 1, 0) * 24);
+  const rows: Cell[][] = [];
+  for (const cell of cells) {
+    const row = rows[rows.length - 1];
+    const used = row ? row.reduce((sum, entry) => sum + cellWidth(entry), 0) + (row.length - 1) * 36 : 0;
+    if (row && used + 36 + cellWidth(cell) <= 1016 + 4) row.push(cell);
+    else rows.push([cell]);
+  }
+
+  const isSide = (row: Cell[]) =>
+    row.length === 1 && row[0].images.length === 1 && (row[0].item.width ?? 1016) < 400 && row[0].images[0].width > 600;
+
+  return (
+    <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
+      <SectionHeading id={section.id} title={section.title} />
+      <div className={`mt-9 flex min-w-0 flex-col ${rows.some(isSide) ? "gap-12" : "gap-9"}`}>
+        {lead.map((text) => (
+          <p key={text} className="text-[1rem] font-normal leading-7 text-[#254d4f]">
+            {text}
+          </p>
+        ))}
+        {rows.map((row) => {
+          const [only] = row;
+          if (isSide(row)) {
+            return (
+              <div
+                key={only.item.title}
+                className="grid min-w-0 grid-cols-1 items-start gap-8 md:grid-cols-(--cols)"
+                style={columns(only.item.width ?? 232, only.images[0].width)}
+              >
+                <SideText item={only.item} />
+                <BlockImage image={only.images[0]} radius="sm" />
+              </div>
+            );
+          }
+          return (
+          <div
+            key={row.map((cell) => cell.item.title).join("|")}
+            className="grid min-w-0 grid-cols-1 gap-9 md:grid-cols-(--cols)"
+            style={columns(...row.map((cell) => cell.item.width ?? 1016))}
+          >
+            {row.map(({ item, images }) => (
+              <div key={item.title} className="flex min-w-0 flex-col gap-8 text-[#254d4f]">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[1.5rem] font-bold leading-normal">{item.title}</h3>
+                  <p className="text-[1rem] font-normal leading-7">{item.text}</p>
+                </div>
+                {images.length === 1 && <BlockImage image={images[0]} radius="sm" />}
+                {images.length > 1 && (
+                  <div className="grid min-w-0 gap-6 md:grid-cols-(--cols)" style={columns(...images.map((image) => image.width))}>
+                    {images.map((image) => (
+                      <BlockImage key={image.alt} image={image} radius="sm" />
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function PlainGrid({ section }: { section: CaseStudySection }) {
+  const lead = section.blocks.flatMap((block) => (block.type === "text" ? [block.text] : []));
+  const items = section.blocks.filter((block): block is ItemBlock => block.type === "item");
+
+  return (
+    <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
+      <SectionHeading id={section.id} title={section.title} />
+      <div className="mt-9 flex min-w-0 flex-col gap-9">
+        {lead.map((text) => (
+          <p key={text} className="text-[1rem] font-normal leading-7 text-[#254d4f]">
+            {text}
+          </p>
+        ))}
+        <div className="grid min-w-0 grid-cols-1 gap-x-9 gap-y-9 lg:grid-cols-3">
+          {items.map((item) => (
+            <div key={item.title} className="flex min-w-0 flex-col gap-2 text-[#254d4f]">
+              <h3 className="text-[1.25rem] font-bold leading-normal">{item.title}</h3>
+              <p className="text-[1rem] font-normal leading-7">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function SectionContent({ section }: { section: CaseStudySection }) {
-  if (section.id === "iconography") return <IconographySection section={section} />;
   if (section.layout === "copy") return <CopySection section={section} />;
   if (section.layout === "plain") return <PlainColumns section={section} />;
   if (section.layout === "media-cards") return <MediaCards section={section} />;
+  if (section.layout === "plain-grid") return <PlainGrid section={section} />;
+  if (section.layout === "stacked") return <StackedLayout section={section} />;
+  if (section.layout === "story") return <StoryLayout section={section} />;
+  if (section.layout === "photo-pair") return <PhotoPair section={section} />;
+  if (section.layout === "components") return <ComponentsGrid section={section} />;
+  if (section.layout === "icon-tile") return <IconTile section={section} />;
 
   const finalUi = section.id === "final-ui" || section.id === "design";
 

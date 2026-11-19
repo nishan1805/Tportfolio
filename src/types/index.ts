@@ -177,8 +177,14 @@ export type CaseStudySection = {
    * Optional layout. Unset sections keep the shared card / feature rendering.
    * `copy` — body paragraphs at 16/24. `plain` — text columns, no cards.
    * `media-cards` — pastel cards with text above an image or video.
+   * `components` — three text columns, a lead-in, then a 2-column grid of labelled image tiles.
+   * `story` — Emotion Driven Design: text + phone panel row, then a 2x2 grid of pastel image cards.
+   * `plain-grid` — lead copy, then 3-column text items with 20px titles, no cards.
+   * `stacked` — each item sits above its image; items whose widths fit one row share it.
+   * `photo-pair` — 28px copy followed by two bordered photos.
+   * `icon-tile` — 24px heading, copy, and one image on a pale green tile.
    */
-  layout?: "copy" | "plain" | "media-cards";
+  layout?: "copy" | "plain" | "media-cards" | "components" | "icon-tile" | "story" | "photo-pair" | "stacked" | "plain-grid";
 };
 
 /** One tall card in the "Summary" strip under the banner (image + text). */

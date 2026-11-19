@@ -90,7 +90,11 @@ export const telescopeOverview: CaseStudy = {
       blocks: [
         {
           type: "text",
-          text: "Newton’s Telescope is an advanced analytics tool designed to give you a complete picture of your app's App Store performance in seconds.  By consolidating data from Apple Search Ads, Apple Search Optimization ASO, and your Mobile Measurement Partners MMPs, it provides a unified, high-level view of your app's standing. It is built to deliver these detailed, actionable insights faster than any other tool in the ad-tech space, helping you make informed decisions quickly."
+          text: "Newton’s Telescope is an advanced analytics tool designed to give you a complete picture of your app's App Store performance in seconds."
+        },
+        {
+          type: "text",
+          text: "By consolidating data from Apple Search Ads, Apple Search Optimization ASO, and your Mobile Measurement Partners MMPs, it provides a unified, high-level view of your app's standing. It is built to deliver these detailed, actionable insights faster than any other tool in the ad-tech space, helping you make informed decisions quickly."
         },
         {
           type: "item",
@@ -110,7 +114,7 @@ export const telescopeOverview: CaseStudy = {
         },
         {
           type: "text",
-          text: "Report generation was previously manual and time-consuming, involving data extraction from disparate platforms like SplitMetrics and Sensor Tower. This method was unprofessional, increasing human error and lacking the consistency of automated solutions. The significant effort involved directly hindered operational efficiency and overall productivity."
+          text: "- Report generation was previously manual and time-consuming, involving data extraction from disparate platforms like SplitMetrics and Sensor Tower.\n- This method was unprofessional, increasing human error and lacking the consistency of automated solutions.\n- The significant effort involved directly hindered operational efficiency and overall productivity."
         },
         {
           type: "item",
@@ -142,6 +146,7 @@ export const telescopeOverview: CaseStudy = {
     },
     {
       id: "research",
+      layout: "stacked",
       title: "Research",
       blocks: [
         {
@@ -157,24 +162,21 @@ export const telescopeOverview: CaseStudy = {
         {
           type: "image",
           alt: "Research - image 1",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-telescope-research-shot-2776x1554-58b08e8ea0.webp",
+          src: "/images/case-studies/telescope-overview/research-competition.webp",
           width: 616,
           height: 317
         },
         {
           type: "item",
           title: "Internal Interviews to Frame Data",
+          note: "Structure or Level of Interviews\nFounder and Co-Founder level\nOps team\nSales Team\nTech and Product Team",
           text: "Before diving into wireframe we had lot of internal interviews to get the idea of visualization and sequencing the data in right manner so that both side of business can adapt it very easily. Our Interview held in different levels which I’m listing down below.",
           width: 346
         },
         {
-          type: "text",
-          text: "Structure or Level of Interviews Founder and Co-Founder level Ops team Sales Team Tech and Product Team"
-        },
-        {
           type: "image",
           alt: "Research - image 2",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-telescope-research-shot-2-1824x1288-630ce03873.webp",
+          src: "/images/case-studies/telescope-overview/research-interviews.webp",
           width: 616,
           height: 485
         },
@@ -187,7 +189,7 @@ export const telescopeOverview: CaseStudy = {
         {
           type: "image",
           alt: "Research - image 3",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-telescope-screenshot-2880x1800-c7a05f854b.webp",
+          src: "/images/case-studies/telescope-overview/research-brainstorm.webp",
           width: 1018,
           height: 317
         }
@@ -212,6 +214,7 @@ export const telescopeOverview: CaseStudy = {
     },
     {
       id: "wireframing",
+      layout: "stacked",
       title: "Wireframing",
       blocks: [
         {
@@ -227,7 +230,7 @@ export const telescopeOverview: CaseStudy = {
         {
           type: "image",
           alt: "Wireframing - image 1",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-whatsapp-image-1600x1200-36ed45d6c3.webp",
+          src: "/images/case-studies/telescope-overview/wf-loading-1.webp",
           width: 730,
           height: 337
         },
@@ -240,7 +243,7 @@ export const telescopeOverview: CaseStudy = {
         {
           type: "image",
           alt: "Wireframing - image 2",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-telescope-screenshot-2880x1800-c7a05f854b.webp",
+          src: "/images/case-studies/telescope-overview/wf-loading-2.webp",
           width: 730,
           height: 337
         },
@@ -253,7 +256,7 @@ export const telescopeOverview: CaseStudy = {
         {
           type: "image",
           alt: "Wireframing - image 3",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-image-3688-4096x3072-47254dbf01.webp",
+          src: "/images/case-studies/telescope-overview/wf-report-1.webp",
           width: 730,
           height: 328
         },
@@ -266,7 +269,7 @@ export const telescopeOverview: CaseStudy = {
         {
           type: "image",
           alt: "Wireframing - image 4",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-image-3688-4096x3072-47254dbf01.webp",
+          src: "/images/case-studies/telescope-overview/wf-report-2.webp",
           width: 730,
           height: 337
         }
@@ -284,26 +287,22 @@ export const telescopeOverview: CaseStudy = {
           type: "item",
           title: "Overview Section",
           text: "This section provides a high-level performance overview, featuring the Newton Index Score with breakdowns for App Store Ads (ASA) and App Store Optimization ASO.",
-          width: 473
-        },
-        {
-          type: "text",
-          text: "Objective: This page is designed to provide advertisers with an immediate overview of current performance status."
+          width: 473,
+          variant: "panel",
+          note: "This page is designed to provide advertisers with an immediate overview of current performance status."
         },
         {
           type: "item",
           title: "Detailed View, Apple Ads and ASO",
           text: "The detailed view is split into ASA and ASO, with ASA offering deeper, more granular insights since we fetch this data directly via client app integration.",
-          width: 473
-        },
-        {
-          type: "text",
-          text: "Objective: These two sections enable users to closely analyze performance through appropriate graphs and data."
+          width: 473,
+          variant: "panel",
+          note: "These two sections enable users to closely analyze performance through appropriate graphs and data."
         },
         {
           type: "image",
           alt: "Final UI - image 1",
-          src: "/images/case-studies/telescope-overview/frame-2085663030-earth-1500x1500-415cec48fe.webp",
+          src: "/images/case-studies/telescope-overview/final-ui-overview.webp",
           width: 1018,
           height: 511
         }

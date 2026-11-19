@@ -19,6 +19,7 @@ export const emotionDrivenDesign: CaseStudy = {
     {
       id: "introduction",
       title: "Introduction",
+      layout: "copy",
       blocks: [
         {
           type: "text",
@@ -28,6 +29,8 @@ export const emotionDrivenDesign: CaseStudy = {
     },
     {
       id: "what-why-and-when-to-use-intelligence",
+      navTitle: "What, Why, When",
+      layout: "plain",
       title: "What, Why, and When to Use Intelligence",
       blocks: [
         {
@@ -52,7 +55,9 @@ export const emotionDrivenDesign: CaseStudy = {
     },
     {
       id: "how-to-design-it-how-i-designed-it",
+      navTitle: "How to Design It",
       title: "How to Design It & How I Designed It",
+      layout: "story",
       blocks: [
         {
           type: "text",
@@ -75,7 +80,7 @@ export const emotionDrivenDesign: CaseStudy = {
         {
           type: "image",
           alt: "How to Design It & How I Designed It - image 1",
-          src: "/images/case-studies/emotion-driven-design/how-to-art-b.webp",
+          src: "/images/case-studies/emotion-driven-design/how-to-panel.webp",
           width: 459,
           height: 403
         },
@@ -93,13 +98,10 @@ export const emotionDrivenDesign: CaseStudy = {
         },
         {
           type: "image",
-          alt: "How to Design It & How I Designed It - image 2",
-          src: "/images/case-studies/emotion-driven-design/frame-2085663075-emotion-how-to-gif-682x1478-4ffda29eb3.webp",
-          webm: "/images/case-studies/emotion-driven-design/frame-2085663075-emotion-how-to-gif-682x1478-4ffda29eb3.webm",
-          mp4: "/images/case-studies/emotion-driven-design/frame-2085663075-emotion-how-to-gif-682x1478-4ffda29eb3.mp4",
-          poster: "/images/case-studies/emotion-driven-design/frame-2085663075-emotion-how-to-gif-682x1478-4ffda29eb3.webp",
-          width: 444,
-          height: 462
+          alt: "Identity and Connection - mascot home screen",
+          src: "/images/case-studies/emotion-driven-design/how-to-identity.webp",
+          width: 448,
+          height: 466
         },
         {
           type: "item",
@@ -110,9 +112,9 @@ export const emotionDrivenDesign: CaseStudy = {
         {
           type: "image",
           alt: "How to Design It & How I Designed It - image 3",
-          src: "/images/case-studies/emotion-driven-design/how-to-art-a.webp",
-          width: 444,
-          height: 462
+          src: "/images/case-studies/emotion-driven-design/how-to-interaction-loop.webp",
+          width: 448,
+          height: 466
         },
         {
           type: "item",
@@ -123,9 +125,9 @@ export const emotionDrivenDesign: CaseStudy = {
         {
           type: "image",
           alt: "How to Design It & How I Designed It - image 4",
-          src: "/images/case-studies/emotion-driven-design/frame-2085663076-image-41766-1280x960-029bb6e9b3.webp",
-          width: 444,
-          height: 414
+          src: "/images/case-studies/emotion-driven-design/how-to-emotional-support.webp",
+          width: 448,
+          height: 418
         },
         {
           type: "item",
@@ -136,15 +138,16 @@ export const emotionDrivenDesign: CaseStudy = {
         {
           type: "image",
           alt: "How to Design It & How I Designed It - image 5",
-          src: "/images/case-studies/emotion-driven-design/frame-2085663076-image-41765-960x1280-acf836300f.webp",
-          width: 444,
-          height: 462
+          src: "/images/case-studies/emotion-driven-design/how-to-organised-chat.webp",
+          width: 448,
+          height: 466
         }
       ]
     },
     {
       id: "conclusion",
       title: "Conclusion",
+      layout: "photo-pair",
       blocks: [
         {
           type: "text",
@@ -159,13 +162,13 @@ export const emotionDrivenDesign: CaseStudy = {
           items: [
             {
               alt: "Conclusion - image 1",
-          src: "/images/case-studies/emotion-driven-design/frame-2085663075-3d-render-iphone-1920x2095-36b99b8a9e.webp",
+          src: "/images/case-studies/emotion-driven-design/frame-2085663076-image-41766-1280x960-029bb6e9b3.webp",
               width: 496,
               height: 377
             },
             {
               alt: "Conclusion - image 2",
-          src: "/images/case-studies/emotion-driven-design/frame-2085663075-emotion-iphone-2-1920x2095-f3d211092d.webp",
+          src: "/images/case-studies/emotion-driven-design/frame-2085663076-image-41765-960x1280-acf836300f.webp",
               width: 496,
               height: 377
             }
