@@ -98,7 +98,11 @@ export const opticksAiEditor: CaseStudy = {
           alt: "Phase 1 generation tool, with 565+ CPPs gone live this month and Got 67% of Growth",
           src: "/images/case-studies/opticks-ai-editor/intro-phase-1-717x418.webp",
           width: 717,
-          height: 418
+          height: 418,
+          mobileCard: {
+            height: 380,
+            flat: "/images/case-studies/opticks-ai-editor/intro-phase-1-m-732x760.webp"
+          }
         },
         {
           type: "item",
@@ -111,7 +115,11 @@ export const opticksAiEditor: CaseStudy = {
           alt: "Phase 2 Swiggy template editor",
           src: "/images/case-studies/opticks-ai-editor/intro-phase-2-717x390.webp",
           width: 717,
-          height: 390
+          height: 390,
+          mobileCard: {
+            height: 380,
+            flat: "/images/case-studies/opticks-ai-editor/intro-phase-2-m-732x760.webp"
+          }
         },
         {
           type: "item",
@@ -128,7 +136,15 @@ export const opticksAiEditor: CaseStudy = {
       blocks: [
         {
           type: "text",
-          text: "Advertisers struggle to quickly create ready-to-use app store images. While AI tools help them generate initial designs easily, these tools lack the simple, precise editing features needed to fix details, forcing users to start over and slowing down their work. There are the different categories of problems which our advertisers were facing. Frequent Creative Generation: A constant need for daily or occasion-based updates means advertisers are always scrambling for new visuals. High Resource Consumption: Producing these creatives demands significant bandwidth and effort, draining valuable team resources. Theme Selection Challenges: Difficulty aligning new themes with existing brand guidelines, often leading to conflicts. Which takes to much time to decide"
+          text: "Advertisers struggle to quickly create ready-to-use app store images. While AI tools help them generate initial designs easily, these tools lack the simple, precise editing features needed to fix details, forcing users to start over and slowing down their work. There are the different categories of problems which our advertisers were facing. Frequent Creative Generation: A constant need for daily or occasion-based updates means advertisers are always scrambling for new visuals. High Resource Consumption: Producing these creatives demands significant bandwidth and effort, draining valuable team resources. Theme Selection Challenges: Difficulty aligning new themes with existing brand guidelines, often leading to conflicts. Which takes to much time to decide",
+          mobileList: {
+            lead: "Advertisers struggle to quickly create ready-to-use app store images. While AI tools help them generate initial designs easily, these tools lack the simple, precise editing features needed to fix details, forcing users to start over and slowing down their work. There are the different categories of problems which our advertisers were facing.",
+            items: [
+              { label: "Frequent Creative Generation:", text: " A constant need for daily or occasion-based updates means advertisers are always scrambling for new visuals." },
+              { label: "High Resource Consumption:", text: " Producing these creatives demands significant bandwidth and effort, draining valuable team resources." },
+              { label: "Theme Selection Challenges:", text: " Difficulty aligning new themes with existing brand guidelines, often leading to conflicts. Which takes to much time to decide" }
+            ]
+          }
         }
       ]
     },
@@ -164,12 +180,28 @@ export const opticksAiEditor: CaseStudy = {
           type: "item",
           title: "Competition Analysis",
           text: "The product team concentrated on the technical backbone and strategic partnerships necessary for bringing the AI image generation to life: Finding AI partners to integrate Research about there capabilities and linitations API Testing to confirm accuracy and tech featibilities.",
+          mobileList: {
+            lead: "The product team concentrated on the technical backbone and strategic partnerships necessary for bringing the AI image generation to life:",
+            items: [
+              { text: "Finding AI partners to integrate" },
+              { text: "Research about there capabilities and linitations" },
+              { text: "API Testing to confirm accuracy and tech featibilities." }
+            ]
+          },
           width: 492
         },
         {
           type: "item",
           title: "Design Team Research",
           text: "The design team’s focus was on shaping the user experience and visual interface of our AI image generation tool Researched how AI Image generation flow should be ideally Finding UI references to ideate visuals Creating flow and low level wireframes",
+          mobileList: {
+            lead: "The design team’s focus was on shaping the user experience and visual interface of our AI image generation tool",
+            items: [
+              { text: "Researched how AI Image generation flow should be ideally" },
+              { text: "Finding UI references to ideate visuals" },
+              { text: "Creating flow and low level wireframes" }
+            ]
+          },
           width: 492
         }
       ]
@@ -200,7 +232,17 @@ export const opticksAiEditor: CaseStudy = {
           poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webp",
           width: 717,
           height: 340,
-          inset: { x: 82, y: 20, width: 553, height: 299, background: "#fce9e9", border: "#f5a6a6" }
+          inset: { x: 82, y: 20, width: 553, height: 299, background: "#fce9e9", border: "#f5a6a6" },
+          mobileCard: {
+            height: 360,
+            background: "#fce9e9",
+            layers: [{
+              x: 21, y: 31, w: 553, h: 299, border: "#f5a6a6", centerY: true,
+              webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webm",
+              mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.mp4",
+              poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-adcreative-gif-1-800x432-20c2293789.webp"
+            }]
+          }
         },
         {
           type: "item",
@@ -217,7 +259,17 @@ export const opticksAiEditor: CaseStudy = {
           poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webp",
           width: 717,
           height: 384,
-          inset: { x: 79, y: 34, width: 560, height: 316, background: "#ecf2f3", border: "#b2cccd" }
+          inset: { x: 79, y: 34, width: 560, height: 316, background: "#ecf2f3", border: "#b2cccd" },
+          mobileCard: {
+            height: 360,
+            background: "#ecf2f3",
+            layers: [{
+              x: 19, y: 46, w: 474, h: 268, border: "#b2cccd",
+              webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webm",
+              mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.mp4",
+              poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-screen-gif-800x452-b4be34057b.webp"
+            }]
+          }
         },
         {
           type: "item",
@@ -247,7 +299,17 @@ export const opticksAiEditor: CaseStudy = {
           alt: "Mood board and UI references",
           src: "/images/case-studies/opticks-ai-editor/mood-board-717x340.webp",
           width: 717,
-          height: 340
+          height: 340,
+          mobileCard: {
+            height: 340,
+            background: "#eaeefb",
+            layers: [
+              { x: 10, y: 31, w: 212.05, h: 132.53, src: "/images/case-studies/opticks-ai-editor/frame-2085663060-image-41756-1920x1200-3b233ca998.webp" },
+              { x: 234.95, y: 31, w: 212.05, h: 132.53, src: "/images/case-studies/opticks-ai-editor/frame-2085663060-image-41757-1920x1200-46c9bbd989.webp" },
+              { x: 10, y: 176.56, w: 212.05, h: 132.53, src: "/images/case-studies/opticks-ai-editor/frame-2085663060-image-41758-1920x1200-9f5a8ba278.webp" },
+              { x: 234.95, y: 176.56, w: 212.05, h: 132.53, src: "/images/case-studies/opticks-ai-editor/frame-2085663060-image-41759-1920x1200-2fa8ec1f9b.webp" }
+            ]
+          }
         },
         {
           type: "item",
@@ -260,7 +322,15 @@ export const opticksAiEditor: CaseStudy = {
           alt: "Opticks AI user flow",
           src: "/images/case-studies/opticks-ai-editor/user-flow-717x340.webp",
           width: 717,
-          height: 340
+          height: 340,
+          mobileCard: {
+            height: 340,
+            background: "#eaeefb",
+            layers: [{
+              x: -3, y: 11, w: 450, h: 377,
+              src: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-ideation-1-1680x1408-b6dad96ade.webp"
+            }]
+          }
         }
       ]
     },
@@ -284,7 +354,8 @@ export const opticksAiEditor: CaseStudy = {
           alt: "Phase 1, Iteration 1 wireframe",
           src: "/images/case-studies/opticks-ai-editor/wireframe-p1-i1-717x340.webp",
           width: 717,
-          height: 340
+          height: 340,
+          mobileCard: { height: 380, flat: "/images/case-studies/opticks-ai-editor/wireframe-p1-i1-m.webp" }
         },
         {
           type: "item",
@@ -298,7 +369,8 @@ export const opticksAiEditor: CaseStudy = {
           alt: "Phase 1, Iteration 2 wireframe",
           src: "/images/case-studies/opticks-ai-editor/wireframe-p1-i2-717x340.webp",
           width: 717,
-          height: 340
+          height: 340,
+          mobileCard: { height: 360, flat: "/images/case-studies/opticks-ai-editor/wireframe-p1-i2-m.webp" }
         },
         {
           type: "item",
@@ -312,7 +384,8 @@ export const opticksAiEditor: CaseStudy = {
           alt: "Phase 2, Iteration 1 wireframe",
           src: "/images/case-studies/opticks-ai-editor/wireframe-p2-i1-717x287.webp",
           width: 717,
-          height: 287
+          height: 287,
+          mobileCard: { height: 360, flat: "/images/case-studies/opticks-ai-editor/wireframe-p2-i1-m.webp" }
         },
         {
           type: "item",
@@ -326,7 +399,8 @@ export const opticksAiEditor: CaseStudy = {
           alt: "Phase 2, Iteration 2 wireframe",
           src: "/images/case-studies/opticks-ai-editor/wireframe-p2-i2-717x287.webp",
           width: 717,
-          height: 287
+          height: 287,
+          mobileCard: { height: 360, flat: "/images/case-studies/opticks-ai-editor/wireframe-p2-i2-m.webp" }
         }
       ]
     },
@@ -382,7 +456,17 @@ export const opticksAiEditor: CaseStudy = {
           poster: "/images/case-studies/opticks-ai-editor/final-generation-1920x911.webp",
           width: 1000,
           height: 482,
-          inset: { x: 54, y: 30, width: 892, height: 423, background: "#eef5ee" }
+          inset: { x: 54, y: 30, width: 892, height: 423, background: "#eef5ee" },
+          mobileCard: {
+            height: 482,
+            background: "#eef5ee",
+            layers: [{
+              x: -138, y: 89, w: 642, h: 305,
+              webm: "/images/case-studies/opticks-ai-editor/final-generation-1920x911.webm",
+              mp4: "/images/case-studies/opticks-ai-editor/final-generation-1920x911.mp4",
+              poster: "/images/case-studies/opticks-ai-editor/final-generation-1920x911.webp"
+            }]
+          }
         },
         {
           type: "item",
@@ -400,7 +484,17 @@ export const opticksAiEditor: CaseStudy = {
           poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webp",
           width: 1000,
           height: 482,
-          inset: { x: 70, y: 35.5, width: 879, height: 411, background: "#eaeefb", border: "#acbcef" }
+          inset: { x: 70, y: 35.5, width: 879, height: 411, background: "#eaeefb", border: "#acbcef" },
+          mobileCard: {
+            height: 482,
+            background: "#eaeefb",
+            layers: [{
+              x: 23, y: 35, w: 879, h: 411, border: "#acbcef",
+              webm: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webm",
+              mp4: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.mp4",
+              poster: "/images/case-studies/opticks-ai-editor/frame-2085663060-opticks-1-gif-1280x599-63dd369639.webp"
+            }]
+          }
         }
       ]
     }

@@ -266,22 +266,22 @@ function RaipurSummary() {
 function OpticksSummary() {
   return (
     <section aria-labelledby="summary-title" className="bg-[#e6f7fb]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-6 px-5 py-12 lg:items-start lg:px-20">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-6 px-[21px] py-12 lg:items-start lg:px-20">
         <h2 id="summary-title" className="text-[1.5rem] font-bold leading-7 text-[#254d4f]">
           Summary
         </h2>
         <div className="grid w-full grid-cols-1 gap-6 rounded-[16px] bg-white p-4 lg:h-[572px] lg:grid-cols-4">
           <article className="flex flex-col justify-end gap-4 rounded-[16px] bg-gradient-to-b from-[#fbfbff] to-[#efeeff] px-6 py-8 text-[#254d4f] lg:h-full">
-            <h3 className="text-[1.25rem] font-semibold leading-normal">Problem Statement</h3>
+            <h3 className="text-[1.25rem] font-semibold leading-[24px] lg:leading-normal">Problem Statement</h3>
             <p className="text-[0.875rem] font-normal leading-5">
               We noticed advertisers constantly struggling to create app store screenshots. While we recognized this gap early on, solutions were limited.
             </p>
           </article>
 
           <article className="flex flex-col gap-8 rounded-[16px] bg-gradient-to-b from-[#efeeff] to-[#fbfbff] p-6 text-[#254d4f] lg:h-full lg:justify-between lg:gap-0">
-            <p className="text-[1.5rem] font-bold leading-normal lg:text-[2rem] lg:leading-[37px]">Creative set generation tool</p>
+            <p className="text-[1.5rem] font-bold leading-[29px] lg:text-[2rem] lg:leading-[37px]">Creative set generation tool</p>
             <div className="flex flex-col gap-6">
-              <h3 className="text-[1.25rem] font-semibold leading-normal">Solution</h3>
+              <h3 className="text-[1.25rem] font-semibold leading-[24px] lg:leading-normal">Solution</h3>
               <p className="text-[0.875rem] font-normal leading-5">
                 Our initial concept used single prompts. Since AI rarely yields perfect immediate results, we will add a customization editor in phase two
               </p>
@@ -292,7 +292,7 @@ function OpticksSummary() {
             <article className="flex flex-col gap-8 rounded-[16px] bg-gradient-to-b from-[#fbfbff] to-[#efeeff] px-6 py-8 lg:h-[292px] lg:justify-between lg:gap-0">
               <p className="text-[0.875rem] font-medium leading-5 text-[#3e8083]">4-6 Weeks</p>
               <div className="flex flex-col gap-4 text-[#254d4f]">
-                <h3 className="text-[1.25rem] font-semibold leading-normal">Phase 1, Generation Tool</h3>
+                <h3 className="text-[1.25rem] font-semibold leading-[24px] lg:leading-normal">Phase 1, Generation Tool</h3>
                 <p className="text-[0.875rem] font-normal leading-5">
                   Phase 1 focused on defining the core user experience and UI design for the image generation engine.
                 </p>
@@ -301,7 +301,7 @@ function OpticksSummary() {
             <article className="flex flex-col gap-8 rounded-[16px] bg-gradient-to-b from-[#efeeff] to-[#fbfbff] px-6 py-8 lg:min-h-0 lg:flex-1 lg:justify-between lg:gap-0">
               <p className="text-[0.875rem] font-medium leading-5 text-[#3e8083]">3-4 Weeks</p>
               <div className="flex flex-col gap-4 text-[#254d4f]">
-                <h3 className="text-[1.25rem] font-semibold leading-normal">Phase 2, Editor</h3>
+                <h3 className="text-[1.25rem] font-semibold leading-[24px] lg:leading-normal">Phase 2, Editor</h3>
                 <p className="text-[0.875rem] font-normal leading-5">
                   Based on advertiser feedback, the initial editing options were insufficient, leading us to build an advanced, comprehensive editor.
                 </p>
@@ -311,16 +311,16 @@ function OpticksSummary() {
 
           <div className="flex flex-col gap-4 lg:h-full">
             <article className="flex flex-col gap-[122px] rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:h-[225px] lg:justify-between lg:gap-0">
-              <p className="text-[1.5rem] font-bold leading-normal lg:text-[2rem] lg:leading-[37px]">5 Iterations</p>
+              <p className="text-[1.5rem] font-bold leading-[29px] lg:text-[2rem] lg:leading-[37px]">5 Iterations</p>
               <div className="flex flex-col gap-3">
-                <h3 className="text-[1.25rem] font-semibold leading-normal">Wireframing</h3>
-                <p className="text-[0.875rem] font-normal leading-normal">
+                <h3 className="text-[1.25rem] font-semibold leading-[24px] lg:leading-normal">Wireframing</h3>
+                <p className="text-[0.875rem] font-normal leading-[17px] lg:leading-normal">
                   More then 5 Iterations has been done to reach upto final solution.
                 </p>
               </div>
             </article>
             <article className="flex flex-col justify-end gap-4 rounded-[16px] bg-gradient-to-b from-[#fbfbff] to-[#efeeff] px-6 py-8 text-[#254d4f] lg:min-h-0 lg:flex-1">
-              <h3 className="text-[1.25rem] font-semibold leading-normal">Design for Phase 1 and 2</h3>
+              <h3 className="text-[1.25rem] font-semibold leading-[24px] lg:leading-normal">Design for Phase 1 and 2</h3>
               <p className="text-[0.875rem] font-normal leading-5">It was a time where we had to finalise UI with prototype.</p>
             </article>
           </div>

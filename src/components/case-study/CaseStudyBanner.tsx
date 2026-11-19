@@ -119,6 +119,8 @@ function bannerCss(slug: string, spec: HeroSpec) {
     spec.media && rule(".hero-media", spec.media.mobile, spec.media.desktop),
     slug === "media-planner" &&
       ".media-planner-hero .hero-media{box-sizing:border-box;border:4px solid #193334;border-radius:8px;overflow:hidden;}",
+    slug === "opticks-ai-editor" &&
+      "@media (max-width:1023px){.opticks-ai-editor-hero{border-radius:8px;overflow:hidden;}.opticks-ai-editor-hero .hero-media{box-sizing:border-box;border:4px solid #193334;border-radius:8px;overflow:hidden;object-fit:cover;}}",
     spec.phone && rule(".hero-phone", place(spec.phone.mobile), place(spec.phone.desktop)),
   ]
     .filter(Boolean)

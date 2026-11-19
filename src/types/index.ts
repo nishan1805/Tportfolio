@@ -123,6 +123,8 @@ export type ItemBlock = {
   note?: string;
   /** Still or video rendered inside the item (media-card sections). */
   media?: ImageItem;
+  /** Mobile-only lead plus disc list. Desktop keeps the flat `text`. */
+  mobileList?: MobileList;
 };
 
 /** `width` and `height` = size of the image slot in Figma (px). Gives the slot the exact same shape. */
@@ -167,6 +169,34 @@ export type ImageItem = {
     background: string;
     border?: string;
   };
+  /**
+   * Mobile card measured on a 366-wide frame. Percentages scale it to the live 360 column.
+   * Desktop keeps `inset` / the full-slot image.
+   */
+  mobileCard?: MobileCard;
+};
+export type MobileBullet = { label?: string; text: string };
+export type MobileList = { lead: string; items: MobileBullet[] };
+export type MobileCardLayer = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  border?: string;
+  src?: string;
+  webm?: string;
+  mp4?: string;
+  poster?: string;
+  /** Vertically centre the layer (top = 50% + 0.5px). */
+  centerY?: boolean;
+};
+export type MobileCard = {
+  /** Card height when the width is 366. */
+  height: number;
+  background?: string;
+  /** Flattened card image that already includes background and clipping. */
+  flat?: string;
+  layers?: MobileCardLayer[];
 };
 export type ImageBlock = { type: "image" } & ImageItem;
 /** Images placed side by side in one row. */
@@ -176,6 +206,8 @@ export type TextBlock = {
   text: string;
   /** Phrase inside `text` drawn at semibold. */
   emphasis?: string;
+  /** Mobile-only lead plus disc list. Desktop keeps the flat `text`. */
+  mobileList?: MobileList;
 };
 
 export type ListBlock = {
