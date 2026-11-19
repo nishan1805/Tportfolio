@@ -123,6 +123,10 @@ export type ItemBlock = {
   note?: string;
   /** Still or video rendered inside the item (media-card sections). */
   media?: ImageItem;
+  /** Vertically center the text against a side image from the lg breakpoint. */
+  align?: "center";
+  /** Small image under the paragraph, e.g. competitor logos. */
+  footerImage?: ImageItem;
 };
 
 /** `width` and `height` = size of the image slot in Figma (px). Gives the slot the exact same shape. */
@@ -167,6 +171,12 @@ export type ImageItem = {
     background: string;
     border?: string;
   };
+  /** Cropped card used below the lg breakpoint. The desktop slot stays `src`. */
+  mobileSrc?: string;
+  mobileWidth?: number;
+  mobileHeight?: number;
+  /** Keep text and image stacked until the lg breakpoint. */
+  pairAt?: "lg";
 };
 export type ImageBlock = { type: "image" } & ImageItem;
 /** Images placed side by side in one row. */
@@ -178,6 +188,32 @@ export type TextBlock = {
   emphasis?: string;
 };
 
+/** One photo or recording placed inside a tinted, clipped card. */
+export type FrameMedia = {
+  alt: string;
+  src: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  radius?: number;
+  border?: string;
+  borderWidth?: number;
+};
+
+/** A clipped card. `width` and `height` are the desktop slot; `mobile` replaces it below lg. */
+export type FrameSpec = {
+  width: number;
+  height: number;
+  background?: string;
+  radius?: number;
+  /** Stay at the design width. Otherwise the card stretches to the column. */
+  cap?: boolean;
+  items: FrameMedia[];
+};
+
+export type FrameBlock = { type: "frame"; pairAt?: "lg"; mobile?: FrameSpec } & FrameSpec;
+
 export type ListBlock = {
   type: "list";
   /** Left margin of each item, in px. */
@@ -185,7 +221,7 @@ export type ListBlock = {
   items: { lead?: string; text: string }[];
 };
 
-export type CaseStudyBlock = TextBlock | ItemBlock | ImageBlock | ImagesBlock | ListBlock;
+export type CaseStudyBlock = TextBlock | ItemBlock | ImageBlock | ImagesBlock | FrameBlock | ListBlock;
 
 export type CaseStudySection = {
   /** Used for the #anchor link and the side menu. */
@@ -206,6 +242,8 @@ export type CaseStudySection = {
    * `icon-tile` — 24px heading, copy, and one image on a pale green tile.
    */
   layout?: "copy" | "plain" | "media-cards" | "components" | "icon-tile" | "story" | "photo-pair" | "stacked" | "plain-grid";
+  /** Space between blocks, in px. Defaults to 32. */
+  blockGap?: number;
 };
 
 /** One tall card in the "Summary" strip under the banner (image + text). */

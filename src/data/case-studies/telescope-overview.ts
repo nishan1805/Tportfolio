@@ -90,11 +90,7 @@ export const telescopeOverview: CaseStudy = {
       blocks: [
         {
           type: "text",
-          text: "Newton’s Telescope is an advanced analytics tool designed to give you a complete picture of your app's App Store performance in seconds."
-        },
-        {
-          type: "text",
-          text: "By consolidating data from Apple Search Ads, Apple Search Optimization ASO, and your Mobile Measurement Partners MMPs, it provides a unified, high-level view of your app's standing. It is built to deliver these detailed, actionable insights faster than any other tool in the ad-tech space, helping you make informed decisions quickly."
+          text: "Newton’s Telescope is an advanced analytics tool designed to give you a complete picture of your app's App Store performance in seconds.  By consolidating data from Apple Search Ads, Apple Search Optimization ASO, and your Mobile Measurement Partners MMPs, it provides a unified, high-level view of your app's standing. It is built to deliver these detailed, actionable insights faster than any other tool in the ad-tech space, helping you make informed decisions quickly."
         },
         {
           type: "item",
@@ -114,7 +110,7 @@ export const telescopeOverview: CaseStudy = {
         },
         {
           type: "text",
-          text: "- Report generation was previously manual and time-consuming, involving data extraction from disparate platforms like SplitMetrics and Sensor Tower.\n- This method was unprofessional, increasing human error and lacking the consistency of automated solutions.\n- The significant effort involved directly hindered operational efficiency and overall productivity."
+          text: "Report generation was previously manual and time-consuming, involving data extraction from disparate platforms like SplitMetrics and Sensor Tower. This method was unprofessional, increasing human error and lacking the consistency of automated solutions. The significant effort involved directly hindered operational efficiency and overall productivity."
         },
         {
           type: "item",
@@ -146,7 +142,6 @@ export const telescopeOverview: CaseStudy = {
     },
     {
       id: "research",
-      layout: "stacked",
       title: "Research",
       blocks: [
         {
@@ -157,41 +152,150 @@ export const telescopeOverview: CaseStudy = {
           type: "item",
           title: "Competition Analysis",
           text: "Before diving into wireframe we had lot of internal interviews to get the idea of visualization and sequencing the data in right manner so that both side of business can adapt it very easily. Our Interview held in different levels which I’m listing down below.",
-          width: 346
+          width: 346,
+          footerImage: {
+            alt: "Competitor logos",
+            src: "/images/case-studies/telescope-overview/competition-logos.png",
+            width: 132,
+            height: 36
+          }
         },
         {
-          type: "image",
-          alt: "Research - image 1",
-          src: "/images/case-studies/telescope-overview/research-competition.webp",
-          width: 616,
-          height: 317
+          type: "frame",
+          pairAt: "lg",
+          width: 360,
+          height: 480,
+          background: "#eaeefb",
+          radius: 8,
+          cap: true,
+          items: [
+            {
+              alt: "MobileAction competitor comparison",
+              src: "/images/case-studies/telescope-overview/frame-2085663027-competitors-analysis-1-2303x3357-ac31497290.webp",
+              x: 23,
+              y: 33,
+              width: 439,
+              height: 639
+            }
+          ]
         },
         {
           type: "item",
           title: "Internal Interviews to Frame Data",
-          note: "Structure or Level of Interviews\nFounder and Co-Founder level\nOps team\nSales Team\nTech and Product Team",
           text: "Before diving into wireframe we had lot of internal interviews to get the idea of visualization and sequencing the data in right manner so that both side of business can adapt it very easily. Our Interview held in different levels which I’m listing down below.",
+          note: "Structure or Level of Interviews Founder and Co-Founder level Ops team Sales Team Tech and Product Team",
           width: 346
         },
         {
           type: "image",
           alt: "Research - image 2",
-          src: "/images/case-studies/telescope-overview/research-interviews.webp",
+          src: "/images/case-studies/telescope-overview/frame-2085663027-telescope-research-shot-2-1824x1288-630ce03873.webp",
           width: 616,
           height: 485
         },
         {
           type: "item",
+          variant: "heading",
           title: "Group Brainstorming",
           text: "Following extensive internal team sessions, we gathered numerous requirements and visualization ideas for data sequencing. This led to wireframing and parameter framing, ultimately guiding our decision to organize the structure as detailed below.",
           width: 1018
         },
         {
-          type: "image",
-          alt: "Research - image 3",
-          src: "/images/case-studies/telescope-overview/research-brainstorm.webp",
+          type: "frame",
           width: 1018,
-          height: 317
+          height: 317,
+          background: "#eaeefb",
+          radius: 8,
+          items: [
+            {
+              alt: "Team meeting sketching the Telescope structure",
+              src: "/images/case-studies/telescope-overview/frame-2085663027-telescope-screenshot-2880x1800-c7a05f854b.webp",
+              x: 14,
+              y: 14,
+              width: 231,
+              height: 144
+            },
+            {
+              alt: "Whiteboard notes from the brainstorm",
+              src: "/images/case-studies/telescope-overview/frame-2085663027-whatsapp-image-1600x1200-36ed45d6c3.webp",
+              x: 14,
+              y: 168,
+              width: 231,
+              height: 134
+            },
+            {
+              alt: "Brainstorm whiteboard, portrait",
+              src: "/images/case-studies/telescope-overview/frame-2085663027-image-3687-3024x4032-20e9da433e.webp",
+              x: 262,
+              y: 14,
+              width: 216,
+              height: 288
+            },
+            {
+              alt: "Brainstorm whiteboard with red marker",
+              src: "/images/case-studies/telescope-overview/frame-2085663027-image-3688-4096x3072-47254dbf01.webp",
+              x: 495,
+              y: 14,
+              width: 240,
+              height: 288
+            },
+            {
+              alt: "Brainstorm whiteboard with a diagram",
+              src: "/images/case-studies/telescope-overview/frame-2085663027-image-3686-4096x3072-06996c6fb2.webp",
+              x: 752,
+              y: 14,
+              width: 345,
+              height: 289
+            }
+          ],
+          mobile: {
+            width: 360,
+            height: 1454,
+            background: "#eaeefb",
+            radius: 8,
+            items: [
+              {
+                alt: "Team meeting sketching the Telescope structure",
+                src: "/images/case-studies/telescope-overview/frame-2085663027-telescope-screenshot-2880x1800-c7a05f854b.webp",
+                x: 0,
+                y: 14,
+                width: 360,
+                height: 225
+              },
+              {
+                alt: "Whiteboard notes from the brainstorm",
+                src: "/images/case-studies/telescope-overview/frame-2085663027-whatsapp-image-1600x1200-36ed45d6c3.webp",
+                x: 0,
+                y: 249,
+                width: 360,
+                height: 134
+              },
+              {
+                alt: "Brainstorm whiteboard with red marker",
+                src: "/images/case-studies/telescope-overview/frame-2085663027-image-3688-4096x3072-47254dbf01.webp",
+                x: 0,
+                y: 383,
+                width: 360,
+                height: 288
+              },
+              {
+                alt: "Brainstorm whiteboard, portrait",
+                src: "/images/case-studies/telescope-overview/frame-2085663027-image-3687-3024x4032-20e9da433e.webp",
+                x: 0,
+                y: 671,
+                width: 360,
+                height: 480
+              },
+              {
+                alt: "Brainstorm whiteboard with a diagram",
+                src: "/images/case-studies/telescope-overview/frame-2085663027-image-3686-4096x3072-06996c6fb2.webp",
+                x: 0,
+                y: 1151,
+                width: 345,
+                height: 289
+              }
+            ]
+          }
         }
       ]
     },
@@ -204,18 +308,44 @@ export const telescopeOverview: CaseStudy = {
           text: "Having a PRD is extremely helpful for design since it provides clarity about how the product will look, what the ultimate goals are, and what edge cases to consider. It helped us uncover many potential scenarios we needed to address."
         },
         {
-          type: "image",
-          alt: "Getting PRD - image 1",
-          src: "/images/case-studies/telescope-overview/frame-2085663029-getting-prd-2880x1556-32cf4f2e2a.webp",
+          type: "frame",
           width: 1018,
-          height: 341
+          height: 341,
+          background: "#eaeefb",
+          radius: 8,
+          items: [
+            {
+              alt: "Telescope overview PRD",
+              src: "/images/case-studies/telescope-overview/frame-2085663029-getting-prd-2880x1556-32cf4f2e2a.webp",
+              x: 170,
+              y: 32,
+              width: 678,
+              height: 366
+            }
+          ],
+          mobile: {
+            width: 360,
+            height: 341,
+            background: "#eaeefb",
+            radius: 8,
+            items: [
+              {
+                alt: "Telescope overview PRD",
+                src: "/images/case-studies/telescope-overview/frame-2085663029-getting-prd-2880x1556-32cf4f2e2a.webp",
+                x: 29,
+                y: 44,
+                width: 468,
+                height: 253
+              }
+            ]
+          }
         }
       ]
     },
     {
       id: "wireframing",
-      layout: "stacked",
       title: "Wireframing",
+      blockGap: 48,
       blocks: [
         {
           type: "text",
@@ -229,10 +359,14 @@ export const telescopeOverview: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Wireframing - image 1",
-          src: "/images/case-studies/telescope-overview/wf-loading-1.webp",
+          alt: "Loading page, iteration 1",
+          src: "/images/case-studies/telescope-overview/wire-loading-1-desktop.png",
           width: 730,
-          height: 337
+          height: 337,
+          mobileSrc: "/images/case-studies/telescope-overview/wire-loading-1-mobile.png",
+          mobileWidth: 360,
+          mobileHeight: 380,
+          pairAt: "lg"
         },
         {
           type: "item",
@@ -242,10 +376,14 @@ export const telescopeOverview: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Wireframing - image 2",
-          src: "/images/case-studies/telescope-overview/wf-loading-2.webp",
+          alt: "Loading page, iteration 2",
+          src: "/images/case-studies/telescope-overview/wire-loading-2-desktop.png",
           width: 730,
-          height: 337
+          height: 337,
+          mobileSrc: "/images/case-studies/telescope-overview/wire-loading-2-mobile.png",
+          mobileWidth: 360,
+          mobileHeight: 380,
+          pairAt: "lg"
         },
         {
           type: "item",
@@ -255,10 +393,14 @@ export const telescopeOverview: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Wireframing - image 3",
-          src: "/images/case-studies/telescope-overview/wf-report-1.webp",
+          alt: "Report generation, iteration 1",
+          src: "/images/case-studies/telescope-overview/wire-report-1-desktop.png",
           width: 730,
-          height: 328
+          height: 328,
+          mobileSrc: "/images/case-studies/telescope-overview/wire-report-1-mobile.png",
+          mobileWidth: 360,
+          mobileHeight: 380,
+          pairAt: "lg"
         },
         {
           type: "item",
@@ -268,10 +410,14 @@ export const telescopeOverview: CaseStudy = {
         },
         {
           type: "image",
-          alt: "Wireframing - image 4",
-          src: "/images/case-studies/telescope-overview/wf-report-2.webp",
+          alt: "Report generation, iteration 2",
+          src: "/images/case-studies/telescope-overview/wire-report-2-desktop.png",
           width: 730,
-          height: 337
+          height: 337,
+          mobileSrc: "/images/case-studies/telescope-overview/wire-report-2-mobile.png",
+          mobileWidth: 360,
+          mobileHeight: 380,
+          pairAt: "lg"
         }
       ]
     },
@@ -287,24 +433,60 @@ export const telescopeOverview: CaseStudy = {
           type: "item",
           title: "Overview Section",
           text: "This section provides a high-level performance overview, featuring the Newton Index Score with breakdowns for App Store Ads (ASA) and App Store Optimization ASO.",
-          width: 473,
-          variant: "panel",
-          note: "This page is designed to provide advertisers with an immediate overview of current performance status."
+          width: 473
+        },
+        {
+          type: "text",
+          text: "Objective: This page is designed to provide advertisers with an immediate overview of current performance status."
         },
         {
           type: "item",
           title: "Detailed View, Apple Ads and ASO",
           text: "The detailed view is split into ASA and ASO, with ASA offering deeper, more granular insights since we fetch this data directly via client app integration.",
-          width: 473,
-          variant: "panel",
-          note: "These two sections enable users to closely analyze performance through appropriate graphs and data."
+          width: 473
         },
         {
-          type: "image",
-          alt: "Final UI - image 1",
-          src: "/images/case-studies/telescope-overview/final-ui-overview.webp",
+          type: "text",
+          text: "Objective: These two sections enable users to closely analyze performance through appropriate graphs and data."
+        },
+        {
+          type: "frame",
           width: 1018,
-          height: 511
+          height: 511,
+          background: "#eaeefb",
+          radius: 8,
+          items: [
+            {
+              alt: "Telescope dashboard",
+              src: "/images/case-studies/telescope-overview/final-ui-dashboard.gif",
+              x: 102,
+              y: 37,
+              width: 814,
+              height: 438,
+              radius: 8,
+              border: "#99e0ed",
+              borderWidth: 4
+            }
+          ],
+          mobile: {
+            width: 360,
+            height: 511,
+            background: "#eaeefb",
+            radius: 8,
+            items: [
+              {
+                alt: "Telescope dashboard",
+                src: "/images/case-studies/telescope-overview/final-ui-dashboard.gif",
+                x: -392,
+                y: 61,
+                width: 722,
+                height: 389,
+                radius: 8,
+                border: "#99e0ed",
+                borderWidth: 4
+              }
+            ]
+          }
         }
       ]
     },
@@ -316,27 +498,37 @@ export const telescopeOverview: CaseStudy = {
           type: "item",
           title: "Preparing Variants",
           text: "Variants are essential for efficiently controlling individual sectional elements with a single click across all screens, effectively handling edge cases.",
-          width: 232
+          width: 232,
+          align: "center"
         },
         {
           type: "image",
-          alt: "Delivery Benchmark - image 1",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-whatsapp-image-1600x1200-36ed45d6c3.webp",
+          alt: "Preparing variants of the Telescope charts",
+          src: "/images/case-studies/telescope-overview/delivery-variants-desktop.png",
           width: 730,
-          height: 267
+          height: 267,
+          mobileSrc: "/images/case-studies/telescope-overview/delivery-variants-mobile.png",
+          mobileWidth: 360,
+          mobileHeight: 380,
+          pairAt: "lg"
         },
         {
           type: "item",
           title: "Loading States",
           text: "Loading state are comming form frontend library these day but sometime to be precise we need to make loading state by our own.",
-          width: 232
+          width: 232,
+          align: "center"
         },
         {
           type: "image",
-          alt: "Delivery Benchmark - image 2",
-          src: "/images/case-studies/telescope-overview/frame-2085663027-image-3686-4096x3072-06996c6fb2.webp",
+          alt: "Loading state skeletons for the Telescope report",
+          src: "/images/case-studies/telescope-overview/delivery-loading-desktop.png",
           width: 730,
-          height: 267
+          height: 267,
+          mobileSrc: "/images/case-studies/telescope-overview/delivery-loading-mobile.png",
+          mobileWidth: 360,
+          mobileHeight: 380,
+          pairAt: "lg"
         }
       ]
     }
