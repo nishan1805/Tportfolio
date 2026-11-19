@@ -8,11 +8,10 @@ import { SectionNav } from "./SectionNav";
 
 export function CaseStudyBody({
   sections,
-  lead = false,
   variant,
 }: {
   sections: CaseStudySection[];
-  /** 56px on mobile and 80px on desktop between the banner and the first section. */
+  /** Kept for callers. Every page now uses 56px (mobile) / 80px (desktop) between the banner and the first section. */
   lead?: boolean;
   /** Opticks uses its own column and the Figma section rhythm. Other pages stay on the shared layout. */
   variant?: "opticks";
@@ -24,7 +23,7 @@ export function CaseStudyBody({
       className={cn(
         "mx-auto w-full max-w-[1440px] min-w-0 lg:grid lg:px-20",
         opticks ? "lg:grid-cols-[216px_64px_minmax(0,1000px)]" : "lg:grid-cols-[216px_48px_minmax(0,1016px)]",
-        lead ? "px-[21px]" : "px-5",
+        "px-[21px]",
       )}
     >
       <aside className="min-w-0">
@@ -35,7 +34,7 @@ export function CaseStudyBody({
         className={cn(
           "flex min-w-0 max-w-full flex-col overflow-x-clip",
           opticks ? "gap-0 pt-20 pb-20 lg:max-w-[1000px]" : "gap-20 pb-24 lg:max-w-[1016px] lg:pb-20",
-          !opticks && lead && "pt-14 lg:pt-20",
+          !opticks && "pt-14 lg:pt-20",
         )}
       >
         {opticks

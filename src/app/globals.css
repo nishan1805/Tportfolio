@@ -1,13 +1,54 @@
 @import "tailwindcss";
 
 /*
- * Font family is centralised here. Outfit stands in for the licensed Nekst
- * face. Swap --font-family (or the next/font variable in layout.tsx) to
- * change the site in one place. The accessibility panel overrides
- * --font-family at runtime.
+ * Font family is centralised here. Nekst is the exact family used in the
+ * Figma file (FONTSPRING DEMO - Nekst). Swap --font-family (or the next/font
+ * variable in layout.tsx) to change the site in one place. The accessibility
+ * panel overrides --font-family at runtime.
  */
+@font-face {
+  font-family: "Nekst Symbols";
+  src: url("./fonts/outfit-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  /* The Nekst demo cut draws a placeholder for & ( ) @. Figma shows a plain sans (Inter) there. */
+  unicode-range: U+0026, U+0028-0029, U+0040;
+}
+@font-face {
+  font-family: "Nekst Symbols";
+  src: url("./fonts/outfit-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+  /* The Nekst demo cut draws a placeholder for & ( ) @. Figma shows a plain sans (Inter) there. */
+  unicode-range: U+0026, U+0028-0029, U+0040;
+}
+@font-face {
+  font-family: "Nekst Symbols";
+  src: url("./fonts/outfit-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+  /* The Nekst demo cut draws a placeholder for & ( ) @. Figma shows a plain sans (Inter) there. */
+  unicode-range: U+0026, U+0028-0029, U+0040;
+}
+@font-face {
+  font-family: "Nekst Symbols";
+  src: url("./fonts/outfit-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+  /* The Nekst demo cut draws a placeholder for & ( ) @. Figma shows a plain sans (Inter) there. */
+  unicode-range: U+0026, U+0028-0029, U+0040;
+}
+@font-face {
+  font-family: "Nekst Symbols";
+  src: url("./fonts/outfit-latin-900-normal.woff2") format("woff2");
+  font-weight: 900;
+  font-display: swap;
+  /* The Nekst demo cut draws a placeholder for & ( ) @. Figma shows a plain sans (Inter) there. */
+  unicode-range: U+0026, U+0028-0029, U+0040;
+}
+
 :root {
-  --font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-family: "Nekst Symbols", var(--font-nekst), ui-sans-serif, system-ui, sans-serif;
   --a11y-scale: 1;
   --color-ink: #000000;
   --color-teal-800: #254d4f;

@@ -16,7 +16,7 @@ export function useA11y() {
 }
 
 const FONTS = [
-  { label: "Outfit", value: "var(--font-outfit), ui-sans-serif, system-ui, sans-serif" },
+  { label: "Nekst", value: "var(--font-nekst), ui-sans-serif, system-ui, sans-serif" },
   { label: "System Sans", value: "ui-sans-serif, system-ui, sans-serif" },
   { label: "Serif", value: "Georgia, 'Times New Roman', serif" },
 ] as const;

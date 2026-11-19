@@ -8,18 +8,20 @@ import { siteConfig } from "@/data/site";
 
 import "./globals.css";
 
-// Self-hosted Outfit (OFL). next/font/google fails on Vercel because the Google
-// Fonts CSS returns font URLs with no file extension. Weights match the design:
-// regular, medium, semibold, bold, black. The family is --font-outfit.
-const outfit = localFont({
+// Self-hosted Nekst demo, the exact family used in the Figma file
+// ("FONTSPRING DEMO - Nekst"). Each weight is a separate demo cut, so they are
+// registered on one family via next/font/local. The family is --font-nekst.
+const nekst = localFont({
   src: [
-    { path: "./fonts/outfit-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/outfit-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/outfit-latin-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "./fonts/outfit-latin-700-normal.woff2", weight: "700", style: "normal" },
-    { path: "./fonts/outfit-latin-900-normal.woff2", weight: "900", style: "normal" },
+    { path: "./fonts/nekst-thin.woff2", weight: "100", style: "normal" },
+    { path: "./fonts/nekst-light.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/nekst-regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/nekst-medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/nekst-semibold.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/nekst-bold.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/nekst-black.woff2", weight: "900", style: "normal" },
   ],
-  variable: "--font-outfit",
+  variable: "--font-nekst",
   display: "swap",
 });
 
@@ -32,7 +34,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={outfit.variable}>
+    <html lang="en" className={nekst.variable}>
       <body className="bg-white font-sans text-black antialiased">
         <AccessibilityProvider>
           <Navbar />

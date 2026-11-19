@@ -19,16 +19,23 @@ export const designSystemAndIconography: CaseStudy = {
     {
       id: "introduction",
       title: "Introduction",
+      layout: "copy",
       blocks: [
         {
           type: "text",
-          text: "Building modern digital products at scale requires consistency, efficiency, and seamless collaboration between design and engineering. To streamline this process and give back to the global design ecosystem, I created and published the Pixel Design System on the Figma Community. The system serves as a foundational toolkit, providing pre-built, accessible, and tokenized UI components designed to accelerate workflows and unify brand aesthetics across desktop and mobile interfaces."
+          text: "Building modern digital products at scale requires consistency, efficiency, and seamless collaboration between design and engineering. To streamline this process and give back to the global design ecosystem, I created and published the Pixel Design System on the Figma Community."
+        },
+        {
+          type: "text",
+          text: "The system serves as a foundational toolkit, providing pre-built, accessible, and tokenized UI components designed to accelerate workflows and unify brand aesthetics across desktop and mobile interfaces."
         }
       ]
     },
     {
       id: "what-why-and-when-to-use-a-design-system",
+      navTitle: "What, Why, When",
       title: "What, Why, and When to Use a Design System",
+      layout: "plain",
       blocks: [
         {
           type: "item",
@@ -52,7 +59,9 @@ export const designSystemAndIconography: CaseStudy = {
     },
     {
       id: "how-to-design-it-how-i-designed-it",
+      navTitle: "How to Design It",
       title: "How to Design It, How I Designed It",
+      layout: "components",
       blocks: [
         {
           type: "item",
@@ -79,134 +88,86 @@ export const designSystemAndIconography: CaseStudy = {
           width: 1016
         },
         {
-          type: "text",
-          text: "Avatars"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 1",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-ds-screenshot-472x278-c4b8577fdf.webp",
+          alt: "Avatars",
+          src: "/images/case-studies/design-system-and-iconography/components/avatars.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Buttons"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 2",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-ds-screenshot-464x280-3f5671c712.webp",
+          alt: "Buttons",
+          src: "/images/case-studies/design-system-and-iconography/components/buttons.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Chips"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 3",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663064-icons-1-1395x648-8f56d5b533.png",
+          alt: "Chips",
+          src: "/images/case-studies/design-system-and-iconography/components/chips.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Calendar"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 4",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-ds-screenshot-468x294-44cdb86bd8.webp",
+          alt: "Calendar",
+          src: "/images/case-studies/design-system-and-iconography/components/calendar.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Cards"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 5",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-button-1-356x310-301befbdfb.png",
+          alt: "Cards",
+          src: "/images/case-studies/design-system-and-iconography/components/cards.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Input Field"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 6",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-button-1-469x288-94464dd7a6.png",
+          alt: "Input Field",
+          src: "/images/case-studies/design-system-and-iconography/components/input-field.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Menu"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 7",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-button-1-525x443-6591b20f75.png",
+          alt: "Menu",
+          src: "/images/case-studies/design-system-and-iconography/components/menu.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "List"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 8",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-button-1-731x468-736f1bd38f.png",
+          alt: "List",
+          src: "/images/case-studies/design-system-and-iconography/components/list.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Progress"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 9",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-ds-screenshot-470x350-12a64c4b6e.webp",
+          alt: "Progress",
+          src: "/images/case-studies/design-system-and-iconography/components/progress.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Sliders"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 10",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-ds-screenshot-462x342-a74d25a224.webp",
+          alt: "Sliders",
+          src: "/images/case-studies/design-system-and-iconography/components/sliders.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Snack bar"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 11",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-ds-screenshot-478x358-763b731694.webp",
+          alt: "Snack bar",
+          src: "/images/case-studies/design-system-and-iconography/components/snack-bar.webp",
           width: 494,
           height: 278
         },
         {
-          type: "text",
-          text: "Tabs"
-        },
-        {
           type: "image",
-          alt: "How to Design It, How I Designed It - image 12",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-button-1-246x128-0179a15922.png",
+          alt: "Tabs",
+          src: "/images/case-studies/design-system-and-iconography/components/tabs.webp",
           width: 494,
           height: 278
         },
@@ -219,6 +180,7 @@ export const designSystemAndIconography: CaseStudy = {
     {
       id: "iconography",
       title: "Iconography",
+      layout: "icon-tile",
       blocks: [
         {
           type: "text",
@@ -227,9 +189,9 @@ export const designSystemAndIconography: CaseStudy = {
         {
           type: "image",
           alt: "Iconography - image 1",
-          src: "/images/case-studies/design-system-and-iconography/frame-2085663073-button-1-328x106-91b0870bfa.png",
-          width: 1012,
-          height: 353
+          src: "/images/case-studies/design-system-and-iconography/frame-2085663064-icons-1-1395x648-8f56d5b533.png",
+          width: 573,
+          height: 266
         }
       ]
     },
