@@ -118,7 +118,7 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
           </>
         ) : opticks ? (
           <>
-            <dl className="flex gap-6 border-t border-[#b2cccd] px-8 py-6 text-[#193334] lg:hidden">
+            <dl className="flex gap-6 border-t border-[#b2cccd] px-8 py-6 text-[#193334] lg:hidden [&_dt]:leading-[14px]">
               <MetaList items={meta} compact />
             </dl>
             <dl className="hidden w-[587px] shrink-0 flex-col justify-center gap-6 px-20 py-10 text-[#193334] lg:flex">

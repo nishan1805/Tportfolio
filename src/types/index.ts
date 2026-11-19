@@ -123,28 +123,12 @@ export type ItemBlock = {
   note?: string;
   /** Still or video rendered inside the item (media-card sections). */
   media?: ImageItem;
-};
-
-type MobileCardBox = { x: number; y: number; w: number; h: number };
-
-/** One layer inside a 360×height mobile card. Positions are Figma px; the renderer turns them into %. */
-export type MobileCardLayer =
-  | (MobileCardBox & { kind: "img"; src: string; fit: "contain" | "cover" })
-  | (MobileCardBox & { kind: "bordered"; src?: string; video?: string })
-  | (MobileCardBox & {
-      kind: "crop";
-      src: string;
-      /** Inner image box, each value a percentage of the crop wrapper. */
-      image: { left: number; top: number; width: number; height: number };
-    })
-  | (MobileCardBox & { kind: "video"; video: string })
-  | { kind: "line"; y: number };
-
-export type MobileCardSpec = {
-  /** Card height in the 360-wide mobile frame. */
-  height: number;
-  background: string;
-  layers: MobileCardLayer[];
+  /** Mobile-only lead plus disc list. Desktop keeps the flat `text`. */
+  mobileList?: MobileList;
+  /** Vertically center the text against a side image from the lg breakpoint. */
+  align?: "center";
+  /** Small image under the paragraph, e.g. competitor logos. */
+  footerImage?: ImageItem;
 };
 
 /** `width` and `height` = size of the image slot in Figma (px). Gives the slot the exact same shape. */
@@ -189,8 +173,64 @@ export type ImageItem = {
     background: string;
     border?: string;
   };
-  /** Layered card shown below `lg`. Desktop keeps `src` / `width` / `height`. */
-  mobileCard?: MobileCardSpec;
+  /**
+   * Mobile card measured on a 366-wide frame. Percentages scale it to the live 360 column.
+   * Desktop keeps `inset` / the full-slot image.
+   */
+  mobileCard?: MobileCard;
+  /** Layered Raipur Homes card shown below `lg`. Desktop keeps `src` / `width` / `height`. */
+  raipurCard?: RaipurCard;
+  /** Cropped card used below the lg breakpoint. The desktop slot stays `src`. */
+  mobileSrc?: string;
+  mobileWidth?: number;
+  mobileHeight?: number;
+  /** Keep text and image stacked until the lg breakpoint. */
+  pairAt?: "lg";
+};
+export type MobileBullet = { label?: string; text: string };
+export type MobileList = { lead: string; items: MobileBullet[] };
+export type MobileCardLayer = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  border?: string;
+  src?: string;
+  webm?: string;
+  mp4?: string;
+  poster?: string;
+  /** Vertically centre the layer (top = 50% + 0.5px). */
+  centerY?: boolean;
+};
+export type MobileCard = {
+  /** Card height when the width is 366. */
+  height: number;
+  background?: string;
+  /** Flattened card image that already includes background and clipping. */
+  flat?: string;
+  layers?: MobileCardLayer[];
+};
+
+type RaipurCardBox = { x: number; y: number; w: number; h: number };
+
+/** One layer inside a 360×height Raipur card. Positions are Figma px. */
+export type RaipurCardLayer =
+  | (RaipurCardBox & { kind: "img"; src: string; fit: "contain" | "cover" })
+  | (RaipurCardBox & { kind: "bordered"; src?: string; video?: string })
+  | (RaipurCardBox & {
+      kind: "crop";
+      src: string;
+      /** Inner image box, each value a percentage of the crop wrapper. */
+      image: { left: number; top: number; width: number; height: number };
+    })
+  | (RaipurCardBox & { kind: "video"; video: string })
+  | { kind: "line"; y: number };
+
+export type RaipurCard = {
+  /** Card height in the 360-wide mobile frame. */
+  height: number;
+  background: string;
+  layers: RaipurCardLayer[];
 };
 export type ImageBlock = { type: "image" } & ImageItem;
 /** Images placed side by side in one row. */
@@ -200,7 +240,35 @@ export type TextBlock = {
   text: string;
   /** Phrase inside `text` drawn at semibold. */
   emphasis?: string;
+  /** Mobile-only lead plus disc list. Desktop keeps the flat `text`. */
+  mobileList?: MobileList;
 };
+
+/** One photo or recording placed inside a tinted, clipped card. */
+export type FrameMedia = {
+  alt: string;
+  src: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  radius?: number;
+  border?: string;
+  borderWidth?: number;
+};
+
+/** A clipped card. `width` and `height` are the desktop slot; `mobile` replaces it below lg. */
+export type FrameSpec = {
+  width: number;
+  height: number;
+  background?: string;
+  radius?: number;
+  /** Stay at the design width. Otherwise the card stretches to the column. */
+  cap?: boolean;
+  items: FrameMedia[];
+};
+
+export type FrameBlock = { type: "frame"; pairAt?: "lg"; mobile?: FrameSpec } & FrameSpec;
 
 export type ListBlock = {
   type: "list";
@@ -209,7 +277,7 @@ export type ListBlock = {
   items: { lead?: string; text: string }[];
 };
 
-export type CaseStudyBlock = TextBlock | ItemBlock | ImageBlock | ImagesBlock | ListBlock;
+export type CaseStudyBlock = TextBlock | ItemBlock | ImageBlock | ImagesBlock | FrameBlock | ListBlock;
 
 export type CaseStudySection = {
   /** Used for the #anchor link and the side menu. */
@@ -230,6 +298,8 @@ export type CaseStudySection = {
    * `icon-tile` — 24px heading, copy, and one image on a pale green tile.
    */
   layout?: "copy" | "plain" | "media-cards" | "components" | "icon-tile" | "story" | "photo-pair" | "stacked" | "plain-grid";
+  /** Space between blocks, in px. Defaults to 32. */
+  blockGap?: number;
 };
 
 /** One tall card in the "Summary" strip under the banner (image + text). */
