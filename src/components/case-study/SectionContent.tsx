@@ -1,7 +1,8 @@
 import type { CSSProperties } from "react";
 
 import { groupBlocks, type BlockUnit } from "@/lib/case-study";
-import type { CaseStudySection, ImageItem, ItemBlock } from "@/types";
+import { cn } from "@/lib/utils";
+import type { CaseStudySection, FrameBlock, FrameSpec, ImageItem, ItemBlock } from "@/types";
 
 import { BlockImage } from "./BlockImage";
 
@@ -152,6 +153,88 @@ function BodyText({ text }: { text: string }) {
   return <p className="text-[1rem] font-normal leading-[1.625rem] text-[#254d4f]">{text}</p>;
 }
 
+function FrameCanvas({ spec, cap }: { spec: FrameSpec; cap: boolean }) {
+  return (
+    <div
+      className="relative w-full overflow-hidden"
+      style={{
+        aspectRatio: `${spec.width} / ${spec.height}`,
+        maxWidth: cap ? spec.width : undefined,
+        background: spec.background,
+        borderRadius: spec.radius ?? 8,
+      }}
+    >
+      {spec.items.map((item) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={`${item.src}-${item.x}-${item.y}`}
+          src={item.src}
+          alt={item.alt}
+          className="absolute object-cover"
+          style={{
+            left: `${(item.x / spec.width) * 100}%`,
+            top: `${(item.y / spec.height) * 100}%`,
+            width: `${(item.width / spec.width) * 100}%`,
+            height: `${(item.height / spec.height) * 100}%`,
+            maxWidth: "none",
+            borderRadius: item.radius,
+            boxShadow: item.border ? `0 0 0 ${item.borderWidth ?? 4}px ${item.border}` : undefined,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function FrameView({ frame }: { frame: FrameBlock }) {
+  if (!frame.mobile) return <FrameCanvas spec={frame} cap={frame.cap ?? true} />;
+
+  return (
+    <div className="min-w-0">
+      <div className="lg:hidden">
+        <FrameCanvas spec={frame.mobile} cap={frame.mobile.cap ?? false} />
+      </div>
+      <div className="hidden lg:block">
+        <FrameCanvas spec={frame} cap={frame.cap ?? true} />
+      </div>
+    </div>
+  );
+}
+
+function FeatureText({ item }: { item: ItemBlock }) {
+  const [label, title] = item.title.includes(" · ") ? item.title.split(" · ") : [undefined, item.title];
+
+  return (
+    <div>
+      <div className="flex min-w-0 flex-col gap-4 text-[#254d4f]">
+        <div>
+          {label && <p className="text-base font-medium leading-4 text-[#254d4f]">{label}</p>}
+          <h3
+            className={cn(
+              "text-[1.5rem] font-bold",
+              label ? "mt-4 leading-[29px] text-[#254d4f]" : "leading-8 text-[#193334]",
+            )}
+          >
+            {title}
+          </h3>
+        </div>
+        <p className={cn("text-base font-normal", label ? "leading-7" : "leading-[1.625rem]")}>{item.text}</p>
+      </div>
+      {item.note ? <p className="mt-8 text-base font-normal leading-7 text-[#254d4f]">{item.note}</p> : null}
+      {item.footerImage?.src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={item.footerImage.src}
+          alt={item.footerImage.alt}
+          width={item.footerImage.width}
+          height={item.footerImage.height}
+          className="mt-8 h-9 w-[132px] max-w-full object-contain object-left"
+        />
+      ) : null}
+    </div>
+  );
+}
+
 function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
   switch (unit.kind) {
     case "text":
@@ -159,6 +242,9 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
 
     case "image":
       return <BlockImage key={index} image={unit.image} radius={finalUi ? "lg" : "sm"} />;
+
+    case "frame":
+      return <FrameView key={index} frame={unit.frame} />;
 
     case "images":
       return (
@@ -170,32 +256,43 @@ function renderUnit(unit: BlockUnit, index: number, finalUi: boolean) {
       );
 
     case "feature": {
-      const { item, image, imageFirst } = unit;
+      const { item, image, frame, imageFirst } = unit;
+      const visualWidth = frame?.width ?? image?.width ?? 1;
       const textWidth = item.width ?? 232;
-      const [label, title] = item.title.includes(" · ") ? item.title.split(" · ") : [undefined, item.title];
-      const text = (
-        <div className="flex min-w-0 flex-col gap-4 text-[#254d4f]">
-          <div>
-            {label && <p className="mb-3 text-[0.75rem] font-medium leading-normal text-[#8bb3b5]">{label}</p>}
-            <h3 className="text-[1.5rem] font-bold leading-8 text-[#193334]">{title}</h3>
-          </div>
-          <p className="text-[1rem] font-normal leading-[1.625rem]">{item.text}</p>
-        </div>
-      );
+      const pairAtLg = frame?.pairAt === "lg" || image?.pairAt === "lg";
+      const text = <FeatureText item={item} />;
+      const visual = frame ? <FrameView frame={frame} /> : image ? <BlockImage image={image} radius={finalUi ? "lg" : "sm"} /> : null;
 
       return (
         <div
           key={index}
-          className="grid min-w-0 items-start gap-6 md:grid-cols-(--cols) md:gap-8"
-          style={columns(...(imageFirst ? [image.width, textWidth] : [textWidth, image.width]))}
+          className={cn(
+            "grid min-w-0 items-start gap-8",
+            pairAtLg ? "lg:grid-cols-(--cols) lg:gap-14" : "md:grid-cols-(--cols) md:gap-8",
+            item.align === "center" && (pairAtLg ? "lg:items-center" : "md:items-center"),
+          )}
+          style={columns(...(imageFirst ? [visualWidth, textWidth] : [textWidth, visualWidth]))}
         >
-          {imageFirst ? <BlockImage image={image} radius={finalUi ? "lg" : "sm"} /> : text}
-          {imageFirst ? text : <BlockImage image={image} radius={finalUi ? "lg" : "sm"} />}
+          {imageFirst ? visual : text}
+          {imageFirst ? text : visual}
         </div>
       );
     }
 
     case "cards": {
+      if (unit.items.length > 0 && unit.items.every((item) => item.variant === "heading")) {
+        return (
+          <div key={index} className="flex min-w-0 flex-col gap-8">
+            {unit.items.map((item) => (
+              <div key={item.title}>
+                <h3 className="text-[1.5rem] font-bold leading-[29px] text-[#254d4f]">{item.title}</h3>
+                <p className="mt-8 text-base font-normal leading-7 text-[#254d4f]">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        );
+      }
+
       if (unit.items.length > 0 && unit.items.every((item) => item.variant === "panel")) {
         return (
           <ul key={index} className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
@@ -253,7 +350,7 @@ export function SectionContent({ section }: { section: CaseStudySection }) {
   return (
     <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
       <SectionHeading id={section.id} title={section.title} />
-      <div className="mt-9 flex min-w-0 flex-col gap-8">
+      <div className="mt-9 flex min-w-0 flex-col" style={{ gap: section.blockGap ?? 32 }}>
         {groupBlocks(section.blocks).map((unit, index) => renderUnit(unit, index, finalUi))}
       </div>
     </section>

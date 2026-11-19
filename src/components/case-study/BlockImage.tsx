@@ -45,8 +45,30 @@ function Media({ image, className }: { image: ImageItem; className?: string }) {
 
 /** Slot keeps the Figma aspect ratio. Former GIFs play as muted looping video. */
 export function BlockImage({ image, className, radius = "sm", priority = false }: BlockImageProps) {
-  const { src, alt, width, height, webm, mp4, poster, inset } = image;
+  const { src, alt, width, height, webm, mp4, poster, inset, mobileSrc, mobileWidth, mobileHeight } = image;
   const media = src || poster;
+
+  if (mobileSrc && mobileWidth && mobileHeight && !inset && !webm && !mp4) {
+    const radiusClass = radius === "lg" ? "rounded-[16px]" : "rounded-[8px]";
+    return (
+      <div className={cn("min-w-0", className)}>
+        <div
+          className={cn("relative w-full overflow-hidden bg-[#eaeefb] lg:hidden", radiusClass)}
+          style={{ aspectRatio: `${mobileWidth} / ${mobileHeight}` }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={mobileSrc} alt={alt} className="absolute inset-0 size-full object-cover" />
+        </div>
+        <div
+          className={cn("relative hidden w-full overflow-hidden bg-[#eaeefb] lg:mx-0 lg:block", radiusClass)}
+          style={{ aspectRatio: `${width} / ${height}`, maxWidth: width }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={media} alt={alt} loading={priority ? "eager" : "lazy"} className="absolute inset-0 size-full object-cover" />
+        </div>
+      </div>
+    );
+  }
 
   if (inset) {
     return (
