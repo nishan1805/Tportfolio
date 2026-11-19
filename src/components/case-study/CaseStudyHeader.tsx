@@ -47,6 +47,7 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
   const opticks = study.slug === "opticks-ai-editor";
   const designSystem = study.slug === "design-system-and-iconography";
   const mediaPlanner = study.slug === "media-planner";
+  const raipur = study.slug === "raipur-homes";
 
   return (
     <header className="bg-white">
@@ -71,7 +72,9 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
                   ? "text-[36px] font-bold leading-[37px] lg:text-[48px]"
                   : mediaPlanner
                     ? "text-[2.25rem] font-bold leading-[37px] lg:text-[3rem] lg:leading-[37px]"
-                    : "text-[2.25rem] font-bold leading-[37px] lg:text-[3rem] lg:leading-[58px]"
+                    : raipur
+                      ? "h-12 text-[2.25rem] font-bold leading-[37px] lg:h-auto lg:text-[3rem] lg:leading-[58px]"
+                      : "text-[2.25rem] font-bold leading-[37px] lg:text-[3rem] lg:leading-[58px]"
               }
             >
               {opticks && titleSuffix ? (
@@ -137,6 +140,15 @@ export function CaseStudyHeader({ study }: CaseStudyHeaderProps) {
               <MetaList items={meta} compact />
             </dl>
             <dl className="hidden w-[587px] shrink-0 flex-col flex-nowrap justify-center gap-6 px-20 py-10 text-[#193334] lg:flex">
+              <MetaList items={meta} />
+            </dl>
+          </>
+        ) : raipur ? (
+          <>
+            <dl className="flex h-[88px] items-start gap-6 border-t border-[#b2cccd] px-8 pt-[23px] pb-6 text-[#193334] lg:hidden [&_dt]:leading-[14px]">
+              <MetaList items={mobileMeta ?? meta} compact />
+            </dl>
+            <dl className="hidden w-[587px] flex-col flex-nowrap content-center justify-center gap-6 px-20 py-10 text-[#193334] lg:flex">
               <MetaList items={meta} />
             </dl>
           </>

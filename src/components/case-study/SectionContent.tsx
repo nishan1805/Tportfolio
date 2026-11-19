@@ -1,9 +1,10 @@
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
 
 import { groupBlocks, type BlockUnit } from "@/lib/case-study";
 import type { CaseStudySection, ImageItem, ItemBlock } from "@/types";
 
 import { BlockImage } from "./BlockImage";
+import { MobileCard } from "./MobileCard";
 
 const sectionClass = "scroll-mt-[116px] lg:scroll-mt-[74px]";
 const headingClass = "scroll-mt-[116px] text-[2rem] font-bold leading-[2.375rem] text-[#254d4f] lg:scroll-mt-[74px]";
@@ -460,7 +461,7 @@ function PhotoPair({ section }: { section: CaseStudySection }) {
   );
 }
 
-function SideText({ item }: { item: ItemBlock }) {
+function SideText({ item, raipur }: { item: ItemBlock; raipur?: boolean }) {
   const [label, title] = item.title.includes(" · ") ? item.title.split(" · ") : [undefined, item.title];
   const [noteHead, ...noteList] = (item.note ?? "").split(/\n+/).filter(Boolean);
   const logos = item.title === "Competition Analysis";
@@ -469,7 +470,7 @@ function SideText({ item }: { item: ItemBlock }) {
     <div className="flex min-w-0 flex-col gap-6 text-[#254d4f]">
       <div className="flex flex-col gap-2">
         {label && <p className="text-[0.75rem] font-medium leading-4 text-[#8bb3b5]">{label}</p>}
-        <h3 className="text-[1.5rem] font-bold leading-normal">{title}</h3>
+        <h3 className={raipur ? "text-[1.5rem] font-bold leading-[29px] lg:leading-normal" : "text-[1.5rem] font-bold leading-normal"}>{title}</h3>
       </div>
       <p className="text-[1rem] font-normal leading-7">{item.text}</p>
       {noteHead && <p className="text-[1rem] font-normal leading-7">{noteHead}</p>}
@@ -494,7 +495,49 @@ function SideText({ item }: { item: ItemBlock }) {
   );
 }
 
-function StackedLayout({ section }: { section: CaseStudySection }) {
+function StudyMedia({ image, hideOnMobile }: { image: ImageItem; hideOnMobile?: boolean }) {
+  if (!image.mobileCard) {
+    return <BlockImage image={image} radius="sm" className={hideOnMobile ? "hidden lg:block" : undefined} />;
+  }
+  return (
+    <>
+      <MobileCard spec={image.mobileCard} alt={image.alt} />
+      <BlockImage image={image} radius="sm" className="hidden lg:block" />
+    </>
+  );
+}
+
+function stackHead(sectionId: string, mobile: boolean) {
+  if (!mobile) {
+    return {
+      wrap: "flex flex-col gap-2",
+      title: "text-[1.5rem] font-bold leading-normal",
+      body: "text-[1rem] font-normal leading-7",
+    };
+  }
+  const title =
+    sectionId === "ideation"
+      ? "text-[20px] font-bold leading-[24px] lg:text-[1.5rem] lg:leading-normal"
+      : "text-[1.5rem] font-bold leading-[29px] lg:leading-normal";
+  const wrap =
+    sectionId === "user-research" || sectionId === "ideation"
+      ? "flex flex-col gap-6 lg:gap-2"
+      : sectionId === "design"
+        ? "flex flex-col gap-3 lg:gap-2"
+        : "flex flex-col gap-2";
+  return { wrap, title, body: "text-[1rem] font-normal leading-7" };
+}
+
+function stackSpace(sectionId: string, mobile: boolean, side: boolean) {
+  if (!mobile) return { mt: "mt-9", gap: side ? "gap-12" : "gap-9" };
+  if (sectionId === "user-research") return { mt: "mt-4 lg:mt-9", gap: "gap-12 lg:gap-9" };
+  if (sectionId === "ideation") return { mt: "mt-12 lg:mt-9", gap: "gap-12 lg:gap-9" };
+  // Design is already gap-12 on desktop (side-by-side rows). Keep that gap at both breakpoints.
+  if (sectionId === "design") return { mt: "mt-12 lg:mt-9", gap: "gap-12" };
+  return { mt: "mt-9", gap: side ? "gap-12" : "gap-9" };
+}
+
+function StackedLayout({ section, variant }: { section: CaseStudySection; variant?: "raipur" }) {
   type Cell = { item: ItemBlock; images: ImageItem[] };
   const cells: Cell[] = [];
   const lead: string[] = [];
@@ -529,12 +572,39 @@ function StackedLayout({ section }: { section: CaseStudySection }) {
   const isSide = (row: Cell[]) =>
     row.length === 1 && row[0].images.length === 1 && (row[0].item.width ?? 1016) < 400 && row[0].images[0].width > 600;
 
+  const raipur = variant === "raipur";
+  const space = stackSpace(section.id, raipur, rows.some(isSide));
+  const head = stackHead(section.id, raipur);
+  const cols = raipur ? "lg:grid-cols-(--cols)" : "md:grid-cols-(--cols)";
+  const leadClass =
+    raipur && section.id === "introduction"
+      ? "text-[1rem] font-normal leading-[24px] text-[#254d4f] lg:leading-7"
+      : "text-[1rem] font-normal leading-7 text-[#254d4f]";
+  const rowGap = raipur && section.id === "user-research" ? "gap-12 lg:gap-9" : "gap-9";
+
+  const renderImages = (images: ImageItem[]) => {
+    // The storyboard shares a row with the journey card and has no mobile card, so it stays desktop-only.
+    const hideBare = raipur && images.some((image) => image.mobileCard);
+    if (images.length === 1) {
+      return <StudyMedia image={images[0]} hideOnMobile={hideBare && !images[0].mobileCard} />;
+    }
+    return (
+      <div className={`grid min-w-0 gap-6 ${cols}`} style={columns(...images.map((image) => image.width))}>
+        {images.map((image) => (
+          <Fragment key={image.alt}>
+            <StudyMedia image={image} hideOnMobile={hideBare && !image.mobileCard} />
+          </Fragment>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
       <SectionHeading id={section.id} title={section.title} />
-      <div className={`mt-9 flex min-w-0 flex-col ${rows.some(isSide) ? "gap-12" : "gap-9"}`}>
+      <div className={`${space.mt} flex min-w-0 flex-col ${space.gap}`}>
         {lead.map((text) => (
-          <p key={text} className="text-[1rem] font-normal leading-7 text-[#254d4f]">
+          <p key={text} className={leadClass}>
             {text}
           </p>
         ))}
@@ -544,34 +614,27 @@ function StackedLayout({ section }: { section: CaseStudySection }) {
             return (
               <div
                 key={only.item.title}
-                className="grid min-w-0 grid-cols-1 items-start gap-8 md:grid-cols-(--cols)"
+                className={`grid min-w-0 grid-cols-1 items-start gap-8 ${cols}`}
                 style={columns(only.item.width ?? 232, only.images[0].width)}
               >
-                <SideText item={only.item} />
-                <BlockImage image={only.images[0]} radius="sm" />
+                <SideText item={only.item} raipur={raipur} />
+                <StudyMedia image={only.images[0]} />
               </div>
             );
           }
           return (
           <div
             key={row.map((cell) => cell.item.title).join("|")}
-            className="grid min-w-0 grid-cols-1 gap-9 md:grid-cols-(--cols)"
+            className={`grid min-w-0 grid-cols-1 ${rowGap} ${cols}`}
             style={columns(...row.map((cell) => cell.item.width ?? 1016))}
           >
             {row.map(({ item, images }) => (
               <div key={item.title} className="flex min-w-0 flex-col gap-8 text-[#254d4f]">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-[1.5rem] font-bold leading-normal">{item.title}</h3>
-                  <p className="text-[1rem] font-normal leading-7">{item.text}</p>
+                <div className={head.wrap}>
+                  <h3 className={head.title}>{item.title}</h3>
+                  <p className={head.body}>{item.text}</p>
                 </div>
-                {images.length === 1 && <BlockImage image={images[0]} radius="sm" />}
-                {images.length > 1 && (
-                  <div className="grid min-w-0 gap-6 md:grid-cols-(--cols)" style={columns(...images.map((image) => image.width))}>
-                    {images.map((image) => (
-                      <BlockImage key={image.alt} image={image} radius="sm" />
-                    ))}
-                  </div>
-                )}
+                {images.length > 0 && renderImages(images)}
               </div>
             ))}
           </div>
@@ -582,23 +645,38 @@ function StackedLayout({ section }: { section: CaseStudySection }) {
   );
 }
 
-function PlainGrid({ section }: { section: CaseStudySection }) {
+function PlainGrid({ section, variant }: { section: CaseStudySection; variant?: "raipur" }) {
   const lead = section.blocks.flatMap((block) => (block.type === "text" ? [block.text] : []));
   const items = section.blocks.filter((block): block is ItemBlock => block.type === "item");
+  const raipur = variant === "raipur";
+  const goals = section.id === "project-goals-and-requirements";
+  const mt = !raipur ? "mt-9" : goals ? "mt-4 lg:mt-9" : "mt-3 lg:mt-9";
+  const leadClass = raipur
+    ? "text-[1rem] font-normal leading-[24px] text-[#254d4f] lg:leading-7"
+    : "text-[1rem] font-normal leading-7 text-[#254d4f]";
+  const title = !raipur
+    ? "text-[1.25rem] font-bold leading-normal"
+    : goals
+      ? "text-[1.25rem] font-bold leading-[24px] lg:leading-normal"
+      : "text-[24px] font-bold leading-[29px] lg:text-[1.25rem] lg:leading-normal";
 
   return (
-    <section id={section.id} aria-labelledby={`${section.id}-title`} className={sectionClass}>
+    <section
+      id={section.id}
+      aria-labelledby={`${section.id}-title`}
+      className={raipur && goals ? `${sectionClass} -mt-2 lg:mt-0` : sectionClass}
+    >
       <SectionHeading id={section.id} title={section.title} />
-      <div className="mt-9 flex min-w-0 flex-col gap-9">
+      <div className={`${mt} flex min-w-0 flex-col gap-9`}>
         {lead.map((text) => (
-          <p key={text} className="text-[1rem] font-normal leading-7 text-[#254d4f]">
+          <p key={text} className={leadClass}>
             {text}
           </p>
         ))}
         <div className="grid min-w-0 grid-cols-1 gap-x-9 gap-y-9 lg:grid-cols-3">
           {items.map((item) => (
             <div key={item.title} className="flex min-w-0 flex-col gap-2 text-[#254d4f]">
-              <h3 className="text-[1.25rem] font-bold leading-normal">{item.title}</h3>
+              <h3 className={title}>{item.title}</h3>
               <p className="text-[1rem] font-normal leading-7">{item.text}</p>
             </div>
           ))}
@@ -608,12 +686,12 @@ function PlainGrid({ section }: { section: CaseStudySection }) {
   );
 }
 
-export function SectionContent({ section }: { section: CaseStudySection }) {
+export function SectionContent({ section, variant }: { section: CaseStudySection; variant?: "raipur" }) {
   if (section.layout === "copy") return <CopySection section={section} />;
   if (section.layout === "plain") return <PlainColumns section={section} />;
   if (section.layout === "media-cards") return <MediaCards section={section} />;
-  if (section.layout === "plain-grid") return <PlainGrid section={section} />;
-  if (section.layout === "stacked") return <StackedLayout section={section} />;
+  if (section.layout === "plain-grid") return <PlainGrid section={section} variant={variant} />;
+  if (section.layout === "stacked") return <StackedLayout section={section} variant={variant} />;
   if (section.layout === "story") return <StoryLayout section={section} />;
   if (section.layout === "photo-pair") return <PhotoPair section={section} />;
   if (section.layout === "components") return <ComponentsGrid section={section} />;

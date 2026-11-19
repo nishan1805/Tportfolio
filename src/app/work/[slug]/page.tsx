@@ -42,7 +42,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         sections={study.sections}
         lead={study.slug === "intelligence-and-recommendation"}
         variant={
-          study.slug === "opticks-ai-editor" ? "opticks" : study.slug === "media-planner" ? "media-planner" : undefined
+          study.slug === "opticks-ai-editor"
+            ? "opticks"
+            : study.slug === "media-planner"
+              ? "media-planner"
+              : study.slug === "raipur-homes"
+                ? "raipur"
+                : undefined
         }
       />
     </>

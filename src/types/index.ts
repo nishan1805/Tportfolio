@@ -125,6 +125,28 @@ export type ItemBlock = {
   media?: ImageItem;
 };
 
+type MobileCardBox = { x: number; y: number; w: number; h: number };
+
+/** One layer inside a 360×height mobile card. Positions are Figma px; the renderer turns them into %. */
+export type MobileCardLayer =
+  | (MobileCardBox & { kind: "img"; src: string; fit: "contain" | "cover" })
+  | (MobileCardBox & { kind: "bordered"; src?: string; video?: string })
+  | (MobileCardBox & {
+      kind: "crop";
+      src: string;
+      /** Inner image box, each value a percentage of the crop wrapper. */
+      image: { left: number; top: number; width: number; height: number };
+    })
+  | (MobileCardBox & { kind: "video"; video: string })
+  | { kind: "line"; y: number };
+
+export type MobileCardSpec = {
+  /** Card height in the 360-wide mobile frame. */
+  height: number;
+  background: string;
+  layers: MobileCardLayer[];
+};
+
 /** `width` and `height` = size of the image slot in Figma (px). Gives the slot the exact same shape. */
 export type ImageItem = {
   alt: string;
@@ -167,6 +189,8 @@ export type ImageItem = {
     background: string;
     border?: string;
   };
+  /** Layered card shown below `lg`. Desktop keeps `src` / `width` / `height`. */
+  mobileCard?: MobileCardSpec;
 };
 export type ImageBlock = { type: "image" } & ImageItem;
 /** Images placed side by side in one row. */

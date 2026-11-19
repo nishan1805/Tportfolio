@@ -1,4 +1,52 @@
-import type { CaseStudy } from "@/types";
+import type { CaseStudy, MobileCardLayer, MobileCardSpec } from "@/types";
+
+const R = "/images/case-studies/raipur-homes";
+const file = (name: string) => `${R}/${name}`;
+
+const shot = (height: number, background: string, layers: MobileCardLayer[]): MobileCardSpec => ({
+  height,
+  background,
+  layers,
+});
+
+const placed = (
+  name: string,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  fit: "contain" | "cover",
+): MobileCardLayer => ({ kind: "img", src: name.startsWith("/") ? name : file(name), fit, x, y, w, h });
+
+const frame = (name: string, x: number, y: number, w: number, h: number): MobileCardLayer => ({
+  kind: "bordered",
+  src: file(name),
+  x,
+  y,
+  w,
+  h,
+});
+
+const clip = (name: string, x: number, y: number, w: number, h: number): MobileCardLayer => ({
+  kind: "bordered",
+  video: file(name),
+  x,
+  y,
+  w,
+  h,
+});
+
+const crop = (
+  name: string,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  image: { left: number; top: number; width: number; height: number },
+): MobileCardLayer => ({ kind: "crop", src: file(name), x, y, w, h, image });
+
+const BLUE = "#eaeefb";
+const PINK = "#fce9e9";
 
 export const raipurHomes: CaseStudy = {
   slug: "raipur-homes",
@@ -121,7 +169,8 @@ export const raipurHomes: CaseStudy = {
           alt: "Introduction - image 1",
           src: "/images/case-studies/raipur-homes/frame-2085663016-raipur-intro-iphone-1-1920x2095-a57015f888.webp",
           width: 490,
-          height: 425
+          height: 425,
+          mobileCard: shot(425, BLUE, [placed("frame-2085663016-raipur-intro-iphone-1-1920x2095-a57015f888.webp", -56, -21, 471, 514, "contain")])
         },
         {
           type: "item",
@@ -134,7 +183,8 @@ export const raipurHomes: CaseStudy = {
           alt: "Introduction - image 2",
           src: "/images/case-studies/raipur-homes/frame-2085663016-raipur-intro-iphone-2-1920x2095-7231ce1910.webp",
           width: 490,
-          height: 425
+          height: 425,
+          mobileCard: shot(425, BLUE, [placed("frame-2085663016-raipur-intro-iphone-2-1920x2095-7231ce1910.webp", -60, -17, 480, 525, "contain")])
         },
         {
           type: "item",
@@ -147,7 +197,8 @@ export const raipurHomes: CaseStudy = {
           alt: "Introduction - image 3",
           src: "/images/case-studies/raipur-homes/frame-2085663016-raipur-intro-screenshot-2210x1324-8feaa00079.webp",
           width: 1016,
-          height: 425
+          height: 425,
+          mobileCard: shot(425, BLUE, [frame("frame-2085663016-raipur-intro-screenshot-2210x1324-8feaa00079.webp", 40, 57, 520, 312)])
         }
       ]
     },
@@ -247,7 +298,8 @@ export const raipurHomes: CaseStudy = {
           alt: "User Research - image 1",
           src: "/images/case-studies/raipur-homes/research-interviews.webp",
           width: 485,
-          height: 442
+          height: 442,
+          mobileCard: shot(414, BLUE, [placed("frame-2085663027-raipur-problem-1-1102x1392-8e903594af.webp", 27, 46, 307, 388, "cover")])
         },
         {
           type: "item",
@@ -260,7 +312,8 @@ export const raipurHomes: CaseStudy = {
           alt: "User Research - image 2",
           src: "/images/case-studies/raipur-homes/research-competitors.webp",
           width: 485,
-          height: 442
+          height: 442,
+          mobileCard: shot(357, BLUE, [placed("frame-2085663027-raipur-problem-2-2560x1535-f3ad83034f.webp", -20, 74, 400, 240, "cover")])
         }
       ]
     },
@@ -282,7 +335,15 @@ export const raipurHomes: CaseStudy = {
               alt: "Ideation - user journey",
               src: "/images/case-studies/raipur-homes/ideation-user-journey.webp",
               width: 666,
-              height: 373
+              height: 373,
+              mobileCard: shot(350, PINK, [
+                crop("frame-2085663035-user-journey-1-2560x1482-f9aa4ed942.webp", 18, 26, 657, 297, {
+                  left: -10.66,
+                  top: -47.13,
+                  width: 121.86,
+                  height: 189.85,
+                }),
+              ])
             },
             {
               alt: "Ideation - storyboard",
@@ -303,7 +364,15 @@ export const raipurHomes: CaseStudy = {
           alt: "Ideation - user flow",
           src: "/images/case-studies/raipur-homes/ideation-user-flow.webp",
           width: 1018,
-          height: 354
+          height: 354,
+          mobileCard: shot(360, PINK, [
+            crop("frame-2085663035-userflow-1-2560x1532-6d9c60ae6a.webp", 17, 17, 984, 320, {
+              left: -9.29,
+              top: -76.16,
+              width: 113.72,
+              height: 209.25,
+            }),
+          ])
         },
         {
           type: "item",
@@ -316,7 +385,15 @@ export const raipurHomes: CaseStudy = {
           alt: "Ideation - moodboard",
           src: "/images/case-studies/raipur-homes/ideation-moodboard.webp",
           width: 1018,
-          height: 354
+          height: 354,
+          mobileCard: shot(360, BLUE, [
+            crop("frame-2085663035-competitors-1-2560x1532-8df35013d9.webp", 30, 29, 541, 358, {
+              left: -20.15,
+              top: -13.16,
+              width: 141.22,
+              height: 127.71,
+            }),
+          ])
         },
         {
           type: "item",
@@ -329,7 +406,8 @@ export const raipurHomes: CaseStudy = {
           alt: "Ideation - wireframing",
           src: "/images/case-studies/raipur-homes/ideation-wireframing.webp",
           width: 1018,
-          height: 354
+          height: 354,
+          mobileCard: shot(360, BLUE, [placed("frame-2085663035-wireframing-1-2560x1529-f1217cfb57.webp", -16, 0, 545, 326, "cover")])
         }
       ]
     },
@@ -349,7 +427,8 @@ export const raipurHomes: CaseStudy = {
           alt: "Design - Design system",
           src: "/images/case-studies/raipur-homes/design-system.webp",
           width: 754,
-          height: 346
+          height: 346,
+          mobileCard: shot(348, BLUE, [placed("frame-2085663036-design-system-1-326x194-a179bc88a8.png", -10, 61, 380, 226, "cover")])
         },
         {
           type: "item",
@@ -362,7 +441,12 @@ export const raipurHomes: CaseStudy = {
           alt: "Design - Tenant section",
           src: "/images/case-studies/raipur-homes/design-tenant.webp",
           width: 754,
-          height: 446
+          height: 446,
+          mobileCard: shot(1259, BLUE, [
+            clip("frame-2085663036-raipur-proto-1-gif-666x1482-d059c95ff1", 41, 602, 278, 618),
+            placed("/images/case-studies/banner-raipur-homes.webp", -98, -35, 571, 621, "contain"),
+            { kind: "line", y: 567 },
+          ])
         },
         {
           type: "item",
@@ -375,7 +459,12 @@ export const raipurHomes: CaseStudy = {
           alt: "Design - Property owner section",
           src: "/images/case-studies/raipur-homes/design-owner.webp",
           width: 1018,
-          height: 446
+          height: 446,
+          mobileCard: shot(963, BLUE, [
+            { kind: "line", y: 273 },
+            clip("frame-2085663036-raipur-proto-gif-666x1482-55169e6639", 41, 302, 278, 619),
+            clip("frame-2085663036-raipur-design-gif-1280x763-3d23ed0a56", 25, 30, 360, 215),
+          ])
         },
         {
           type: "item",
@@ -388,7 +477,8 @@ export const raipurHomes: CaseStudy = {
           alt: "Design - Admin panel",
           src: "/images/case-studies/raipur-homes/design-admin.webp",
           width: 1018,
-          height: 562
+          height: 562,
+          mobileCard: shot(279, BLUE, [clip("frame-2085663036-raipur-design-gif-2-1280x766-ad4d77f745", 27, 31, 360, 215)])
         }
       ]
     }
