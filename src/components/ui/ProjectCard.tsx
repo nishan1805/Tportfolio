@@ -8,6 +8,8 @@ type MediaBox = Box & {
   radius?: number;
   border?: number;
   borderColor?: string;
+  /** Stroke is drawn outside the Figma image rect. x/y/w/h are that outer box. */
+  outside?: boolean;
 };
 
 type PanelSpec = {
@@ -36,13 +38,13 @@ const BANNERS: Record<string, BannerSpec> = {
       panelW: 712,
       panelH: 441,
       mark: { src: TELESCOPE, x: 0, y: -13, w: 794, h: 117 },
-      media: { x: 69, y: 67, w: 573.926, h: 308.934, radius: 8.046, border: 8.046, borderColor: "#193334" },
+      media: { x: 60.95, y: 58.95, w: 590.02, h: 325.02, radius: 8.0457, border: 8.0457, borderColor: "#193334", outside: true },
     },
     mobile: {
       panelW: 360,
       panelH: 419,
       mark: { src: TELESCOPE, x: 0, y: -13, w: 794, h: 117 },
-      media: { x: 31, y: 74, w: 545, h: 294, radius: 8.046, border: 8.046, borderColor: "#193334" },
+      media: { x: 22.95, y: 65.95, w: 561, h: 310, radius: 8.0457, border: 8.0457, borderColor: "#193334", outside: true },
     },
   },
   "media-planner": {
@@ -52,13 +54,13 @@ const BANNERS: Record<string, BannerSpec> = {
       panelW: 712,
       panelH: 441,
       mark: { src: "/images/wordmarks/media-planner.svg", x: -1, y: 0, w: 715, h: 58 },
-      media: { x: 67, y: 65, w: 578, h: 311, radius: 8, border: 4, borderColor: "#193334" },
+      media: { x: 63, y: 61, w: 586, h: 319, radius: 8, border: 4, borderColor: "#193334", outside: true },
     },
     mobile: {
       panelW: 360,
       panelH: 441,
       mark: { src: "/images/wordmarks/media-planner.svg", x: -1, y: 0, w: 715, h: 58 },
-      media: { x: 31, y: 65, w: 578, h: 311, radius: 8, border: 4, borderColor: "#193334" },
+      media: { x: 27, y: 61, w: 586, h: 319, radius: 8, border: 4, borderColor: "#193334", outside: true },
     },
   },
   "opticks-ai-editor": {
@@ -68,13 +70,13 @@ const BANNERS: Record<string, BannerSpec> = {
       panelW: 712,
       panelH: 442,
       mark: { src: "/images/wordmarks/opticks-ai.svg", x: -7, y: -4, w: 719, h: 82 },
-      media: { x: 54, y: 59, w: 604, h: 325, radius: 8, border: 4, borderColor: "#193334" },
+      media: { x: 50, y: 55, w: 612, h: 333, radius: 8, border: 4, borderColor: "#193334", outside: true },
     },
     mobile: {
       panelW: 360,
       panelH: 442,
       mark: { src: "/images/wordmarks/opticks-ai.svg", x: -7, y: -4, w: 719, h: 82 },
-      media: { x: 34, y: 59, w: 604, h: 325, radius: 8, border: 4, borderColor: "#193334" },
+      media: { x: 30, y: 55, w: 612, h: 333, radius: 8, border: 4, borderColor: "#193334", outside: true },
     },
   },
   "raipur-homes": {
@@ -122,12 +124,14 @@ function boxStyle(panelW: number, panelH: number, box: Box): React.CSSProperties
 
 function Preview({ spec, project }: { spec: PanelSpec; project: Project }) {
   const { media, mark, panelW } = spec;
+  const radius = media.radius ? media.radius + (media.outside ? media.border ?? 0 : 0) : undefined;
   const frameStyle: React.CSSProperties = {
     ...boxStyle(spec.panelW, spec.panelH, media),
-    borderRadius: media.radius ? `calc(100cqw * ${media.radius} / ${panelW})` : undefined,
+    borderRadius: radius ? `calc(100cqw * ${radius} / ${panelW})` : undefined,
     borderWidth: media.border ? `calc(100cqw * ${media.border} / ${panelW})` : undefined,
     borderStyle: media.border ? "solid" : undefined,
     borderColor: media.borderColor,
+    boxSizing: "border-box",
   };
 
   return (
@@ -175,17 +179,19 @@ export function ProjectCard({ project }: { project: Project }) {
 
   const card = (
     <article
-      className="flex min-w-0 flex-col overflow-hidden border border-[#d8e6e6] bg-white lg:flex-row lg:justify-between"
+      className="box-border flex min-w-0 flex-col overflow-hidden bg-white outline outline-1 -outline-offset-1 outline-[#d8e6e6] lg:h-[var(--card-h)] lg:flex-row lg:justify-between"
       style={banner ? { ["--card-h" as string]: `${banner.desktopH}px` } : undefined}
     >
-      <div className="flex flex-col gap-4 p-4 lg:h-[var(--card-h)] lg:w-[34.21875%] lg:shrink-0 lg:justify-between lg:gap-0 lg:p-8">
+      <div
+        className={`flex shrink-0 flex-col gap-4 p-4 lg:h-full lg:w-[34.21875%] lg:justify-between lg:gap-0 lg:p-8 ${status ? "max-lg:min-h-[208px]" : "max-lg:h-[208px]"}`}
+      >
         <div className="flex flex-col gap-[22px]">
           <h3 className="text-[20px] font-semibold leading-8 text-black lg:text-[40px]">
             <span className="lg:hidden">
               {title}
               {titleSuffix ? `, ${titleSuffix}` : ""}
             </span>
-            <span className="hidden items-center gap-6 lg:flex">
+            <span className="hidden items-center gap-6 whitespace-nowrap lg:flex">
               {title}
               {titleSuffix && (
                 <>
@@ -202,7 +208,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <dl className="flex flex-wrap gap-x-[42px] gap-y-4">
           {meta.map(({ label, value }) => (
             <div key={label} className="flex flex-col gap-2">
-              <dt className="text-[12px] font-medium leading-normal text-black/60 lg:text-[16px]">{label}</dt>
+              <dt className="text-[12px] font-medium leading-[14px] text-black/60 lg:text-[16px] lg:leading-normal">{label}</dt>
               <dd className="whitespace-pre text-[16px] font-medium leading-6 text-black lg:text-[20px]">{value}</dd>
             </div>
           ))}
@@ -211,7 +217,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {banner && (
         <div
-          className={`relative w-full lg:h-[var(--card-h)] lg:w-[55.625%] lg:shrink-0 ${gradient}`}
+          className={`relative w-full lg:h-full lg:w-[55.625%] lg:shrink-0 ${gradient}`}
           style={{ aspectRatio: `360 / ${banner.mobileH}` }}
         >
           <div className="absolute inset-0 lg:hidden">

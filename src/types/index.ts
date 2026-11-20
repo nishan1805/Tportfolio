@@ -30,6 +30,8 @@ export type Highlight = {
   previewBg: string;
   /** Path inside /public. Add the exported Figma image here. */
   image?: string;
+  /** Mobile expertise panel. Natural aspect; desktop keeps `image`. */
+  mobileImage?: string;
   /** Case study page, if one exists. */
   href?: string;
 };
@@ -64,6 +66,15 @@ export type MobileApp = {
   mp4?: string;
 };
 
+/** One clipped phone render inside a passion-project panel. */
+export type PassionPlacement = {
+  /** Clip box inside the panel. Omitted when the panel itself clips. */
+  clip?: { x: number; y: number; w: number; h: number };
+  /** Image box, relative to the clip (or the panel when there is no clip). */
+  image: { x: number; y: number; w: number; h: number };
+  fit: "fill" | "cover";
+};
+
 /** Cards in the horizontal "Passion Project" carousel. */
 export type PassionProject = {
   id: string;
@@ -76,8 +87,10 @@ export type PassionProject = {
   image?: string;
   /** Right-hand panel gradient classes. */
   panel: string;
-  /** Size of the image slot in Figma (px). */
-  imageSize: { width: number; height: number };
+  /** Mobile copy block height: 112 for one title line, 136 for two. */
+  mobileCopyH: 112 | 136;
+  desktop: PassionPlacement;
+  mobile: PassionPlacement;
 };
 
 export type CareerStory = {
