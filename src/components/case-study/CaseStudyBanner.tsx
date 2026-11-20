@@ -122,6 +122,9 @@ function bannerCss(slug: string, spec: HeroSpec) {
     slug === "opticks-ai-editor" &&
       "@media (max-width:1023px){.opticks-ai-editor-hero{border-radius:8px;overflow:hidden;}.opticks-ai-editor-hero .hero-media{box-sizing:border-box;border:4px solid #193334;border-radius:8px;overflow:hidden;object-fit:cover;}}",
     spec.phone && rule(".hero-phone", place(spec.phone.mobile), place(spec.phone.desktop)),
+    slug === "raipur-homes" &&
+      ".raipur-homes-hero .hero-phone-clip{clip-path:inset(-400px 0 0 0)}" +
+      "@media (min-width:1024px){.raipur-homes-hero .hero-phone-clip{clip-path:inset(-400px -100px 0 -100px)}}",
   ]
     .filter(Boolean)
     .join("");
@@ -230,7 +233,10 @@ export function CaseStudyBanner({ study }: { study: CaseStudy }) {
       </div>
       {/* In Figma the phone render starts above the band (it is not clipped there) and the next section covers its bottom. */}
       {spec.phone && (
-        <div className={`${canvas} pointer-events-none`} style={{ clipPath: "inset(-400px -100px 0 -100px)" }}>
+        <div
+          className={`${canvas} pointer-events-none${study.slug === "raipur-homes" ? " hero-phone-clip" : ""}`}
+          style={study.slug === "raipur-homes" ? undefined : { clipPath: "inset(-400px -100px 0 -100px)" }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={poster} alt="" className="hero-phone object-contain" />
         </div>

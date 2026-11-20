@@ -14,11 +14,12 @@ export function CaseStudyBody({
   sections: CaseStudySection[];
   /** Kept for callers. Every page now uses 56px (mobile) / 80px (desktop) between the banner and the first section. */
   lead?: boolean;
-  /** Opticks and Media Planner use their own section rhythm. Other pages stay on the shared layout. */
-  variant?: "opticks" | "media-planner";
+  /** Opticks, Media Planner, and Raipur Homes use their own section rhythm. Other pages stay on the shared layout. */
+  variant?: "opticks" | "media-planner" | "raipur";
 }) {
   const opticks = variant === "opticks";
   const mediaPlanner = variant === "media-planner";
+  const raipur = variant === "raipur";
 
   return (
     <div
@@ -39,7 +40,9 @@ export function CaseStudyBody({
             ? "gap-0 pt-20 pb-20 lg:max-w-[1000px]"
             : mediaPlanner
               ? "max-w-full gap-0 pt-[66px] pb-[45px] lg:max-w-[1016px] lg:gap-20 lg:pt-20 lg:pb-[65px]"
-              : "gap-20 pt-14 pb-24 lg:max-w-[1016px] lg:pt-20 lg:pb-20",
+              : raipur
+                ? "gap-14 pt-14 pb-[52px] lg:max-w-[1016px] lg:gap-20 lg:pt-20 lg:pb-20"
+                : "gap-20 pt-14 pb-24 lg:max-w-[1016px] lg:pt-20 lg:pb-20",
         )}
       >
         {opticks
@@ -57,7 +60,9 @@ export function CaseStudyBody({
                   <MediaPlannerSections section={section} />
                 </div>
               ))
-            : sections.map((section) => <SectionContent key={section.id} section={section} />)}
+            : raipur
+              ? sections.map((section) => <SectionContent key={section.id} section={section} variant="raipur" />)
+              : sections.map((section) => <SectionContent key={section.id} section={section} />)}
       </div>
     </div>
   );

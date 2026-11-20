@@ -192,9 +192,10 @@ function MediaPlannerSummary() {
 }
 
 function RaipurSummary() {
-  const title = "text-[1.25rem] font-semibold leading-normal";
+  const title = "text-[1.25rem] font-semibold leading-[24px] lg:leading-normal";
   const body = "text-[0.875rem] font-normal leading-5";
   const big = "text-[2rem] font-bold leading-[2.3125rem]";
+  const bigMobile = "text-[24px] font-bold leading-[37px] lg:text-[2rem] lg:leading-[2.3125rem]";
   return (
     <section aria-labelledby="summary-title" className="bg-[#e6f7fb]">
       <div className="mx-auto w-full max-w-[1440px] px-5 py-12 lg:px-20">
@@ -202,7 +203,7 @@ function RaipurSummary() {
           Summary
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-6 rounded-[16px] bg-white p-4 lg:h-[572px] lg:grid-cols-4">
-          <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-full ${fadeDown}`}>
+          <article className={`flex h-[184px] flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-full ${fadeDown}`}>
             <div className="flex flex-col gap-4">
               <h3 className={title}>Problem Statement</h3>
               <p className={body}>
@@ -211,8 +212,8 @@ function RaipurSummary() {
             </div>
           </article>
 
-          <article className={`flex flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full ${fadeUp}`}>
-            <p className={big}>Platform for Real Estate</p>
+          <article className={`flex h-[320px] flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full ${fadeUp}`}>
+            <p className={bigMobile}>Platform for Real Estate</p>
             <div className="flex flex-col gap-6">
               <h3 className={title}>Solution</h3>
               <p className={body}>
@@ -221,8 +222,8 @@ function RaipurSummary() {
             </div>
           </article>
 
-          <div className="flex flex-col gap-4 lg:h-full lg:min-h-0">
-            <article className={`flex flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-[263px] lg:shrink-0 ${fadeDown}`}>
+          <div className="flex h-[540px] flex-col justify-center gap-4 lg:h-full lg:min-h-0 lg:justify-start">
+            <article className={`flex h-[184px] flex-col justify-end rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-[263px] lg:shrink-0 ${fadeDown}`}>
               <div className="flex flex-col gap-4">
                 <h3 className={title}>Research</h3>
                 <p className={body}>
@@ -230,7 +231,7 @@ function RaipurSummary() {
                 </p>
               </div>
             </article>
-            <article className="flex flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:min-h-0 lg:flex-1">
+            <article className="flex h-[276px] flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:h-auto lg:min-h-0 lg:flex-1">
               <p className={big}>3 step process</p>
               <div className="flex flex-col gap-3">
                 <h3 className={title}>Ideation</h3>
@@ -242,9 +243,9 @@ function RaipurSummary() {
             </article>
           </div>
 
-          <div className="flex flex-col gap-4 text-[#254d4f] lg:h-full lg:min-h-0">
-            <article className={`flex flex-col justify-between gap-6 rounded-[16px] px-6 py-8 lg:min-h-0 lg:flex-1 ${fadeUp}`}>
-              <p className={big}>Designing</p>
+          <div className="contents text-[#254d4f] lg:flex lg:h-full lg:min-h-0 lg:flex-col lg:gap-4">
+            <article className={`flex h-[270px] flex-col justify-between gap-6 rounded-[16px] px-6 py-8 text-[#254d4f] lg:h-auto lg:min-h-0 lg:flex-1 ${fadeUp}`}>
+              <p className={bigMobile}>Designing</p>
               <div className="flex flex-col gap-4">
                 <h3 className={title}>Design Finalisation</h3>
                 <p className={body}>
@@ -252,9 +253,11 @@ function RaipurSummary() {
                 </p>
               </div>
             </article>
-            <article className="flex flex-col gap-4 rounded-[16px] border border-[#d8e6e6] bg-white p-6 lg:shrink-0">
+            <article className="flex flex-col gap-4 rounded-[16px] border border-[#d8e6e6] bg-white p-6 pb-[22px] text-[#254d4f] lg:shrink-0 lg:pb-6">
               <h3 className={title}>Prototype Delivery</h3>
-              <p className={body}>It was really easy to communicated with the engineering team with prototype</p>
+              <p className="text-[0.875rem] font-normal leading-[17px] lg:leading-5">
+                It was really easy to communicated with the engineering team with prototype
+              </p>
             </article>
           </div>
         </div>
