@@ -16,22 +16,27 @@ type ScreenSpec = {
   radius: number;
   border: number;
   borderColor: string;
+  /** Stroke sits outside the image rect. `w/h/top` describe the outer box. */
+  outside?: boolean;
   burst: string;
   /** Image placement inside the phone frame, as percentages. */
   crop?: { top: string; left: string; width: string; height: string };
 };
 
 const SCREENS: Record<string, ScreenSpec> = {
+  // Outer box: image rect grown by the 2px outside stroke. (95, 68) 290 × 628.
   "shop-sales": {
-    w: 286,
-    h: 624,
-    top: 70,
+    w: 290,
+    h: 628,
+    top: 68,
     dx: 0,
     radius: 8,
     border: 2,
     borderColor: "#acbcef",
+    outside: true,
     burst: "/images/mobile/burst-a.svg",
   },
+  // Border stays inside the 284 × 624 rect. Desktop keeps the Figma crop.
   "bike-rental": {
     w: 284,
     h: 624,
@@ -43,22 +48,34 @@ const SCREENS: Record<string, ScreenSpec> = {
     burst: "/images/mobile/burst-b.svg",
     crop: { top: "-0.8%", left: "-1.8%", width: "103.61%", height: "102.09%" },
   },
+  // Outer box: (99, 67) 283 × 621. Mobile stretches the recording to the rect.
   "real-estate": {
-    w: 279,
-    h: 617,
-    top: 69,
+    w: 283,
+    h: 621,
+    top: 67,
     dx: 0.5,
     radius: 8,
     border: 2,
     borderColor: "#acbcef",
+    outside: true,
     burst: "/images/mobile/burst-a.svg",
-    crop: { top: "0%", left: "-0.07%", width: "100.15%", height: "100.61%" },
   },
 };
 
 export function MobileShowcase() {
   return (
-    <section aria-label="Mobile apps" className="grid min-w-0 lg:grid-cols-3">
+    <section aria-label="Mobile apps" className="mt-[78px] grid min-w-0 lg:mt-[88px] lg:grid-cols-3">
+      <style>{`
+        @media (min-width: 1024px) {
+          video.phone-desktop-crop {
+            top: -0.8%;
+            left: -1.8%;
+            width: 103.61%;
+            height: 102.09%;
+            max-width: none;
+          }
+        }
+      `}</style>
       {mobileApps.map((app) => {
         const screen = SCREENS[app.id];
         return (
@@ -85,21 +102,25 @@ export function MobileShowcase() {
             />
 
             <div
-              className="absolute z-10 overflow-hidden border-solid"
+              className="absolute z-10 box-border overflow-hidden border-solid"
               style={{
                 left: `calc(50% + ${cq(screen.dx)})`,
                 top: cq(screen.top),
                 width: cq(screen.w),
                 height: cq(screen.h),
-                borderRadius: cq(screen.radius),
+                borderRadius: cq(screen.outside ? screen.radius + screen.border : screen.radius),
                 borderWidth: cq(screen.border),
                 borderColor: screen.borderColor,
                 transform: "translateX(-50%)",
               }}
             >
               <video
-                className="absolute max-w-none object-cover"
-                style={screen.crop ?? { inset: 0, width: "100%", height: "100%" }}
+                className={
+                  screen.crop
+                    ? "phone-desktop-crop absolute object-fill max-lg:inset-0 max-lg:h-full max-lg:w-full"
+                    : "absolute inset-0 size-full object-fill"
+                }
+                style={{ maxWidth: "none" }}
                 autoPlay
                 muted
                 loop

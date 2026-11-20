@@ -1,29 +1,59 @@
 import { passionProjects } from "@/data/passion-projects";
+import type { PassionPlacement } from "@/types";
+
+function PlacedImage({ src, placement }: { src: string; placement: PassionPlacement }) {
+  const image = (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt=""
+      className="absolute max-w-none"
+      style={{
+        left: placement.image.x,
+        top: placement.image.y,
+        width: placement.image.w,
+        height: placement.image.h,
+        maxWidth: "none",
+        objectFit: placement.fit,
+      }}
+    />
+  );
+
+  if (!placement.clip) return image;
+
+  const { x, y, w, h } = placement.clip;
+  return (
+    <div className="absolute overflow-hidden" style={{ left: x, top: y, width: w, height: h }}>
+      {image}
+    </div>
+  );
+}
 
 /**
- * Desktop cards are 1188 × 532, white, with a 64px two-line title.
- * Mobile is a horizontal carousel of 297 × 425 cards.
+ * Desktop cards are 1188 × 532. Mobile is a horizontal carousel of 297 × 425 cards.
  */
 export function PassionProjects() {
   return (
-    <section aria-label="Passion projects" className="py-10 lg:py-16">
-      <div className="mx-auto w-full max-w-[1440px] min-w-0 px-5 lg:px-20">
-        <ul className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:thin] lg:gap-12">
+    <section aria-label="Passion projects" className="mb-[88px] mt-[95.3px] lg:mb-0 lg:mt-[160px]">
+      <div className="mx-auto w-full min-w-0 max-w-[1440px] px-[21px] lg:px-20">
+        <ul className="flex snap-x snap-mandatory gap-[15px] overflow-x-auto [scrollbar-width:thin] lg:gap-12">
           {passionProjects.map((project) => (
             <li key={project.id} className="w-[297px] shrink-0 snap-start lg:w-[1188px]">
-              <article className="flex h-[425px] min-w-0 flex-col overflow-hidden border border-[#d8e6e6] bg-white lg:h-[532px] lg:flex-row">
-                <div className="flex min-w-0 flex-col lg:h-full lg:w-[697px]">
-                  <div className="flex flex-col px-4 py-4 lg:flex-1 lg:px-8 lg:py-8">
-                    <p className="text-[0.875rem] font-semibold leading-[0.875rem] lg:text-[1.5rem] lg:font-semibold lg:leading-8">
+              <article className="flex h-[425px] min-w-0 flex-col overflow-hidden bg-white outline outline-1 -outline-offset-1 outline-[#d8e6e6] lg:h-[532px] lg:flex-row">
+                <div
+                  className={`flex min-w-0 shrink-0 flex-col lg:h-full lg:w-[697px] ${project.mobileCopyH === 136 ? "h-[136px]" : "h-[112px]"}`}
+                >
+                  <div className="flex flex-col px-4 pt-4 lg:flex-1 lg:px-8 lg:py-8">
+                    <p className="text-[12px] font-semibold leading-[1.208] lg:text-[1.5rem] lg:leading-8">
                       {project.kicker}
                     </p>
-                    <h3 className="mt-3 text-[1.25rem] font-bold leading-6 lg:mt-0 lg:text-[4rem] lg:leading-[1.2]">
+                    <h3 className="mt-[11.5px] text-[1.25rem] font-bold leading-6 lg:mt-0 lg:text-[4rem] lg:leading-[77px]">
                       {project.title}
                     </h3>
-                    <ul className="mt-4 flex items-center gap-3 text-[0.875rem] font-medium leading-[0.875rem] lg:mt-8 lg:leading-[1.0625rem]">
+                    <ul className="mt-4 flex items-center gap-3 text-[12px] font-medium leading-[1.208] lg:mt-8 lg:text-[0.875rem] lg:leading-[1.0625rem]">
                       {(project.mobileTags ?? project.tags).map((tag, index) => (
                         <li key={`m-${tag}`} className="flex items-center gap-3 lg:hidden">
-                          {index > 0 && <span aria-hidden className="size-1 rounded-full bg-black" />}
+                          {index > 0 && <span aria-hidden className="size-1 rounded-full bg-[#3e8083]" />}
                           {tag}
                         </li>
                       ))}
@@ -42,12 +72,14 @@ export function PassionProjects() {
 
                 <div className={`relative min-h-0 flex-1 overflow-hidden ${project.panel}`}>
                   {project.image && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={project.image}
-                      alt=""
-                      className="absolute bottom-0 left-1/2 h-[78%] w-[70%] -translate-x-1/2 object-contain object-bottom lg:left-[-42px] lg:h-[424px] lg:w-[533px] lg:translate-x-0"
-                    />
+                    <>
+                      <div className="absolute inset-0 lg:hidden">
+                        <PlacedImage src={project.image} placement={project.mobile} />
+                      </div>
+                      <div className="absolute inset-0 hidden lg:block">
+                        <PlacedImage src={project.image} placement={project.desktop} />
+                      </div>
+                    </>
                   )}
                 </div>
               </article>
