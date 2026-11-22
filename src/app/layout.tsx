@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { AccessibilityProvider } from "@/components/a11y/AccessibilityProvider";
 import { Footer } from "@/components/layout/Footer";
@@ -41,6 +42,7 @@ export default function RootLayout({
           <main className="min-w-0">{children}</main>
           <Footer />
         </AccessibilityProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
