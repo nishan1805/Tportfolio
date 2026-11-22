@@ -226,10 +226,10 @@ function Switch({ pressed, label, onClick }: { pressed: boolean; label: string; 
       aria-checked={pressed}
       aria-label={label}
       onClick={onClick}
-      className={`relative h-[22px] w-[39px] rounded-full transition-colors ${pressed ? "bg-[#3058d8]" : "bg-[#d5d5d5]"}`}
+      className={`relative shrink-0 w-[38.76px] h-[22px] rounded-full transition-colors outline-none ${pressed ? "bg-[#3058d8]" : "bg-[#dcdcdc]"} focus-visible:ring-2 focus-visible:ring-[#3058d8]`}
     >
       <span
-        className={`absolute top-[2px] size-[18px] rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.25)] transition-transform ${pressed ? "translate-x-[18px]" : "translate-x-[2px]"}`}
+        className={`absolute left-[3px] top-[3px] size-4 rounded-full bg-white transition-transform ${pressed ? "translate-x-[16.76px]" : "translate-x-0"}`}
       />
     </button>
   );
