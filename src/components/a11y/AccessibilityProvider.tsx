@@ -75,6 +75,21 @@ export function AccessibilityProvider({ children }: { children: React.ReactNode 
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
+  // Lock page scroll on mobile when panel is open
+  useEffect(() => {
+    if (!open) return;
+    const mq = window.matchMedia('(max-width: 1023.98px)');
+    if (!mq.matches) return;
+    const prevDocOverflow = document.documentElement.style.overflow;
+    const prevDocOverscroll = document.documentElement.style.overscrollBehavior;
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.overscrollBehavior = 'none';
+    return () => {
+      document.documentElement.style.overflow = prevDocOverflow;
+      document.documentElement.style.overscrollBehavior = prevDocOverscroll;
+    };
+  }, [open]);
+
   return (
     <A11yContext.Provider value={{ open, setOpen }}>
       {children}
@@ -90,14 +105,15 @@ export function AccessibilityProvider({ children }: { children: React.ReactNode 
             className={`
               absolute
               right-3 top-[124px]
-              flex h-[532px] w-[min(360px,calc(100vw-24px))]
-              flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.25)]
+              flex w-[min(360px,calc(100vw-24px))]
+              flex-col rounded-[12px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.25)]
+              h-auto max-h-[calc(100dvh-136px)] overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch]
               lg:left-[min(calc(max(0px,calc((100vw_-_1440px)_/_2))_+_538px),calc(100vw_-_694px))]
               lg:top-[66px]
               lg:right-auto
               lg:w-[678px] lg:h-auto
               lg:p-0
-              lg:rounded-[12px] lg:overflow-hidden
+              lg:rounded-[12px] lg:max-h-none lg:overflow-hidden
             `}
           >
             {/* Header */}
