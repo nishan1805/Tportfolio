@@ -38,17 +38,23 @@ export function PassionProjects() {
       <div className="mx-auto w-full min-w-0 max-w-[1440px] px-[21px] lg:px-20">
         <ul className="flex snap-x snap-mandatory gap-[15px] overflow-x-auto [scrollbar-width:thin] lg:gap-12">
           {passionProjects.map((project) => (
-            <li key={project.id} className="w-[297px] shrink-0 snap-start lg:w-[1188px]">
+            <li key={project.id} className={`w-[297px] shrink-0 snap-start lg:w-[1188px] ${project.id === "medicine-reminder" ? "max-lg:order-first" : ""}`}>
               <article className="flex h-[425px] min-w-0 flex-col overflow-hidden bg-white outline outline-1 -outline-offset-1 outline-[#d8e6e6] lg:h-[532px] lg:flex-row">
                 <div
                   className={`flex min-w-0 shrink-0 flex-col lg:h-full lg:w-[697px] ${project.mobileCopyH === 136 ? "h-[136px]" : "h-[112px]"}`}
                 >
                   <div className="flex flex-col px-4 pt-4 lg:flex-1 lg:px-8 lg:py-8">
                     <p className="text-[12px] font-semibold leading-[1.208] lg:text-[1.5rem] lg:leading-8">
-                      {project.kicker}
+                      <span className="lg:hidden">{project.mobileKicker ?? project.kicker}</span>
+                      <span className="hidden lg:inline">{project.kicker}</span>
                     </p>
                     <h3 className="mt-[11.5px] text-[1.25rem] font-bold leading-6 lg:mt-0 lg:text-[4rem] lg:leading-[77px]">
-                      {project.title}
+                      {project.desktopHref ? (
+                        <>
+                          <span className="lg:hidden">{project.title}</span>
+                          <a className="hidden lg:inline" href={project.desktopHref}>{project.title}</a>
+                        </>
+                      ) : project.title}
                     </h3>
                     <ul className="mt-4 flex items-center gap-3 text-[12px] font-medium leading-[1.208] lg:mt-8 lg:text-[0.875rem] lg:leading-[1.0625rem]">
                       {(project.mobileTags ?? project.tags).map((tag, index) => (

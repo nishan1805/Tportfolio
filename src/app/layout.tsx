@@ -26,6 +26,17 @@ const nekst = localFont({
   display: "swap",
 });
 
+const bitcountSingle = localFont({
+  src: [
+    { path: "./fonts/bitcount-single-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/bitcount-single-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/bitcount-single-latin-600-normal.woff2", weight: "600", style: "normal" },
+  ],
+  variable: "--font-bitcount-single",
+  display: "swap",
+  preload: false,
+});
+
 export const metadata: Metadata = {
   title: `${siteConfig.name} | ${siteConfig.role}`,
   description: siteConfig.description,
@@ -35,7 +46,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={nekst.variable}>
+    <html lang="en" className={`${nekst.variable} ${bitcountSingle.variable}`}>
       <body className="bg-white font-sans text-black antialiased">
         <AccessibilityProvider>
           <Navbar />

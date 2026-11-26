@@ -1,0 +1,357 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  height: 758px;
+  overflow: hidden;
+  background: #f2ecfc;
+  color: #000;
+}
+
+.content {
+  position: relative;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 155px clamp(16px, 7.7vw, 31px) 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 51px;
+  color: #d10606;
+  font-size: clamp(19px, 6.72vw, 27px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.eyebrow::before {
+  content: "";
+  flex: 0 0 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.headline {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  font-size: clamp(42px, 15.92vw, 64px);
+  font-weight: 400;
+  line-height: 44px;
+}
+
+.word {
+  display: block;
+  white-space: nowrap;
+}
+
+.mobileFirstLine {
+  display: block;
+  margin-bottom: 11px;
+}
+
+.tile {
+  display: inline-grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  margin-left: -2px;
+  padding: 3px 0 0 2px;
+  vertical-align: middle;
+  background: #d10606;
+  color: #fff;
+  cursor: pointer;
+  animation: tile-shape 1.6s step-end infinite;
+}
+
+.tile:focus-visible {
+  outline: 3px solid #3058d8;
+  outline-offset: 4px;
+}
+
+@keyframes tile-shape {
+  50% { border-radius: 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile { animation: none; }
+}
+
+.interface {
+  display: block;
+  margin-top: 30px;
+  font-size: 44px;
+}
+
+.hint {
+  display: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #bdcef7;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px #bdcef7;
+  color: #101820;
+  font-family: Arial, sans-serif;
+}
+
+.card[data-placement="peek"] {
+  width: 290px;
+  transform: rotate(13deg);
+  transform-origin: top left;
+}
+
+.card[data-placement="overlay"] {
+  width: 209px;
+  min-height: 291px;
+  font-size: 10px;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 7px;
+  border-bottom: 1px solid #eef0f3;
+  white-space: nowrap;
+}
+
+.avatar {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  object-fit: cover;
+  color: transparent;
+}
+
+.photo {
+  width: 100%;
+  height: 176px;
+  object-fit: cover;
+}
+
+.profileCopy {
+  padding: 6px 7px;
+  line-height: 1.35;
+}
+
+.profileIcons {
+  margin-top: auto;
+  padding-inline: 6px;
+  border-top: 1px solid #eef0f3;
+}
+
+.peek {
+  position: absolute;
+  top: 498px;
+  left: 35%;
+  font-size: 14px;
+}
+
+.peek .profileHeader {
+  padding: 8px;
+}
+
+.peek .avatar {
+  width: 34px;
+  height: 34px;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 3;
+  right: 24px;
+  bottom: 128px;
+}
+
+.bar {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  background: #d10606;
+  color: #fff;
+}
+
+.barMain {
+  display: grid;
+  gap: 16px;
+  min-height: 114px;
+  align-content: center;
+  padding: 13px 16px;
+}
+
+.barItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.barItem svg {
+  flex: none;
+  opacity: 0.75;
+}
+
+.barMain > div:first-child svg {
+  transform: rotate(180deg);
+}
+
+.experienceValues {
+  display: inline-flex;
+  flex-wrap: wrap;
+  column-gap: 4px;
+}
+
+.barItem small {
+  font-size: 12px;
+}
+
+.barCap {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    height: 716px;
+  }
+
+  .content {
+    width: max-content;
+    max-width: 100%;
+    margin-left: max(calc((100% - 1440px) / 2 + 108px), 7.5%);
+    margin-right: 0;
+    padding: 192px 0 0;
+  }
+
+  .eyebrow {
+    gap: 16px;
+    margin-bottom: 36px;
+    font-size: 38px;
+    line-height: 40px;
+  }
+
+  .eyebrow::before {
+    flex-basis: 24px;
+    height: 24px;
+  }
+
+  .headline {
+    font-size: min(7.78vw, 112px);
+    line-height: 67px;
+  }
+
+  .tile {
+    width: 72px;
+    height: 72px;
+    margin-left: -7px;
+    padding: 4px 0 0 10px;
+  }
+
+  .interface {
+    margin-top: 32px;
+    font-size: inherit;
+  }
+
+  .hint {
+    position: absolute;
+    top: 291px;
+    left: calc(100% + 36px);
+    display: block;
+    width: 155px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .peek {
+    display: none;
+  }
+
+  .overlay {
+    top: 110px;
+    right: max(80px, calc((100vw - 1440px) / 2 + 115px));
+    bottom: auto;
+  }
+
+  .card[data-placement="overlay"] {
+    width: 290px;
+    min-height: 403px;
+    transform: rotate(-10.3deg);
+    font-size: 14px;
+  }
+
+  .overlay .profileHeader {
+    padding: 8px;
+  }
+
+  .overlay .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .overlay .photo {
+    order: -1;
+    height: 244px;
+  }
+
+  .overlay .profileCopy {
+    padding: 9px;
+  }
+
+  .bar {
+    display: flex;
+    height: 53px;
+  }
+
+  .barMain {
+    grid-template-columns: 52% 1fr;
+    gap: 6px;
+    min-height: 0;
+    flex: 1;
+    padding: 0 7.08vw;
+    padding-right: 0;
+  }
+
+  .barMain > div:first-child {
+    display: none;
+  }
+
+  .barCap {
+    position: relative;
+    display: block;
+    flex: 0 0 min(19.17%, 276px);
+    background: #f43434;
+  }
+
+  .phone {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 125px;
+    height: 148px;
+    overflow: hidden;
+    transform: translateX(-50%);
+    border: 4px solid #171d2c;
+    border-bottom: 0;
+    border-radius: 9px 9px 0 0;
+    background: #171d2c;
+  }
+
+  .phone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .hint {
+    left: calc(100% + 12px);
+    width: 133px;
+  }
+}

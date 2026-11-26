@@ -1,24 +1,14 @@
 import type { Project } from "@/types";
 
-const SHARED_DESCRIPTION =
-  "Newton’s Telescope delivers real-time App Store performance analysis by unifying ASA, ASO, and MMP data.";
-
-const newtonMeta = [
-  { label: "Organization", value: "Newton" },
-  { label: "Timeline", value: "Sep 2025   Nov 2025" },
-];
-
-const raipurHomesMeta = [
-  { label: "Organization", value: "Raipur Homes" },
-  { label: "Category", value: "Real Estate" },
-];
-
 export const projects: Project[] = [
   {
     slug: "telescope-overview",
     title: "Telescope Overview",
-    description: SHARED_DESCRIPTION,
-    meta: newtonMeta,
+    description: "Telescope by Newton is an advanced adtech tool that unifies ASA, ASO, and MMP metrics into a single score to generate comprehensive App Store performance reports in seconds.",
+    meta: [
+      { label: "Organization", value: "Newton" },
+      { label: "Timeline", value: "6 Weeks" },
+    ],
     gradient: "bg-gradient-to-b from-[#ea6828] to-[#fdad86]",
     image: "/images/case-studies/banner-telescope-overview.webp",
     webm: "/images/case-studies/banner-telescope-overview.webm",
@@ -28,8 +18,11 @@ export const projects: Project[] = [
   {
     slug: "media-planner",
     title: "Media Planner",
-    description: SHARED_DESCRIPTION,
-    meta: newtonMeta,
+    description: "Media Planner is Newton’s centralized platform for automated media reporting. It simplifies workflows through an intelligent, data driven dashboard.",
+    meta: [
+      { label: "Organization", value: "Newton" },
+      { label: "Timeline", value: "5 Weeks" },
+    ],
     gradient: "bg-gradient-to-b from-[#9244b9] to-[#e2a8ff]",
     image: "/images/case-studies/banner-media-planner.webp",
     webm: "/images/case-studies/banner-media-planner.webm",
@@ -40,8 +33,11 @@ export const projects: Project[] = [
     slug: "opticks-ai-editor",
     title: "Opticks AI",
     titleSuffix: "Editor",
-    description: SHARED_DESCRIPTION,
-    meta: newtonMeta,
+    description: "Opticks is an AI-powered tool that generates and customizes app store creatives with minimal input, offering advanced editing and fine-tuning capabilities.",
+    meta: [
+      { label: "Organization", value: "Newton" },
+      { label: "Timeline", value: "6 Weeks" },
+    ],
     gradient: "bg-gradient-to-b from-[#b40001] to-[#f99a9a]",
     image: "/images/case-studies/banner-opticks-ai-editor.webp",
     webm: "/images/case-studies/banner-opticks-ai-editor.webm",
@@ -51,8 +47,11 @@ export const projects: Project[] = [
   {
     slug: "raipur-homes",
     title: "Raipur Homes",
-    description: SHARED_DESCRIPTION,
-    meta: raipurHomesMeta,
+    description: "Raipur Homes, a platform for property and related services in Raipur, needed a revamp.",
+    meta: [
+      { label: "Organization", value: "Raipur Homes" },
+      { label: "Category", value: "16 Weeks" },
+    ],
     gradient: "bg-gradient-to-b from-[#3f5cff] to-[#bcc6ff]",
     image: "/images/projects/raipur-homes.webp",
     href: "/work/raipur-homes",
@@ -60,8 +59,11 @@ export const projects: Project[] = [
   {
     slug: "audit-tool",
     title: "Audit Tool",
-    description: SHARED_DESCRIPTION,
-    meta: raipurHomesMeta,
+    description: "Newton’s Telescope Audit is advance audit tool which describes performance of any app in apple ads and appstore.",
+    meta: [
+      { label: "Organization", value: "Newton" },
+      { label: "Timeline", value: "-" },
+    ],
     gradient: "bg-gradient-to-b from-[#59c269] to-[#ddf6e1]",
     image: "/images/projects/audit-tool.webp",
     webm: "/images/projects/audit-tool.webm",

@@ -1,6 +1,6 @@
 import type { PassionProject } from "@/types";
 
-const CAPTION = "Royalty free icon package available in figma";
+const CAPTION = "Available in behance";
 
 /**
  * Desktop clips are bottom-aligned in the 532px panel (y = 532 − height) and
@@ -9,31 +9,11 @@ const CAPTION = "Royalty free icon package available in figma";
  */
 export const passionProjects: PassionProject[] = [
   {
-    id: "medicine-reminder",
-    kicker: "Passion Project",
-    title: "Medicine Reminder App",
-    tags: ["Free", "65 Icons"],
-    mobileTags: ["Mobile App", "36 Screens"],
-    caption: CAPTION,
-    image: "/images/passion/medicine-reminder.webp",
-    panel: "bg-gradient-to-b from-[#4514db] to-[#162d2d]",
-    mobileCopyH: 112,
-    desktop: {
-      clip: { x: -42, y: 108, w: 533, h: 424 },
-      image: { x: -99, y: 0, w: 732, h: 687 },
-      fit: "fill",
-    },
-    mobile: {
-      clip: { x: -16, y: 64, w: 312.7, h: 248.7 },
-      image: { x: -58.1, y: 0, w: 429.4, h: 403 },
-      fit: "fill",
-    },
-  },
-  {
     id: "payment-reminder",
     kicker: "Passion Project",
     title: "Payment Reminder App",
-    tags: ["Free", "65 Icons"],
+    desktopHref: "https://www.behance.net/gallery/193664943/Payment-Reminder-App-UX-Audit",
+    tags: ["Android App", "16 Screens"],
     mobileTags: ["Mobile App", "18 Screens"],
     caption: CAPTION,
     image: "/images/passion/payment-reminder.webp",
@@ -53,8 +33,10 @@ export const passionProjects: PassionProject[] = [
   {
     id: "chatbot",
     kicker: "Interests",
+    mobileKicker: "Passion Project",
     title: "Chatbot Design",
-    tags: ["Free", "65 Icons"],
+    desktopHref: "https://www.behance.net/gallery/185487135/Chatbot-UI-and-Prototype",
+    tags: ["Android App", "12 Screens"],
     mobileTags: ["Feature", "13 Screens"],
     caption: CAPTION,
     image: "/images/passion/chatbot.webp",
@@ -74,8 +56,10 @@ export const passionProjects: PassionProject[] = [
   {
     id: "tele-medical",
     kicker: "Interests",
+    mobileKicker: "Passion Project",
     title: "Tele Medical Consultation App",
-    tags: ["Free", "65 Icons"],
+    desktopHref: "https://www.behance.net/gallery/191426547/Telemedicine-App-UX-Case-study",
+    tags: ["Android App", "51 Screens"],
     mobileTags: ["Mobile App", "56 Screens"],
     caption: CAPTION,
     image: "/images/passion/tele-medical.webp",
@@ -87,6 +71,27 @@ export const passionProjects: PassionProject[] = [
     },
     mobile: {
       image: { x: 30, y: 29, w: 237, h: 465 },
+      fit: "fill",
+    },
+  },
+  {
+    id: "medicine-reminder",
+    kicker: "Passion Project",
+    title: "Medicine Reminder App",
+    tags: ["Android App", "38 Screens"],
+    mobileTags: ["Mobile App", "36 Screens"],
+    caption: CAPTION,
+    image: "/images/passion/medicine-reminder.webp",
+    panel: "bg-gradient-to-b from-[#4514db] to-[#162d2d]",
+    mobileCopyH: 112,
+    desktop: {
+      clip: { x: -42, y: 108, w: 533, h: 424 },
+      image: { x: -99, y: 0, w: 732, h: 687 },
+      fit: "fill",
+    },
+    mobile: {
+      clip: { x: -16, y: 64, w: 312.7, h: 248.7 },
+      image: { x: -58.1, y: 0, w: 429.4, h: 403 },
       fit: "fill",
     },
   },

@@ -5,9 +5,9 @@ export function Projects() {
   return (
     <section id="work" aria-label="Assignments" className="mt-[116px] lg:mt-0">
       <div className="mx-auto flex w-full min-w-0 max-w-[1440px] flex-col gap-12 px-5 lg:px-20">
-        <div className="relative h-[86px] lg:hidden">
-          <h2 className="text-center text-[2rem] font-semibold leading-[38px]">Assignments</h2>
-          <span className="absolute -left-px bottom-0 h-px w-full bg-black/30" />
+        <div className="relative h-[86px]">
+          <h2 className="text-center text-[2rem] font-semibold leading-[38px] lg:text-left lg:font-bitcount lg:text-[#d10606]">Assignments</h2>
+          <span className="absolute -left-px bottom-0 h-px w-full bg-black/30 lg:hidden" />
         </div>
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
