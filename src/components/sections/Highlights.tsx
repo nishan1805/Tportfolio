@@ -17,7 +17,7 @@ export function Highlights() {
             <span className="lg:hidden">Expertise</span>
             <span className="hidden lg:inline">Experties</span>
           </h2>
-          <span className="absolute -left-px bottom-0 h-px w-full bg-black/30 lg:hidden" />
+          <span className="absolute -left-px bottom-0 h-px w-full bg-black/30 lg:left-0 lg:bg-[#0000001a]" />
         </div>
         <div className="grid min-w-0 gap-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8">
           {highlights.map((highlight) => (
