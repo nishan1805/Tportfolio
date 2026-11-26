@@ -79,7 +79,9 @@ export type PassionPlacement = {
 export type PassionProject = {
   id: string;
   kicker: string;
+  mobileKicker?: string;
   title: string;
+  desktopHref?: string;
   tags: string[];
   /** Tags shown on the mobile carousel, which differ from the desktop card. */
   mobileTags?: string[];

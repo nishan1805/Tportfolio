@@ -27,7 +27,9 @@ export function HighlightCard({ highlight }: HighlightCardProps) {
       <div className="order-2 flex min-h-0 min-w-0 flex-1 flex-col lg:order-1 lg:w-[342px] lg:shrink-0">
         <div className={`flex min-h-0 flex-1 flex-col gap-[16.7px] ${textPad}`}>
           {kicker && <p className="text-[12.49px] font-semibold leading-[16.7px] text-black">{kicker}</p>}
-          <h3 className="text-[20px] font-bold leading-[24px] text-black lg:text-[24px] lg:leading-[29px]">{title}</h3>
+          <h3 className={`text-[20px] font-bold leading-[24px] text-black lg:text-[24px] lg:leading-[29px] ${id === "intelligence" || id === "emotion" ? "lg:font-bitcount lg:font-semibold" : ""}`}>
+            {title}
+          </h3>
           {description && (
             <p className="text-[12px] font-medium leading-[1.208] text-black lg:leading-[16.7px]">{description}</p>
           )}

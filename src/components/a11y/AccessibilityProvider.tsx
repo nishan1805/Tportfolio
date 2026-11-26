@@ -217,12 +217,12 @@ export function AccessibilityProvider({ children }: { children: React.ReactNode 
             {/* Section 3: Dark/Grayscale */}
             <div className="flex flex-col gap-8 p-4 lg:p-[32px] lg:gap-[32px]">
               <div className="flex items-center justify-between">
-                <span className="text-[1rem] font-bold leading-normal lg:hidden">Dark Mode</span>
+                <span className="text-[1rem] font-bold leading-normal lg:hidden">Dark Modes</span>
                 <span className="hidden lg:inline text-[16px] font-bold leading-normal">Dark Modes</span>
                 <Switch pressed={dark} label="Dark mode" onClick={() => setDark((value) => !value)} />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[1rem] font-bold leading-normal lg:hidden">Grayscale</span>
+                <span className="text-[1rem] font-bold leading-normal lg:hidden">Garyscale</span>
                 <span className="hidden lg:inline text-[16px] font-bold leading-normal">Garyscale</span>
                 <Switch pressed={gray} label="Grayscale" onClick={() => setGray((value) => !value)} />
               </div>
