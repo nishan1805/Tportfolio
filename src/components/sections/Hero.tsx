@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import styles from "./Hero.module.css";
 
@@ -14,7 +14,7 @@ function ProfileCard({ placement }: { placement: "peek" | "overlay" }) {
       <div className={styles.profileHeader}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className={styles.avatar} src="/images/hero/avatar-tarun-2x.webp" alt="" width={40} height={40} onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} />
-        <span><strong>Tarun Dewangan</strong> <span className="text-slate-600">@dexipex</span></span>
+        <span><strong>Tarun Dewangan</strong> <span className={styles.handle}>@dexipex</span></span>
       </div>
       {!isPeek && (
         // eslint-disable-next-line @next/next/no-img-element
@@ -25,7 +25,7 @@ function ProfileCard({ placement }: { placement: "peek" | "overlay" }) {
         {!isPeek && (
           <p className="lg:hidden">
             I’m a <span className="text-[#3058d8]">senior product designer</span> having more
-            then 6 years of experience designing digital products.
+            then 6 years of experience designing digital products
           </p>
         )}
       </div>
@@ -92,6 +92,8 @@ function BarItem({ label, children }: { label: string; children: React.ReactNode
 }
 
 export function Hero() {
+  const hero = useRef<HTMLElement>(null);
+  const hoverTimeout = useRef<number>(undefined);
   const trigger = useRef<HTMLButtonElement>(null);
   const card = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
@@ -99,6 +101,57 @@ export function Hero() {
   const [pinned, setPinned] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const open = !dismissed && (hovered || focused || pinned);
+
+  function keepCardHovered() {
+    window.clearTimeout(hoverTimeout.current);
+    setHovered(true);
+  }
+
+  function leaveCard() {
+    window.clearTimeout(hoverTimeout.current);
+    // Give the pointer time to cross the gap between the tile and card.
+    hoverTimeout.current = window.setTimeout(() => setHovered(false), 350);
+  }
+
+  useEffect(() => () => window.clearTimeout(hoverTimeout.current), []);
+
+  useLayoutEffect(() => {
+    if (!open || !hero.current || !trigger.current || !card.current) return;
+    const section = hero.current;
+    const tile = trigger.current;
+    const overlay = card.current;
+    const desktop = window.matchMedia("(min-width: 1024px)");
+
+    function positionCard() {
+      const bounds = section.getBoundingClientRect();
+      const anchor = tile.getBoundingClientRect();
+      const isDesktop = desktop.matches;
+      const inset = isDesktop ? 24 : 16;
+      const tileLeft = anchor.left - bounds.left;
+      const tileTop = anchor.top - bounds.top;
+      const preferredLeft = tileLeft + 7 + 94;
+      const left = Math.max(inset, Math.min(preferredLeft, bounds.width - overlay.offsetWidth - inset));
+      let top = Math.max(inset, tileTop + (isDesktop ? 5 : -8.5) - 201);
+
+      // Keep the tile tappable when the viewport forces the card over it.
+      if (!isDesktop && left < tileLeft + anchor.width && left + overlay.offsetWidth > tileLeft) {
+        const above = tileTop - overlay.offsetHeight;
+        top = above >= -8 ? Math.max(0, above) : tileTop + anchor.height + 8;
+      }
+
+      overlay.style.left = `${left}px`;
+      overlay.style.top = `${top}px`;
+    }
+
+    positionCard();
+    const observer = new ResizeObserver(positionCard);
+    observer.observe(section);
+    document.fonts.addEventListener("loadingdone", positionCard);
+    return () => {
+      observer.disconnect();
+      document.fonts.removeEventListener("loadingdone", positionCard);
+    };
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -127,9 +180,13 @@ export function Hero() {
   }, [open]);
 
   return (
-    <section id="about" className={`${styles.hero} font-bitcount`}>
+    <section ref={hero} id="about" className={styles.hero}>
       <div className={styles.content}>
-        <p className={styles.eyebrow}>Complex UI Into</p>
+        <picture className={styles.eyebrow}>
+          <source media="(max-width: 1023px)" srcSet="/images/hero/eyebrow-mobile.svg" width={267} height={18} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/hero/eyebrow-desktop.svg" alt="Complex UI Into" width={381} height={27} />
+        </picture>
         <h1 className={styles.headline}>
           <span className={styles.word}>
             <span className="hidden lg:inline">Unforgettabl</span>
@@ -144,10 +201,12 @@ export function Hero() {
               onPointerEnter={(event) => {
                 if (event.pointerType !== "touch") {
                   setDismissed(false);
-                  setHovered(true);
+                  keepCardHovered();
                 }
               }}
-              onPointerLeave={() => setHovered(false)}
+              onPointerLeave={(event) => {
+                if (event.pointerType !== "touch") leaveCard();
+              }}
               onFocus={(event) => {
                 if (event.currentTarget.matches(":focus-visible")) {
                   setDismissed(false);
@@ -173,8 +232,19 @@ export function Hero() {
 
       <div className={styles.peek}><ProfileCard placement="peek" /></div>
 
-      <div ref={card} id="hero-profile" className={styles.overlay} hidden={!open}>
-        {open && <ProfileCard placement="overlay" />}
+      <div
+        ref={card}
+        id="hero-profile"
+        className={styles.overlay}
+        hidden={!open}
+        onPointerEnter={(event) => {
+          if (event.pointerType !== "touch") keepCardHovered();
+        }}
+        onPointerLeave={(event) => {
+          if (event.pointerType !== "touch") leaveCard();
+        }}
+      >
+        <ProfileCard placement="overlay" />
       </div>
 
       <div className={styles.bar}>
