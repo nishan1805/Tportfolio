@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import styles from "./Hero.module.css";
 
-const PHONE_STILLS = ["real-estate", "shop-sales", "bike-rental"];
+const PHONE_RECORDINGS = ["real-estate", "shop-sales", "bike-rental"];
 const PROFILE_COPY = "I'm a Senior Product Designer with 6+ years of experience crafting complex digital products.";
 
 function ProfileCard({ placement }: { placement: "peek" | "overlay" }) {
@@ -43,34 +43,85 @@ function ProfileCard({ placement }: { placement: "peek" | "overlay" }) {
   );
 }
 
-function PhonePreview() {
-  const [still, setStill] = useState(0);
+function PhonePreview({ hero }: { hero: React.RefObject<HTMLElement | null> }) {
+  const videos = useRef<(HTMLVideoElement | null)[]>([]);
+  const [slot, setSlot] = useState(0);
+  const [playbackEnabled, setPlaybackEnabled] = useState(false);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
     let timers: number[] = [];
 
-    function sync() {
+    function syncPlayback() {
+      setPlaybackEnabled(desktop.matches && !motion.matches);
+    }
+
+    function syncMotion() {
+      syncPlayback();
       timers.forEach(window.clearTimeout);
-      setStill(0);
-      timers = motion.matches ? [] : PHONE_STILLS.slice(1).map((_, index) =>
-        window.setTimeout(() => setStill(index + 1), (index + 1) * 20_000)
+      setSlot(0);
+      timers = motion.matches ? [] : PHONE_RECORDINGS.slice(1).map((_, index) =>
+        window.setTimeout(() => setSlot(index + 1), (index + 1) * 20_000)
       );
     }
 
-    sync();
-    motion.addEventListener("change", sync);
+    syncMotion();
+    motion.addEventListener("change", syncMotion);
+    desktop.addEventListener("change", syncPlayback);
     return () => {
-      motion.removeEventListener("change", sync);
+      motion.removeEventListener("change", syncMotion);
+      desktop.removeEventListener("change", syncPlayback);
       timers.forEach(window.clearTimeout);
     };
   }, []);
 
+  useEffect(() => {
+    if (!hero.current || !("IntersectionObserver" in window)) {
+      setInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting));
+    observer.observe(hero.current);
+    return () => observer.disconnect();
+  }, [hero]);
+
+  useEffect(() => {
+    const video = videos.current[slot];
+    if (playbackEnabled && video) video.currentTime = 0;
+  }, [slot, playbackEnabled]);
+
+  useEffect(() => {
+    const video = videos.current[slot];
+    if (!playbackEnabled || !inView || !video) return;
+
+    void video.play().catch(() => {});
+    return () => video.pause();
+  }, [slot, playbackEnabled, inView]);
+
   return (
     <div className={styles.phone} aria-hidden="true">
-      {PHONE_STILLS.map((name, index) => (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        <img key={name} src={`/images/mobile/${name}.webp`} alt="" hidden={index !== still} />
+      {PHONE_RECORDINGS.map((name, index) => (
+        <video
+          key={`${name}-${playbackEnabled}`}
+          ref={(video) => { videos.current[index] = video; }}
+          hidden={index !== slot}
+          muted
+          playsInline
+          loop
+          preload="metadata"
+          poster={`/images/mobile/${name}.webp`}
+          aria-hidden="true"
+        >
+          {playbackEnabled && (
+            <>
+              <source src={`/images/mobile/${name}.webm`} type="video/webm" />
+              <source src={`/images/mobile/${name}.mp4`} type="video/mp4" />
+            </>
+          )}
+        </video>
       ))}
     </div>
   );
@@ -263,7 +314,7 @@ export function Hero() {
             <BarItem label="Additional Expertise">Design System</BarItem>
           </div>
         </dl>
-        <div className={styles.barCap}><PhonePreview /></div>
+        <div className={styles.barCap}><PhonePreview hero={hero} /></div>
       </div>
     </section>
   );
