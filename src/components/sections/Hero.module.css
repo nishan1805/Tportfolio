@@ -341,13 +341,17 @@
     height: 148px;
     overflow: hidden;
     transform: translateX(-50%);
-    border: 4px solid #171d2c;
+    border: 2.83px solid #151b2d;
     border-bottom: 0;
-    border-radius: 9px 9px 0 0;
-    background: #171d2c;
+    border-radius: 4px 4px 0 0;
+    background: #151b2d;
   }
 
-  .phone img {
+  .phone video[hidden] {
+    display: none;
+  }
+
+  .phone video {
     width: 100%;
     height: 100%;
     object-fit: cover;
