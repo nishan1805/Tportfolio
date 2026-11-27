@@ -15,6 +15,8 @@ function PlacedImage({ src, placement }: { src: string; placement: PassionPlacem
         height: placement.image.h,
         maxWidth: "none",
         objectFit: placement.fit,
+        transform: placement.rotateDeg === undefined ? undefined : `rotate(${placement.rotateDeg}deg)`,
+        transformOrigin: "0 0",
       }}
     />
   );
@@ -36,10 +38,11 @@ export function PassionProjects() {
   return (
     <section aria-label="Passion projects" className="mb-[88px] mt-[95.3px] lg:mb-0 lg:mt-[160px]">
       <div className="mx-auto w-full min-w-0 max-w-[1440px] px-[21px] lg:px-20">
-        <ul className="flex snap-x snap-mandatory gap-[15px] overflow-x-auto [scrollbar-width:thin] lg:gap-12">
+        {/* Extend the mobile scrollport into the left gutter for the first card’s image bleed. */}
+        <ul className="flex snap-x snap-mandatory gap-[15px] overflow-x-auto [scrollbar-width:thin] max-lg:-ml-4 max-lg:pl-4 max-lg:scroll-pl-4 lg:gap-12">
           {passionProjects.map((project) => (
             <li key={project.id} className={`w-[297px] shrink-0 snap-start lg:w-[1188px] ${project.id === "medicine-reminder" ? "max-lg:order-first" : ""}`}>
-              <article className="flex h-[425px] min-w-0 flex-col overflow-hidden bg-white outline outline-1 -outline-offset-1 outline-[#d8e6e6] lg:h-[532px] lg:flex-row">
+              <article className={`flex h-[425px] min-w-0 flex-col bg-white outline outline-1 -outline-offset-1 outline-[#d8e6e6] lg:h-[532px] lg:flex-row lg:overflow-hidden ${project.id === "medicine-reminder" ? "" : "overflow-hidden"}`}>
                 <div
                   className={`flex min-w-0 shrink-0 flex-col lg:h-full lg:w-[697px] ${project.mobileCopyH === 136 ? "h-[136px]" : "h-[112px]"}`}
                 >
@@ -76,7 +79,7 @@ export function PassionProjects() {
                   </p>
                 </div>
 
-                <div className={`relative min-h-0 flex-1 overflow-hidden ${project.panel}`}>
+                <div className={`relative min-h-0 flex-1 ${project.panel} ${project.mobile.clip ? "max-lg:overflow-visible" : "max-lg:overflow-hidden"} ${project.desktop.clip ? "lg:overflow-visible" : "lg:overflow-hidden"}`}>
                   {project.image && (
                     <>
                       <div className="absolute inset-0 lg:hidden">
