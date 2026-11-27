@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { type PointerEvent as ReactPointerEvent, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import styles from "./Hero.module.css";
 
@@ -18,7 +18,7 @@ function ProfileCard({ placement }: { placement: "peek" | "overlay" }) {
       </div>
       {!isPeek && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img className={styles.photo} src="/images/hero/photo-card.webp" alt="Tarun Dewangan" width={290} height={244} onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} />
+        <img className={styles.photo} src="/images/hero/photo-card.webp" alt="Tarun Dewangan" width={290} height={244} loading="eager" decoding="async" fetchPriority="low" onError={(event) => { event.currentTarget.style.visibility = "hidden"; }} />
       )}
       <div className={styles.profileCopy}>
         <p className={isPeek ? undefined : "hidden lg:block"}>{PROFILE_COPY}</p>
@@ -158,16 +158,20 @@ export function Hero() {
     setHovered(true);
   }
 
-  function leaveCard() {
+  function leaveCard(event: ReactPointerEvent) {
+    if (event.pointerType === "touch") return;
+    const target = event.relatedTarget;
+    if (target instanceof Node && (card.current?.contains(target) || trigger.current?.contains(target))) return;
+
     window.clearTimeout(hoverTimeout.current);
     // Give the pointer time to cross the gap between the tile and card.
-    hoverTimeout.current = window.setTimeout(() => setHovered(false), 350);
+    hoverTimeout.current = window.setTimeout(() => setHovered(false), 80);
   }
 
   useEffect(() => () => window.clearTimeout(hoverTimeout.current), []);
 
   useLayoutEffect(() => {
-    if (!open || !hero.current || !trigger.current || !card.current) return;
+    if (!hero.current || !trigger.current || !card.current) return;
     const section = hero.current;
     const tile = trigger.current;
     const overlay = card.current;
@@ -197,12 +201,14 @@ export function Hero() {
     positionCard();
     const observer = new ResizeObserver(positionCard);
     observer.observe(section);
+    window.addEventListener("resize", positionCard);
     document.fonts.addEventListener("loadingdone", positionCard);
     return () => {
       observer.disconnect();
+      window.removeEventListener("resize", positionCard);
       document.fonts.removeEventListener("loadingdone", positionCard);
     };
-  }, [open]);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -255,9 +261,7 @@ export function Hero() {
                   keepCardHovered();
                 }
               }}
-              onPointerLeave={(event) => {
-                if (event.pointerType !== "touch") leaveCard();
-              }}
+              onPointerLeave={leaveCard}
               onFocus={(event) => {
                 if (event.currentTarget.matches(":focus-visible")) {
                   setDismissed(false);
@@ -287,13 +291,13 @@ export function Hero() {
         ref={card}
         id="hero-profile"
         className={styles.overlay}
-        hidden={!open}
+        data-open={open}
+        aria-hidden={!open || undefined}
+        inert={!open}
         onPointerEnter={(event) => {
           if (event.pointerType !== "touch") keepCardHovered();
         }}
-        onPointerLeave={(event) => {
-          if (event.pointerType !== "touch") leaveCard();
-        }}
+        onPointerLeave={leaveCard}
       >
         <ProfileCard placement="overlay" />
       </div>
