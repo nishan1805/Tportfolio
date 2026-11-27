@@ -68,7 +68,7 @@ export function MediaPlannerSections({ section }: { section: CaseStudySection })
           ))}
         </div>
         <div className="mt-9 overflow-hidden rounded-[8px]">
-          <p className="bg-[#cceff6] p-3 text-[1rem] font-bold leading-[16.66px] text-[#254d4f]">Summary</p>
+          <p className="site-heading bg-[#cceff6] p-3 text-[1rem] leading-[16.66px] text-[#254d4f]">Summary</p>
           <p className="bg-[#e6f7fb] p-3 text-[1rem] font-normal leading-6 text-[#254d4f]">
             {summary && summary.type === "item" ? summary.text : ""}
           </p>

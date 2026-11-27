@@ -297,7 +297,7 @@ function CurrentRoleBand() {
         <h3 className="absolute top-1/2 -translate-y-1/2 text-[13.95px] font-bold leading-[1.208] text-[#193334]" style={{ left: `${(13.951 / 1254) * 100}%` }}>
           {currentRole.company}
         </h3>
-        <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-[Inter,system-ui,sans-serif] text-[12.207px] font-normal leading-[17.4px] text-[#254d4f]">
+        <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[12.207px] font-normal leading-[17.4px] text-[#254d4f]">
           {currentRole.period}
         </p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
