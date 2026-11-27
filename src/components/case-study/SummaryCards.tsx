@@ -160,7 +160,7 @@ function MediaPlannerSummary() {
 
           <article className="flex min-h-[399.33px] flex-col justify-between gap-6 rounded-[16px] border border-[#d8e6e6] bg-white p-6 text-[#254d4f] lg:h-full lg:min-h-0">
             <p className="text-[24px] font-bold leading-[37px] lg:text-[2rem]">
-              3<span className="font-[Inter,sans-serif] font-bold">-4</span> Iterations
+              3<span className="font-bold">-4</span> Iterations
             </p>
             <div className="flex flex-col gap-4">
               <h3 className="text-[1.25rem] font-semibold leading-6">Wireframing</h3>
@@ -177,7 +177,7 @@ function MediaPlannerSummary() {
           </article>
 
           <article className={`flex min-h-[399.33px] flex-col justify-between gap-6 rounded-[16px] p-6 text-[#254d4f] lg:h-full lg:min-h-0 ${fadeUp}`}>
-            <p className="text-[24px] font-bold leading-[37px] lg:text-[2rem]">UI Design and Prototype</p>
+            <p className="site-heading text-[24px] leading-[37px] lg:text-[2rem]">UI Design and Prototype</p>
             <div className="flex flex-col gap-6">
               <h3 className="text-[1.25rem] font-semibold leading-6">UI Finalization</h3>
               <p className="text-[0.875rem] font-normal leading-5">
@@ -282,7 +282,7 @@ function OpticksSummary() {
           </article>
 
           <article className="flex flex-col gap-8 rounded-[16px] bg-gradient-to-b from-[#efeeff] to-[#fbfbff] p-6 text-[#254d4f] lg:h-full lg:justify-between lg:gap-0">
-            <p className="text-[1.5rem] font-bold leading-[29px] lg:text-[2rem] lg:leading-[37px]">Creative set generation tool</p>
+            <p className="site-heading text-[1.5rem] leading-[29px] lg:text-[2rem] lg:leading-[37px]">Creative set generation tool</p>
             <div className="flex flex-col gap-6">
               <h3 className="text-[1.25rem] font-semibold leading-[24px] lg:leading-normal">Solution</h3>
               <p className="text-[0.875rem] font-normal leading-5">

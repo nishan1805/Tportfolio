@@ -104,7 +104,7 @@ function Feature({
 function Note({ item }: { item: ItemBlock }) {
   return (
     <div className="overflow-hidden rounded-[8px]">
-      <p className="bg-[#cceff6] p-3 text-base font-bold leading-[16.66px] text-[#254d4f]">{item.title}</p>
+      <p className="site-heading bg-[#cceff6] p-3 text-base leading-[16.66px] text-[#254d4f]">{item.title}</p>
       <p className="bg-[#e6f7fb] p-3 text-base font-normal leading-6 text-[#254d4f]">{item.text}</p>
     </div>
   );

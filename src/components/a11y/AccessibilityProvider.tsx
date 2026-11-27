@@ -16,7 +16,7 @@ export function useA11y() {
 }
 
 const FONTS = [
-  { label: "Nekst", value: "var(--font-nekst), ui-sans-serif, system-ui, sans-serif" },
+  { label: "Nekst", value: "var(--font-outfit), ui-sans-serif, system-ui, sans-serif" },
   { label: "System Sans", value: "ui-sans-serif, system-ui, sans-serif" },
   { label: "Serif", value: "Georgia, 'Times New Roman', serif" },
 ] as const;
@@ -121,7 +121,7 @@ export function AccessibilityProvider({ children }: { children: React.ReactNode 
               <div className="min-w-0 flex-1">
                 <p
                   id={titleId}
-                  className="text-[1.25rem] font-bold leading-normal lg:text-[20px] lg:font-bold lg:leading-normal text-black"
+                  className="site-heading text-[1.25rem] leading-normal lg:text-[20px] lg:leading-normal text-black"
                 >
                   Accessibility Points
                 </p>

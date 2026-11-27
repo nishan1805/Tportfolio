@@ -9,20 +9,13 @@ import { siteConfig } from "@/data/site";
 
 import "./globals.css";
 
-// Self-hosted Nekst demo, the exact family used in the Figma file
-// ("FONTSPRING DEMO - Nekst"). Each weight is a separate demo cut, so they are
-// registered on one family via next/font/local. The family is --font-nekst.
-const nekst = localFont({
+const outfit = localFont({
   src: [
-    { path: "./fonts/nekst-thin.woff2", weight: "100", style: "normal" },
-    { path: "./fonts/nekst-light.woff2", weight: "300", style: "normal" },
-    { path: "./fonts/nekst-regular.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/nekst-medium.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/nekst-semibold.woff2", weight: "600", style: "normal" },
-    { path: "./fonts/nekst-bold.woff2", weight: "700", style: "normal" },
-    { path: "./fonts/nekst-black.woff2", weight: "900", style: "normal" },
+    { path: "./fonts/outfit-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/outfit-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/outfit-latin-600-normal.woff2", weight: "600", style: "normal" },
   ],
-  variable: "--font-nekst",
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -46,7 +39,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${nekst.variable} ${bitcountSingle.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${bitcountSingle.variable}`}>
       <body className="bg-white font-sans text-black antialiased">
         <AccessibilityProvider>
           <Navbar />

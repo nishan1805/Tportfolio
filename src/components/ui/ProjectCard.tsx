@@ -186,7 +186,7 @@ export function ProjectCard({ project }: { project: Project }) {
         className={`flex shrink-0 flex-col gap-4 p-4 lg:h-full lg:w-[34.21875%] lg:justify-between lg:gap-0 lg:p-8 ${status ? "max-lg:min-h-[208px]" : "max-lg:h-[208px]"}`}
       >
         <div className="flex flex-col gap-[22px]">
-          <h3 className={`text-[20px] font-semibold leading-8 text-black lg:text-[40px] ${project.slug === "telescope-overview" ? "" : "lg:font-bitcount lg:font-medium"}`}>
+          <h3 className="text-[20px] leading-8 text-black lg:text-[40px]">
             <span className="lg:hidden">
               {title}
               {titleSuffix ? `, ${titleSuffix}` : ""}
@@ -201,7 +201,7 @@ export function ProjectCard({ project }: { project: Project }) {
               )}
             </span>
           </h3>
-          <p className="text-[14px] font-medium leading-5 text-black/60 lg:font-outfit lg:text-[16px] lg:font-normal lg:leading-6 lg:text-[#254d4f]">{description}</p>
+          <p className="text-[14px] font-medium leading-5 text-black/60 lg:text-[16px] lg:font-normal lg:leading-6 lg:text-[#254d4f]">{description}</p>
           {status && <p className="text-[14px] font-medium leading-normal text-[#65999c] lg:text-[16px]">{status}</p>}
         </div>
 
@@ -209,7 +209,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {meta.map(({ label, value }) => (
             <div key={label} className="flex flex-col gap-2">
               <dt className="text-[12px] font-medium leading-[14px] text-black/60 lg:text-[16px] lg:leading-normal">{label}</dt>
-              <dd className="whitespace-pre text-[16px] font-medium leading-6 text-black lg:font-bitcount lg:text-[20px]">{value}</dd>
+              <dd className="whitespace-pre text-[16px] font-medium leading-6 text-black lg:text-[20px]">{value}</dd>
             </div>
           ))}
         </dl>

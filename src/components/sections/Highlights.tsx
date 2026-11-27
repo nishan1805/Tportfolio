@@ -13,7 +13,7 @@ export function Highlights() {
     <section aria-label="Expertise" className="mt-[42px] px-0 lg:mt-0 lg:py-20">
       <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-20">
         <div className="relative mb-12 h-[86px] lg:mb-16">
-          <h2 className="text-center text-[2rem] font-semibold leading-[38px] lg:text-left lg:font-bitcount lg:text-[#d10606]">
+          <h2 className="text-center text-[2rem] font-semibold leading-[38px] lg:text-left lg:text-[#d10606]">
             <span className="lg:hidden">Expertise</span>
             <span className="hidden lg:inline">Experties</span>
           </h2>

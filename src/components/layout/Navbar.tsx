@@ -52,7 +52,7 @@ export function Navbar() {
               <Fragment key={link.label}>
                 <Link
                   href={link.href}
-                  className="font-bitcount text-[16px] font-normal leading-normal text-black hover:text-[#3058d8] transition-colors"
+                  className="text-[16px] font-normal leading-normal text-black hover:text-[#3058d8] transition-colors"
                 >
                   {link.label}
                 </Link>
