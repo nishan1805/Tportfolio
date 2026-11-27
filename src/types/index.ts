@@ -68,10 +68,12 @@ export type MobileApp = {
 
 /** One clipped phone render inside a passion-project panel. */
 export type PassionPlacement = {
-  /** Clip box inside the panel. Omitted when the panel itself clips. */
+  /** Clip box relative to the panel. Omitted when the panel itself clips. */
   clip?: { x: number; y: number; w: number; h: number };
-  /** Image box, relative to the clip (or the panel when there is no clip). */
+  /** Unrotated image box, relative to the clip (or the panel when there is no clip). */
   image: { x: number; y: number; w: number; h: number };
+  /** CSS rotation in degrees around the image’s top-left corner. */
+  rotateDeg?: number;
   fit: "fill" | "cover";
 };
 
